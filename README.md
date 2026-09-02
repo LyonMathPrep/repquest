@@ -1,7 +1,7 @@
 <div align="center">
   <img src="repquestlogo.png" alt="RepQuest Logo" width="1500" />
   <h1>RepQuest</h1>
-  <p><em>Your AI-powered, privacy-first fitness companion.</em></p>
+  <p><em>Your AI-powered, privacy-first fitness companion. Try it now at: https://lyonmathprep.github.io/repquest/ </em></p>
   
   <p>
     <img src="https://img.shields.io/badge/Status-Active-success?style=flat-square" alt="Status" />
