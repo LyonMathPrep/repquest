@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="logo.png" alt="RepQuest Logo" width="150" />
+  <img src="repquestlogo.png" alt="RepQuest Logo" width="150" />
   <h1>RepQuest</h1>
   <p><em>Your AI-powered, privacy-first fitness companion.</em></p>
   
