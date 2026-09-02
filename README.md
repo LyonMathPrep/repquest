@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="repquestlogo.png" alt="RepQuest Logo" width="1500" />
+  <img src="logo.png" alt="RepQuest Logo" width="150" />
   <h1>RepQuest</h1>
   <p><em>Your AI-powered, privacy-first fitness companion.</em></p>
   
@@ -20,15 +20,29 @@ Whether you're warming up with Arm Circles or grinding through Squats, RepQuest 
 
 ---
 
+## 📸 Screenshots
+
+<div align="center">
+  <img src="screenshots/welcome-screen.png" alt="Welcome Screen" width="45%" />
+  <img src="screenshots/workout-tracking.png" alt="Workout Tracking" width="45%" />
+  <br/>
+  <img src="screenshots/ranks-progress.png" alt="Ranks and Progress" width="45%" />
+  <img src="screenshots/leaderboard.png" alt="Leaderboard" width="45%" />
+</div>
+
+*Above: Welcome screen, real-time squat tracking with pose estimation, rank progression system, and friend leaderboard*
+
+---
+
 ## ✨ Key Features
 
 - 📸 **Real-Time Pose Estimation:** Powered by MediaPipe Pose, accurately tracks your body mechanics and counts reps in real-time directly in your browser.
 - 🔒 **100% Privacy-First:** Your camera feed is processed locally. Frames are analyzed in memory and instantly discarded. **No backend video processing. No telemetry.**
 - 🏆 **Gamified Progression:** Earn XP for every rep (+10 XP/rep), maintain daily streaks 🔥, and rank up through 11 unique tiers from **Rookie** to **Ascended**.
--  **Daily Challenges:** Complete daily goals (e.g., 30 reps) to earn bonus XP (+50 XP) and keep your streak alive.
--  **Social & Competitive:** Sync your cloud account to compete against friends on the Mini-Leaderboard.
+- 📅 **Daily Challenges:** Complete daily goals (e.g., 30 reps) to earn bonus XP (+50 XP) and keep your streak alive.
+- 👥 **Social & Competitive:** Sync your cloud account to compete against friends on the Mini-Leaderboard.
 - 🧘 **Guided Warm-Ups:** Built-in warm-up plans (like Forward Arm Circles) to prepare your body and prevent injury.
-- 🔄 **Seamless Syncing:** Play as a Guest or create a Cloud Account. Easily sync your progress across devices using your exact username.
+-  **Seamless Syncing:** Play as a Guest or create a Cloud Account. Easily sync your progress across devices using your exact username.
 
 ---
 
@@ -49,13 +63,13 @@ Track your fitness journey through our comprehensive XP and Rank system. Complet
 | Rank | XP Required | Status |
 | :--- | :--- | :--- |
 | **Rookie** | 0 XP | 🌱 *Just getting started!* |
-| **Cadet** | 100 XP |  *Building momentum.* |
+| **Cadet** | 100 XP | 💪 *Building momentum.* |
 | **Athlete** | 300 XP | 🏃 *Finding your stride.* |
-| **Warrior** | 700 XP | ⚔️ *Forged in sweat.* |
+| **Warrior** | 700 XP | ️ *Forged in sweat.* |
 | **Champion** | 1,500 XP | 🏆 *Rising to the top.* |
 | **Legend** | 3,000 XP | 👑 *The stuff of legends.* |
-| **Mythic** | 6,000 XP |  *Beyond extraordinary.* |
-| **Titan** | 12,000 XP |  *Unstoppable force.* |
+| **Mythic** | 6,000 XP | ✨ *Beyond extraordinary.* |
+| **Titan** | 12,000 XP | 🗿 *Unstoppable force.* |
 | **Olympus** | 25,000 XP | 🏛️ *Among the gods.* |
 | **Demigod** | 50,000 XP | ⚡ *Half divine, all power.* |
 | **Ascended** | 100,000 XP | 🌟 *Transcended limits.* |
@@ -92,7 +106,7 @@ Track your fitness journey through our comprehensive XP and Rank system. Complet
 
 ---
 
-## 🤝 Contributing
+##  Contributing
 This project was created for the Congressional App Challenge, but we welcome feedback and contributions! 
 1. Fork the Project
 2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
@@ -108,5 +122,5 @@ This project was created for the Congressional App Challenge, but we welcome fee
 - 🎨 **Icons & UI** - Designed with a focus on accessibility, dark-mode aesthetics, and user experience.
 
 <div align="center">
-  <sub>Built with ❤️ by the RepQuest Team</sub>
+  <sub>Built with 💪 and ❤️ by the RepQuest Team</sub>
 </div>
