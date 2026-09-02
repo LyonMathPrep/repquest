@@ -1,4 +1,4 @@
-// code for the worker that is used to store user data (their USERNAME and Rank) //
+// previous code for the worker that is used to store user data (their USERNAME and Rank) //
 
 
 const APPS_SCRIPT_URL = '{Apps-script URL}'; // <-- PASTE THE URL OF THE DATABASE - IN THIS EXAMPLE WE HAVE USED A GOOGLE SHEET + opensheet (for read access) + google apps script (for write access) //
