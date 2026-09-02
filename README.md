@@ -100,5 +100,5 @@ This project was created for the Congressional App Challenge, but we welcome fee
 - 🎨 **Icons & UI** - Designed with a focus on accessibility, dark-mode aesthetics, and user experience.
 
 <div align="center">
-  <sub>Built with 💪 and ❤️ by the RepQuest Team</sub>
+  <sub>Built with ❤️ by the RepQuest Team</sub>
 </div>
