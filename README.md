@@ -1,4 +1,3 @@
-```markdown
 <div align="center">
   <img src="logo.png" alt="RepQuest Logo" width="150" />
   <h1>RepQuest</h1>
@@ -14,14 +13,14 @@
 
 ---
 
-##  Overview
+## 🌟 Overview
 **RepQuest** is a web-based fitness application that brings the gym to your living room. Built for the **Congressional App Challenge**, RepQuest uses your device's camera and on-device machine learning to track your workouts, count your reps, and gamify your fitness journey—all without ever sending your video data to a server.
 
 Whether you're warming up with Arm Circles or grinding through Squats, RepQuest keeps you accountable with daily challenges, XP tracking, and friend leaderboards.
 
 ---
 
-##  Key Features
+## ✨ Key Features
 
 - 📸 **Real-Time Pose Estimation:** Powered by MediaPipe Pose, accurately tracks your body mechanics and counts reps in real-time directly in your browser.
 - 🔒 **100% Privacy-First:** Your camera feed is processed locally. Frames are analyzed in memory and instantly discarded. **No backend video processing. No telemetry.**
@@ -49,7 +48,7 @@ Track your fitness journey through our XP and Rank system. Complete workouts, ma
 
 | Rank | XP Required | Status |
 | :--- | :--- | :--- |
-| **Rookie** | 0 - 100 XP |  *Just getting started!* |
+| **Rookie** | 0 - 100 XP | 🌱 *Just getting started!* |
 | **Cadet** | 101 - 500 XP | 💪 *Building momentum.* |
 | *(More ranks coming soon!)* | ... | 🚀 *Keep pushing!* |
 
@@ -63,7 +62,7 @@ Track your fitness journey through our XP and Rank system. Complete workouts, ma
 
 ---
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### Prerequisites
 - A modern web browser (Chrome, Edge, Firefox, Safari) with camera access.
@@ -95,7 +94,7 @@ This project was created for the Congressional App Challenge, but we welcome fee
 
 ---
 
-## 🏅 Acknowledgements
+##  Acknowledgements
 - 🎓 **Congressional App Challenge** - For inspiring us to build technology that impacts our communities.
 - 🧠 **Google MediaPipe** - For providing the incredible on-device machine learning models that make RepQuest possible.
 - 🎨 **Icons & UI** - Designed with a focus on accessibility, dark-mode aesthetics, and user experience.
@@ -103,4 +102,3 @@ This project was created for the Congressional App Challenge, but we welcome fee
 <div align="center">
   <sub>Built with 💪 and ❤️ by the RepQuest Team</sub>
 </div>
-```
