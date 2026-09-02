@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="logo.png" alt="RepQuest Logo" width="150" />
+  <img src="repquestlogo.png" alt="RepQuest Logo" width="150" />
   <h1>RepQuest</h1>
   <p><em>Your AI-powered, privacy-first fitness companion.</em></p>
   
@@ -108,5 +108,5 @@ This project was created for the Congressional App Challenge, but we welcome fee
 - 🎨 **Icons & UI** - Designed with a focus on accessibility, dark-mode aesthetics, and user experience.
 
 <div align="center">
-  <sub>Built with 💪 and ❤️ by the RepQuest Team</sub>
+  <sub>Built with ❤️ by the RepQuest Team</sub>
 </div>
