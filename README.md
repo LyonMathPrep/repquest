@@ -88,7 +88,7 @@ Track your fitness journey through our comprehensive XP and Rank system. Complet
 
 ### Prerequisites
 - A modern web browser (Chrome, Edge, Firefox, Safari) with camera access.
-- A local server to run the app (browsers block camera access on `file://` protocols).
+- A local server to run the app (browsers may block camera access on `file://` protocols).
 
 ### Installation
 1. Clone the repository:
