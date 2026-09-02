@@ -20,20 +20,6 @@ Whether you're warming up with Arm Circles or grinding through Squats, RepQuest 
 
 ---
 
-## 📸 Screenshots
-
-<div align="center">
-  <img src="screenshots/welcome-screen.png" alt="Welcome Screen" width="45%" />
-  <img src="screenshots/workout-tracking.png" alt="Workout Tracking" width="45%" />
-  <br/>
-  <img src="screenshots/ranks-progress.png" alt="Ranks and Progress" width="45%" />
-  <img src="screenshots/leaderboard.png" alt="Leaderboard" width="45%" />
-</div>
-
-*Above: Welcome screen, real-time squat tracking with pose estimation, rank progression system, and friend leaderboard*
-
----
-
 ## ✨ Key Features
 
 -  **Real-Time Pose Estimation:** Powered by MediaPipe Pose, accurately tracks your body mechanics and counts reps in real-time directly in your browser.
