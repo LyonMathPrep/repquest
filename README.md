@@ -106,7 +106,7 @@ Track your fitness journey through our comprehensive XP and Rank system. Complet
 
 ---
 
-##  Contributing
+## 💻 Contributing
 This project was created for the Congressional App Challenge, but we welcome feedback and contributions! 
 1. Fork the Project
 2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
