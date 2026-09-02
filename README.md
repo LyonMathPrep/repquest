@@ -53,7 +53,7 @@ We believe your workout data belongs to you. RepQuest operates on a strict **On-
 > ✅ **Nothing recorded.** Frames are analyzed in memory and immediately discarded.  
 > ✅ **Only numbers saved.** Rep counts and XP are stored locally in `localStorage`.  
 > ✅ **Full control.** Pause or stop the camera anytime.  
-> ❌ **No backend.** No video telemetry. No cloud video storage.  
+> ❌ **No sending your data to the cloud.** No video telemetry. No cloud video storage. If users opt in - we only store their XP and username. 
 
 ---
 
