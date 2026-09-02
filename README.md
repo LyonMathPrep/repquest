@@ -79,7 +79,7 @@ Track your fitness journey through our comprehensive XP and Rank system. Complet
 ### Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/repquest.git
+   git clone https://github.com/LyonMathPrep/repquest.git
    cd repquest
    ```
 2. Start a local server (using Python, Node, or VS Code Live Server):
