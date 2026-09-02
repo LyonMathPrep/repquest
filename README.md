@@ -14,7 +14,7 @@
 ---
 
 ## 🌟 Overview
-**RepQuest** is a web-based fitness application that brings the gym to your living room. Built for the **Congressional App Challenge**, RepQuest uses your device's camera and on-device machine learning to track your workouts, count your reps, and gamify your fitness journey—all without ever sending your video data to a server.
+**RepQuest** is a web-based fitness application that brings the gym to your living room, your office, your local park, almost anywhere! Built for the **Congressional App Challenge**, RepQuest uses your device's camera and on-device machine learning to track your workouts, count your reps, and gamify your fitness journey—all without ever sending your video data to a server.
 
 Whether you're warming up with Arm Circles or grinding through Squats, RepQuest keeps you accountable with daily challenges, XP tracking, and friend leaderboards.
 
