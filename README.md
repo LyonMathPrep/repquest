@@ -36,12 +36,12 @@ Whether you're warming up with Arm Circles or grinding through Squats, RepQuest 
 
 ## ✨ Key Features
 
-- 📸 **Real-Time Pose Estimation:** Powered by MediaPipe Pose, accurately tracks your body mechanics and counts reps in real-time directly in your browser.
-- 🔒 **100% Privacy-First:** Your camera feed is processed locally. Frames are analyzed in memory and instantly discarded. **No backend video processing. No telemetry.**
-- 🏆 **Gamified Progression:** Earn XP for every rep (+10 XP/rep), maintain daily streaks 🔥, and rank up through 11 unique tiers from **Rookie** to **Ascended**.
-- 📅 **Daily Challenges:** Complete daily goals (e.g., 30 reps) to earn bonus XP (+50 XP) and keep your streak alive.
-- 👥 **Social & Competitive:** Sync your cloud account to compete against friends on the Mini-Leaderboard.
-- 🧘 **Guided Warm-Ups:** Built-in warm-up plans (like Forward Arm Circles) to prepare your body and prevent injury.
+-  **Real-Time Pose Estimation:** Powered by MediaPipe Pose, accurately tracks your body mechanics and counts reps in real-time directly in your browser.
+-  **100% Privacy-First:** Your camera feed is processed locally. Frames are analyzed in memory and instantly discarded. **No backend video processing. No telemetry.**
+-  **Gamified Progression:** Earn XP for every rep (+10 XP/rep), maintain daily streaks 🔥, and rank up through 11 unique tiers from **Rookie** to **Ascended**.
+-  **Daily Challenges:** Complete daily goals (e.g., 30 reps) to earn bonus XP (+50 XP) and keep your streak alive.
+-  **Social & Competitive:** Sync your cloud account to compete against friends on the Mini-Leaderboard.
+-  **Guided Warm-Ups:** Built-in warm-up plans (like Forward Arm Circles) to prepare your body and prevent injury.
 -  **Seamless Syncing:** Play as a Guest or create a Cloud Account. Easily sync your progress across devices using your exact username.
 
 ---
@@ -62,17 +62,17 @@ Track your fitness journey through our comprehensive XP and Rank system. Complet
 
 | Rank | XP Required | Status |
 | :--- | :--- | :--- |
-| **Rookie** | 0 XP | 🌱 *Just getting started!* |
-| **Cadet** | 100 XP | 💪 *Building momentum.* |
-| **Athlete** | 300 XP | 🏃 *Finding your stride.* |
+| **Rookie** | 0 XP |  *Just getting started!* |
+| **Cadet** | 100 XP |  *Building momentum.* |
+| **Athlete** | 300 XP |  *Finding your stride.* |
 | **Warrior** | 700 XP | ️ *Forged in sweat.* |
-| **Champion** | 1,500 XP | 🏆 *Rising to the top.* |
-| **Legend** | 3,000 XP | 👑 *The stuff of legends.* |
-| **Mythic** | 6,000 XP | ✨ *Beyond extraordinary.* |
-| **Titan** | 12,000 XP | 🗿 *Unstoppable force.* |
-| **Olympus** | 25,000 XP | 🏛️ *Among the gods.* |
-| **Demigod** | 50,000 XP | ⚡ *Half divine, all power.* |
-| **Ascended** | 100,000 XP | 🌟 *Transcended limits.* |
+| **Champion** | 1,500 XP |  *Rising to the top.* |
+| **Legend** | 3,000 XP |  *The stuff of legends.* |
+| **Mythic** | 6,000 XP |  *Beyond extraordinary.* |
+| **Titan** | 12,000 XP |  *Unstoppable force.* |
+| **Olympus** | 25,000 XP |  *Among the gods.* |
+| **Demigod** | 50,000 XP |  *Half divine, all power.* |
+| **Ascended** | 100,000 XP |  *Transcended limits.* |
 
 ---
 
@@ -117,9 +117,9 @@ This project was created for the Congressional App Challenge, but we welcome fee
 ---
 
 ## 🏅 Acknowledgements
-- 🎓 **Congressional App Challenge** - For inspiring us to build technology that impacts our communities.
-- 🧠 **Google MediaPipe** - For providing the incredible on-device machine learning models that make RepQuest possible.
-- 🎨 **Icons & UI** - Designed with a focus on accessibility, dark-mode aesthetics, and user experience.
+-  **Congressional App Challenge** - For inspiring us to build technology that impacts our communities.
+-  **Google MediaPipe** - For providing the incredible on-device machine learning models that make RepQuest possible.
+-  **Icons & UI** - Designed with a focus on accessibility, dark-mode aesthetics, and user experience.
 
 ---
 
