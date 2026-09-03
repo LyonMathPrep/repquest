@@ -1,3 +1,5 @@
+# this is the code that is currently running the the cloudflare worker. This code is strictly optional for RepQuest to work as it is all local in the user's browser
+
 import json
 from urllib.parse import urlparse, parse_qs
 from workers import WorkerEntrypoint, Response, fetch
@@ -16,8 +18,8 @@ class Default(WorkerEntrypoint):
         if request.method == "OPTIONS":
             return Response("", headers=cors_headers)
 
-        apps_script_url = 'https://script.google.com/macros/s/AKfycbxwmerPBmDLKLb198m5TyU4E65s979aKInpZSSZJUCeVncrezetwmTpydMlW-A25rSx/exec'
-        open_sheet_url = 'https://opensheet.elk.sh/1XuAZ2VK-PJq-m473M8jk5Z91i5DRazL6u1JI-aYGrPM/responses1ver1'
+        apps_script_url = '[database URL with write permisions - we used google apps script]'
+        open_sheet_url = '[database URL with read permisions - we used google sheets]'
 
         # Parse URL using standard Python libraries
         url_parsed = urlparse(request.url)
