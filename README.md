@@ -103,9 +103,9 @@ This project was created for the Congressional App Challenge, but we welcome fee
 ---
 
 ## 🏅 Acknowledgements
--  **Congressional App Challenge** - For inspiring us to build technology that impacts our communities.
--  **Google MediaPipe** - For providing the incredible on-device machine learning models that make RepQuest possible.
--  **Icons & UI** - Designed with a focus on accessibility, dark-mode aesthetics, and user experience.
+-  **Congressional App Challenge** - For inspiring us to build something that actually impacts our communities.
+-  **Google MediaPipe** - For providing the incredible and intuitive on-device machine learning models that make RepQuest possible.
+-  **Icons & UI/UX** - Designed with a focus on accessibility, dark-mode aesthetics, and user experience regardless of mobile or desktop.
 
 ---
 
