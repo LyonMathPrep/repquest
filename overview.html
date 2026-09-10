@@ -172,16 +172,22 @@ header {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.15s, opacity 0.15s;
+    transition:
+        transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),
+        background-color 0.15s,
+        border-color 0.15s,
+        color 0.15s,
+        box-shadow 0.25s ease,
+        opacity 0.15s;
     will-change: transform;
 }
 .btn:active { transform: scale(0.97); }
 
+/* ---- Light mode buttons (unchanged) ---- */
 .btn-primary {
     background: var(--gray-900);
     color: var(--white);
 }
-body.dark-mode .btn-primary { background: var(--white); color: var(--gray-900); }
 .btn-primary:hover { opacity: 0.9; }
 
 .btn-secondary {
@@ -189,54 +195,221 @@ body.dark-mode .btn-primary { background: var(--white); color: var(--gray-900); 
     color: var(--gray-700);
     border: 1px solid var(--gray-200);
 }
-body.dark-mode .btn-secondary { background: var(--gray-100); color: var(--gray-600); border-color: var(--gray-200); }
 .btn-secondary:hover { background: var(--gray-100); }
+
+/* ---- Dark mode buttons — high contrast ---- */
+/* Primary: true white pill with a soft halo so it reads as the
+   brightest element on the page. */
+body.dark-mode .btn-primary {
+    background: #ffffff;
+    color: #0a0a0a;
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.10),
+        0 8px 24px rgba(255, 255, 255, 0.12);
+}
+body.dark-mode .btn-primary:hover {
+    opacity: 1;
+    background: #f3f4f6;
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.22),
+        0 12px 32px rgba(255, 255, 255, 0.22);
+}
+
+/* Secondary: glassy fill + visible border so it's clearly a button,
+   not a hole in the page. */
+body.dark-mode .btn-secondary {
+    background: rgba(255, 255, 255, 0.06);
+    color: #f0f0f0;
+    border-color: rgba(255, 255, 255, 0.22);
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.03);
+}
+body.dark-mode .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.38);
+    color: #ffffff;
+}
 
 .icon { width: 16px; height: 16px; }
 
-/* Hero Visual — 3D Phone Mockup (using the provided image directly) */
+/* Small open-source note under the CTAs */
+.oss-note {
+    margin-top: 18px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+    color: var(--gray-400);
+}
+
+.oss-note a {
+    color: var(--gray-500);
+    text-decoration: none;
+    border-bottom: 1px solid var(--gray-300);
+    padding-bottom: 1px;
+    transition: color 0.15s, border-color 0.15s;
+}
+
+.oss-note a:hover {
+    color: var(--blue-600);
+    border-color: var(--blue-600);
+}
+
+/* ============================================================
+   Hero Visual — layered 3D phone
+   ============================================================ */
 .hero-visual {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    perspective: 1000px;
+    min-height: 460px;
+    /* -1 … 1 pointer + idle offsets written by JS */
+    --px: 0;
+    --py: 0;
+    --bob: 0px;
 }
 
-.hero-visual::before {
-    content: '';
+/* --- ambient light behind the phone (parallaxes opposite the tilt) --- */
+.hero-glow {
     position: absolute;
-    width: 320px;
-    height: 320px;
-    background: radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, rgba(34, 197, 94, 0.15) 40%, transparent 70%);
-    border-radius: 50%;
-    filter: blur(60px);
-    z-index: -1;
-    animation: pulseGlow 6s ease-in-out infinite alternate;
-}
-
-@keyframes pulseGlow {
-    0% { transform: scale(1); opacity: 0.6; }
-    100% { transform: scale(1.15); opacity: 1; }
-}
-
-.hero-phone-img {
-    width: 100%;
-    max-width: 340px;
-    height: auto;
-    max-height: 75vh;
-    object-fit: contain;
-    /* The image already has the phone frame, so we apply drop-shadow directly to it */
-    filter: drop-shadow(0 30px 40px rgba(0, 0, 0, 0.25));
-    transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.6s ease;
-    transform-style: preserve-3d;
+    top: 50%;
+    left: 50%;
+    width: 460px;
+    height: 460px;
+    margin: -230px 0 0 -230px;
+    pointer-events: none;
+    transform: translate3d(calc(var(--px) * -26px), calc(var(--py) * -26px), 0);
     will-change: transform;
 }
 
-.hero-phone-img:hover {
-    /* 3D tilt effect on hover */
-    transform: translateY(-10px) rotateY(-6deg) rotateX(4deg) scale(1.02);
-    filter: drop-shadow(0 45px 60px rgba(0, 0, 0, 0.35));
+.hero-glow::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: radial-gradient(circle,
+        rgba(59, 130, 246, 0.42) 0%,
+        rgba(34, 197, 94, 0.16) 45%,
+        transparent 72%);
+    filter: blur(56px);
+    animation: pulseGlow 7s ease-in-out infinite alternate;
+}
+
+@keyframes pulseGlow {
+    from { opacity: 0.55; transform: scale(0.90); }
+    to   { opacity: 1;    transform: scale(1.14); }
+}
+
+/* --- the phone --- */
+.phone-stage {
+    position: relative;
+    width: min(340px, 78vw, 34vh);   /* 34vh ≈ 65vh tall at 1040×2000 */
+    z-index: 1;
+    perspective: 1300px;
+    perspective-origin: 50% 42%;
+}
+
+/* soft silhouette shadow that slides OPPOSITE the tilt,
+   like a light source fixed to one side of the scene */
+.phone-shadow {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    filter: blur(22px) brightness(0);
+    opacity: 0.42;
+    transform:
+        translate3d(calc(var(--px) * -32px), calc(var(--py) * -20px + 24px), 0)
+        scale(1.05);
+    will-change: transform;
+}
+
+/* contact shadow on the "floor" — stretches toward the side the
+   phone leans AWAY from, mirroring the light direction */
+.phone-ground {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 56%;
+    height: 26px;
+    z-index: -1;
+    border-radius: 50%;
+    background: radial-gradient(ellipse at center,
+        rgba(2, 6, 23, 0.45) 0%,
+        rgba(2, 6, 23, 0) 70%);
+    filter: blur(9px);
+    transform:
+        translate(-50%, 40%)
+        translateX(calc(var(--px) * 34px))
+        scaleX(calc(1 + var(--px) * 0.20));
+    pointer-events: none;
+}
+
+/* the element that actually rotates + floats
+   — translate3d carries the idle bob, then the rotations pivot toward cursor */
+.phone-tilt {
+    position: relative;
+    transform:
+        translate3d(0, var(--bob, 0px), 0)
+        rotateX(calc(var(--py) * -10deg))
+        rotateY(calc(var(--px) * 16deg));
+    will-change: transform;
+    /* deliberately NO css transition — JS lerps the values, which feels far better */
+}
+
+.hero-phone-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    user-select: none;
+    -webkit-user-drag: none;
+    filter: drop-shadow(0 26px 36px rgba(2, 6, 23, 0.16));
+}
+
+/* moving specular highlight, masked to the phone silhouette
+   — always subtly alive, brightens when the cursor is active */
+.phone-sheen {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    opacity: 0.35;
+    transition: opacity 0.45s ease;
+    mix-blend-mode: screen;
+    -webkit-mask-image: var(--phone-mask);
+    mask-image: var(--phone-mask);
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+}
+
+.phone-sheen::after {
+    content: '';
+    position: absolute;
+    inset: -12% -35%;
+    background: linear-gradient(100deg,
+        transparent 40%,
+        rgba(255, 255, 255, 0.55) 50%,
+        transparent 60%);
+    transform: translate3d(calc(var(--px) * -30%), calc(var(--py) * -12%), 0);
+    will-change: transform;
+}
+
+.hero-visual.is-tracking .phone-sheen { opacity: 0.55; }
+
+/* dark-mode: swap the dark shadow for a blue halo so it reads on black */
+body.dark-mode .phone-shadow {
+    filter: blur(30px) brightness(0) invert(1) sepia(1) saturate(6) hue-rotate(190deg);
+    opacity: 0.30;
+}
+body.dark-mode .phone-ground {
+    background: radial-gradient(ellipse at center,
+        rgba(59, 130, 246, 0.35) 0%,
+        rgba(59, 130, 246, 0) 70%);
 }
 
 /* Story Section */
@@ -264,6 +437,16 @@ body.dark-mode .btn-secondary { background: var(--gray-100); color: var(--gray-6
 .story-content strong {
     color: var(--gray-900);
     font-weight: 700;
+}
+
+/* In-text footnote markers */
+.story-content sup {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--blue-600);
+    vertical-align: super;
+    line-height: 0;
+    margin-left: 1px;
 }
 
 /* macOS Terminal Window */
@@ -398,6 +581,7 @@ body.dark-mode .btn-secondary { background: var(--gray-100); color: var(--gray-6
 .terminal-line:nth-child(2) { animation-delay: 0.8s; }
 .terminal-line:nth-child(3) { animation-delay: 1.4s; }
 .terminal-line:nth-child(4) { animation-delay: 2s; }
+.terminal-line:nth-child(5) { animation-delay: 2.6s; }
 
 .terminal-prompt { color: var(--gray-400); }
 .terminal-comment { color: var(--gray-500); }
@@ -497,6 +681,40 @@ footer {
     border-radius: 8px;
 }
 
+/* Sources block — now lives in the footer, below the CAC logo */
+.footer-sources {
+    max-width: 720px;
+    margin: 0 auto 30px;
+    padding-top: 22px;
+    border-top: 1px dashed var(--gray-200);
+    text-align: left;
+    font-size: 12px;
+    line-height: 1.7;
+    color: var(--gray-400);
+}
+
+.footer-sources p {
+    margin: 0 0 14px;
+}
+
+.footer-sources p:last-child {
+    margin-bottom: 0;
+}
+
+.footer-sources sup {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--gray-400);
+    vertical-align: super;
+    line-height: 0;
+    margin-right: 3px;
+    margin-left: 0;
+}
+
+.footer-sources em {
+    font-style: italic;
+}
+
 .footer-meta {
     display: flex;
     justify-content: center;
@@ -533,6 +751,7 @@ footer {
     .hero p { margin-left: auto; margin-right: auto; }
     .cta-group { justify-content: center; }
     .hero h1 { font-size: clamp(36px, 8vw, 48px); }
+    .hero-visual { min-height: 0; }
 }
 
 @media (max-width: 600px) {
@@ -542,7 +761,15 @@ footer {
     .terminal-body { font-size: 11px; padding: 16px; }
     .cac-logo-frame { padding: 12px; border-radius: 14px; }
     .cac-logo-frame img { width: 180px; }
-    .hero-phone-img { max-width: 280px; }
+    .footer-sources { font-size: 11px; }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .hero-glow::after { animation: none; }
+    .phone-tilt,
+    .phone-shadow,
+    .phone-ground { transform: none !important; }
 }
 </style>
 </head>
@@ -561,13 +788,13 @@ footer {
             <div class="hero-text">
                 <div class="hero-badge">
                     <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
-                    Congressional App Challenge Project
+                    2026 Congressional App Challenge Entry
                 </div>
                 <h1>
                     Screen time that<br>
                     <span class="highlight">turns into fitness.</span>
                 </h1>
-                <p>Privacy-first fitness app that uses on-device AI to count reps in real time. No video leaves your device. Gamified with XP, ranks, and streaks.</p>
+                <p>Privacy-first fitness app that uses on-device AI to count repetitions in real time. No video ever leaves your device as cloud sync is optional and stores only a username and your XP. Gamified with XP, ranks, and streaks so that you can compete against your friends!</p>
                 
                 <div class="cta-group">
                     <a href="https://lyonmathprep.github.io/repquest/" class="btn btn-primary magnetic-btn">
@@ -579,21 +806,45 @@ footer {
                         GitHub
                     </a>
                 </div>
+
+                <p class="oss-note">
+                    Fully open sourced under the
+                    <a href="https://github.com/LyonMathPrep/repquest/blob/main/LICENSE"
+                       target="_blank" rel="noopener noreferrer">Apache-2.0</a>
+                    license.
+                </p>
             </div>
-            
-            <div class="hero-visual">
-                <!-- Replace the src below with the actual filename of your uploaded image -->
-                <img src="repquest-screenshot.png" alt="RepQuest App running on a phone" class="hero-phone-img" width="1040" height="2000">
+
+            <!-- ============ 3D PHONE ============ -->
+            <div class="hero-visual" id="heroVisual">
+                <div class="hero-glow"></div>
+
+                <div class="phone-stage" id="phoneStage">
+                    <div class="phone-ground" aria-hidden="true"></div>
+
+                    <!-- blurred silhouette copy = shadow that tracks opposite the tilt -->
+                    <img class="phone-shadow" src="repquest-screenshot.png" alt="" aria-hidden="true" draggable="false">
+
+                    <div class="phone-tilt" id="phoneTilt">
+                        <img src="repquest-screenshot.png"
+                             alt="RepQuest app running on a phone"
+                             class="hero-phone-img"
+                             width="1040" height="2000"
+                             draggable="false">
+                        <span class="phone-sheen" aria-hidden="true"></span>
+                    </div>
+                </div>
             </div>
+            <!-- ================================== -->
         </section>
 
         <section class="story">
             <div class="story-content">
-                <p>Our inspiration came from our own screen time reports—easily 6+ hours a day. We didn't want to cut out the screen. We wanted to <strong>use it to grow ourselves</strong>.</p>
+                <p>Our inspiration came from our own screen time reports — easily 6+ hours a day. We didn't want to cut out the screen. We wanted to <strong>use it to grow ourselves</strong>.</p>
                 
-                <p>Then we learned we weren't alone. Over half of US teens spend 4+ hours daily on screens, and since 1990, adolescent steps have dropped by almost 30%.</p>
+                <p>Then we learned we weren't alone. Over half of US teens spend 4+ hours daily on screens,<sup>3</sup> and since 1990, adolescent steps have dropped by almost 30%.<sup>1</sup></p>
                 
-                <p>Teens love games, but most fitness apps don't make staying active fun. So we built RepQuest: a simple, intuitive app that works on almost any device, turning screen time into fitness time.</p>
+                <p>Teens love games, but most fitness apps don't make staying active fun. So we built RepQuest: a simple, intuitive app that works on almost any device, turning screen time into fitness time. Rep counting and XP run entirely on-device;<sup>2</sup> cloud sync is optional and stores only a username and XP.</p>
             </div>
 
             <div class="terminal" id="terminal">
@@ -607,7 +858,8 @@ footer {
                     <div class="terminal-line"><span class="terminal-prompt">$</span> repquest --privacy</div>
                     <div class="terminal-line"><span class="terminal-comment">// Processing video locally...</span></div>
                     <div class="terminal-line"><span class="terminal-comment">// Counting reps: 12, 13, 14...</span></div>
-                    <div class="terminal-line"><span class="terminal-comment">// No data sent. No video stored. ✓</span></div>
+                    <div class="terminal-line"><span class="terminal-comment">// Video never leaves this device. ✓</span></div>
+                    <div class="terminal-line"><span class="terminal-comment">// Cloud sync optional — username + password only.</span></div>
                 </div>
             </div>
 
@@ -630,10 +882,21 @@ footer {
                      width="800" height="540" loading="lazy" decoding="async">
             </a>
         </div>
+
+        <!-- Sources moved here, directly below the CAC logo -->
+        <div class="footer-sources">
+            <p><sup>1</sup>Conger, S. A., Toth, L. P., Cretsinger, C., Raustorp, A., Mitáš, J., Inoue, S., &amp; Bassett, D. R. (2022). Time trends in physical activity using wearable devices: A systematic review and meta-analysis of studies from 1995 to 2017. <em>Medicine &amp; Science in Sports &amp; Exercise, 54</em>(2), 288–298. https://doi.org/10.1249/MSS.0000000000002782</p>
+            <p><sup>2</sup>Google. (n.d.). <em>MediaPipe Solutions guide</em>. Retrieved August 26, 2026, from https://developers.google.com/edge/mediapipe/solutions/guide</p>
+            <p><sup>3</sup>Zablotsky, B., Arockiaraj, B., Haile, G., &amp; Ng, A. E. (2024). Daily screen time among teenagers: United States, July 2021–December 2023 (NCHS Data Brief No. 513). National Center for Health Statistics. https://doi.org/10.15620/cdc/168509</p>
+        </div>
+
         <p class="footer-meta">
-            <span>Made by InbhaVenkat and Advait</span>
+            <span>Made by Inbha Venkat and Advait</span>
             <span class="dot">|</span>
             <span>MI-07</span>
+            <span class="dot">|</span>
+            <a href="https://github.com/LyonMathPrep/repquest/blob/main/LICENSE"
+               target="_blank" rel="noopener noreferrer">Apache-2.0</a>
         </p>
     </footer>
 </div>
@@ -811,6 +1074,165 @@ document.addEventListener('keydown', (e) => {
         }
     }
 });
+
+/* 
+   HERO PHONE — cursor tracking + continuous idle drift
+*/
+(function () {
+    const visual = document.getElementById('heroVisual');
+    if (!visual) return;
+
+    /* Feed the phone PNG into the sheen's mask (single source of truth).
+       If you swap the screenshot, nothing else needs updating. */
+    const phoneImg  = visual.querySelector('.hero-phone-img');
+    const shadowImg = visual.querySelector('.phone-shadow');
+
+    function syncImages() {
+        const src = phoneImg.currentSrc || phoneImg.src;
+        if (shadowImg && shadowImg.getAttribute('src') !== src) shadowImg.src = src;
+        visual.style.setProperty('--phone-mask', 'url("' + src + '")');
+    }
+    if (phoneImg.complete && phoneImg.naturalWidth) syncImages();
+    else phoneImg.addEventListener('load', syncImages, { once: true });
+
+    // No motion at all if the user prefers reduced motion.
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced) return;
+
+    const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+
+    /* -------- state -------- */
+    let cursorX = 0, cursorY = 0;   // raw pointer offset, -1 … 1
+    let curX = 0, curY = 0;         // eased value written to CSS
+
+    /* -------- idle motion tuning --------
+       Two sines per axis at incommensurate frequencies = drift that
+       never visually repeats. Amplitude is in the same -1…1 space. */
+    const IDLE = {
+        ax1: 0.055, sx1: 0.00042,   // primary X sway
+        ax2: 0.026, sx2: 0.00093,   // secondary X sway (faster, smaller)
+        ay1: 0.045, sy1: 0.00035,   // primary Y sway
+        ay2: 0.020, sy2: 0.00078,   // secondary Y sway
+        bobAmp: 6,   bobSpeed: 0.00070,   // vertical float in px
+        bobAmp2: 2.5, bobSpeed2: 0.00119
+    };
+
+    /* -------- the always-running loop -------- */
+    function loop(now) {
+        const t = now || performance.now();
+
+        // Organic idle drift (deterministic, seeded by time)
+        const idleX =
+            Math.sin(t * IDLE.sx1) * IDLE.ax1 +
+            Math.sin(t * IDLE.sx2 + 1.7) * IDLE.ax2;
+
+        const idleY =
+            Math.cos(t * IDLE.sy1) * IDLE.ay1 +
+            Math.sin(t * IDLE.sy2 + 0.6) * IDLE.ay2;
+
+        // Target = cursor position + idle drift
+        const targetX = cursorX + idleX;
+        const targetY = cursorY + idleY;
+
+        // Ease toward target. The idle is small enough that cursor
+        // tracking still feels crisp; the drift reads as breathing.
+        curX += (targetX - curX) * 0.11;
+        curY += (targetY - curY) * 0.11;
+
+        visual.style.setProperty('--px', curX.toFixed(4));
+        visual.style.setProperty('--py', curY.toFixed(4));
+
+        // Gentle vertical bob (float above the shadow)
+        const bob =
+            Math.sin(t * IDLE.bobSpeed) * IDLE.bobAmp +
+            Math.sin(t * IDLE.bobSpeed2 + 2.1) * IDLE.bobAmp2;
+        visual.style.setProperty('--bob', bob.toFixed(2) + 'px');
+
+        requestAnimationFrame(loop);
+    }
+    requestAnimationFrame(loop);
+
+    /* -------- pointer tracking (whole viewport) -------- */
+    function track(clientX, clientY) {
+        const nx = (clientX / window.innerWidth)  * 2 - 1;   // -1 left  … +1 right
+        const ny = (clientY / window.innerHeight) * 2 - 1;   // -1 top   … +1 bottom
+
+        cursorX = clamp(nx, -1, 1);
+        cursorY = clamp(ny, -1, 1);
+
+        visual.classList.add('is-tracking');
+    }
+
+    if (canHover) {
+        window.addEventListener('pointermove', (e) => {
+            track(e.clientX, e.clientY);
+        }, { passive: true });
+
+        // Cursor left the window → let idle drift take over fully.
+        document.addEventListener('mouseleave', () => {
+            cursorX = 0;
+            cursorY = 0;
+            visual.classList.remove('is-tracking');
+        });
+        window.addEventListener('blur', () => {
+            cursorX = 0;
+            cursorY = 0;
+            visual.classList.remove('is-tracking');
+        });
+    } else {
+        // Touch: follow the finger while dragging; idle drift always runs.
+        window.addEventListener('touchmove', (e) => {
+            if (e.touches.length) {
+                track(e.touches[0].clientX, e.touches[0].clientY);
+            }
+        }, { passive: true });
+
+        window.addEventListener('touchend', () => {
+            cursorX = 0;
+            cursorY = 0;
+            visual.classList.remove('is-tracking');
+        }, { passive: true });
+    }
+})();
+</script>
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
 </script>
 </body>
 </html>
