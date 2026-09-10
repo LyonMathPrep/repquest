@@ -69,8 +69,9 @@ body {
     overflow-x: hidden;
 }
 
+/* Widened container to accommodate the split hero layout */
 .container {
-    max-width: 720px;
+    max-width: 1000px;
     margin: 0 auto;
     padding: 0 24px;
 }
@@ -100,10 +101,17 @@ header {
 }
 .theme-btn:hover { background: var(--gray-100); }
 
-/* Hero */
+/* Hero — Split Layout */
 .hero {
-    text-align: center;
-    padding: 80px 0 60px;
+    padding: 60px 0 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.hero-text {
+    text-align: left;
 }
 
 .hero-badge {
@@ -124,9 +132,9 @@ header {
 }
 
 .hero h1 {
-    font-size: clamp(40px, 8vw, 64px);
+    font-size: clamp(36px, 5vw, 56px);
     font-weight: 900;
-    line-height: 1;
+    line-height: 1.05;
     letter-spacing: -0.03em;
     margin-bottom: 24px;
 }
@@ -143,15 +151,12 @@ header {
     color: var(--gray-500);
     line-height: 1.6;
     margin-bottom: 40px;
-    max-width: 560px;
-    margin-left: auto;
-    margin-right: auto;
+    max-width: 500px;
 }
 
 .cta-group {
     display: flex;
     gap: 12px;
-    justify-content: center;
     flex-wrap: wrap;
 }
 
@@ -189,6 +194,85 @@ body.dark-mode .btn-secondary { background: var(--gray-100); color: var(--gray-6
 
 .icon { width: 16px; height: 16px; }
 
+/* Hero Visual — 3D Phone Mockup */
+.hero-visual {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-visual::before {
+    content: '';
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.25) 0%, rgba(34, 197, 94, 0.15) 40%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(50px);
+    z-index: -1;
+    animation: pulseGlow 6s ease-in-out infinite alternate;
+}
+
+@keyframes pulseGlow {
+    0% { transform: scale(1); opacity: 0.6; }
+    100% { transform: scale(1.15); opacity: 1; }
+}
+
+.phone-mockup {
+    width: 100%;
+    max-width: 320px;
+    aspect-ratio: 1 / 2;
+    background: #1a1a1a;
+    border-radius: 48px;
+    padding: 12px;
+    box-shadow: 
+        0 40px 80px -20px rgba(0, 0, 0, 0.7),
+        0 0 0 1px rgba(255, 255, 255, 0.1),
+        inset 0 0 0 2px #333;
+    position: relative;
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.5s ease;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.phone-mockup:hover {
+    transform: translateY(-12px) rotateY(-8deg) rotateX(5deg) scale(1.02);
+    box-shadow: 
+        0 60px 100px -20px rgba(0, 0, 0, 0.8),
+        0 0 0 1px rgba(255, 255, 255, 0.2),
+        inset 0 0 0 2px #444;
+}
+
+.phone-notch {
+    position: absolute;
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 28px;
+    background: #1a1a1a;
+    border-radius: 0 0 18px 18px;
+    z-index: 10;
+    box-shadow: inset 0 -2px 4px rgba(0,0,0,0.5);
+}
+
+.phone-screen {
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    border-radius: 36px;
+    overflow: hidden;
+    position: relative;
+}
+
+.phone-screen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
 /* Story Section */
 .story {
     padding: 60px 0;
@@ -196,6 +280,8 @@ body.dark-mode .btn-secondary { background: var(--gray-100); color: var(--gray-6
 }
 
 .story-content {
+    max-width: 720px;
+    margin: 0 auto;
     font-size: 16px;
     line-height: 1.8;
     color: var(--gray-600);
@@ -218,15 +304,24 @@ body.dark-mode .btn-secondary { background: var(--gray-100); color: var(--gray-6
 .terminal {
     background: var(--gray-900);
     border-radius: 12px;
-    margin: 40px 0;
+    margin: 40px auto;
+    max-width: 720px;
     overflow: hidden;
     box-shadow: 0 20px 60px rgba(0,0,0,0.3);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    transform: translate(var(--drag-x, 0px), var(--drag-y, 0px));
+}
+
+.terminal.dragging {
+    transition: none;
+    z-index: 900;
+    box-shadow: 0 30px 70px rgba(0,0,0,0.45);
 }
 
 .terminal.closed {
     opacity: 0;
-    transform: scale(0.95);
+    transform: translate(var(--drag-x, 0px), var(--drag-y, 0px)) scale(0.95);
     pointer-events: none;
     max-height: 0;
     margin: 0;
@@ -247,6 +342,7 @@ body.dark-mode .btn-secondary { background: var(--gray-100); color: var(--gray-6
     margin: 0;
     z-index: 1000;
     border-radius: 12px;
+    max-width: none;
 }
 
 .terminal-header {
@@ -255,7 +351,13 @@ body.dark-mode .btn-secondary { background: var(--gray-100); color: var(--gray-6
     display: flex;
     align-items: center;
     gap: 8px;
+    cursor: grab;
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
 }
+
+.terminal.dragging .terminal-header { cursor: grabbing; }
 
 .terminal-btn {
     width: 12px;
@@ -331,13 +433,8 @@ body.dark-mode .btn-secondary { background: var(--gray-100); color: var(--gray-6
 .terminal-line:nth-child(3) { animation-delay: 1.4s; }
 .terminal-line:nth-child(4) { animation-delay: 2s; }
 
-.terminal-prompt {
-    color: var(--gray-400);
-}
-
-.terminal-comment {
-    color: var(--gray-500);
-}
+.terminal-prompt { color: var(--gray-400); }
+.terminal-comment { color: var(--gray-500); }
 
 @keyframes typeIn {
     from { opacity: 0; transform: translateY(4px); }
@@ -347,13 +444,12 @@ body.dark-mode .btn-secondary { background: var(--gray-100); color: var(--gray-6
 /* Restore Button */
 .terminal-restore {
     display: none;
-    margin: 20px 0;
+    margin: 20px auto;
+    max-width: 720px;
     text-align: center;
 }
 
-.terminal-restore.show {
-    display: block;
-}
+.terminal-restore.show { display: block; }
 
 .terminal-restore-btn {
     background: var(--gray-200);
@@ -367,9 +463,7 @@ body.dark-mode .btn-secondary { background: var(--gray-100); color: var(--gray-6
     transition: all 0.15s;
 }
 
-.terminal-restore-btn:hover {
-    background: var(--gray-300);
-}
+.terminal-restore-btn:hover { background: var(--gray-300); }
 
 body.dark-mode .terminal-restore-btn {
     background: var(--gray-800);
@@ -377,9 +471,7 @@ body.dark-mode .terminal-restore-btn {
     border-color: var(--gray-700);
 }
 
-body.dark-mode .terminal-restore-btn:hover {
-    background: var(--gray-700);
-}
+body.dark-mode .terminal-restore-btn:hover { background: var(--gray-700); }
 
 /* Footer */
 footer {
@@ -388,7 +480,6 @@ footer {
     text-align: center;
 }
 
-/* CAC Logo — dark blue frame matching the terminal, with soft blue glow */
 .cac-credit {
     display: flex;
     flex-direction: column;
@@ -437,7 +528,6 @@ footer {
     width: 220px;
     height: auto;
     max-width: 100%;
-    /* Rounds the white PNG background so it reads as a deliberate tile */
     border-radius: 8px;
 }
 
@@ -463,19 +553,32 @@ footer {
     text-decoration: underline;
 }
 
-.footer-meta .dot {
-    color: var(--gray-300);
-}
+.footer-meta .dot { color: var(--gray-300); }
 
 /* Responsive */
+@media (max-width: 900px) {
+    .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 40px;
+        padding: 40px 0 60px;
+    }
+    .hero-text { text-align: center; }
+    .hero p { margin-left: auto; margin-right: auto; }
+    .cta-group { justify-content: center; }
+    .hero h1 { font-size: clamp(36px, 8vw, 48px); }
+}
+
 @media (max-width: 600px) {
-    .hero { padding: 60px 0 40px; }
     .logo img { height: 32px; }
     .cta-group { flex-direction: column; }
     .btn { width: 100%; justify-content: center; }
     .terminal-body { font-size: 11px; padding: 16px; }
     .cac-logo-frame { padding: 12px; border-radius: 14px; }
     .cac-logo-frame img { width: 180px; }
+    .phone-mockup { max-width: 280px; border-radius: 40px; padding: 10px; }
+    .phone-notch { width: 100px; height: 24px; top: 10px; }
+    .phone-screen { border-radius: 30px; }
 }
 </style>
 </head>
@@ -491,25 +594,37 @@ footer {
 
     <main>
         <section class="hero">
-            <div class="hero-badge">
-                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
-                Congressional App Challenge Project
+            <div class="hero-text">
+                <div class="hero-badge">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+                    Congressional App Challenge Project
+                </div>
+                <h1>
+                    Screen time that<br>
+                    <span class="highlight">turns into fitness.</span>
+                </h1>
+                <p>Privacy-first fitness app that uses on-device AI to count reps in real time. No video leaves your device. Gamified with XP, ranks, and streaks.</p>
+                
+                <div class="cta-group">
+                    <a href="https://lyonmathprep.github.io/repquest/" class="btn btn-primary magnetic-btn">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                        Try Live Demo
+                    </a>
+                    <a href="https://github.com/LyonMathPrep/repquest" target="_blank" class="btn btn-secondary magnetic-btn">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                        GitHub
+                    </a>
+                </div>
             </div>
-            <h1>
-                Screen time that<br>
-                <span class="highlight">turns into fitness.</span>
-            </h1>
-            <p>Privacy-first fitness app that uses on-device AI to count reps in real time. No video leaves your device. Gamified with XP, ranks, and streaks.</p>
             
-            <div class="cta-group">
-                <a href="https://lyonmathprep.github.io/repquest/" class="btn btn-primary magnetic-btn">
-                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-                    Try Live Demo
-                </a>
-                <a href="https://github.com/LyonMathPrep/repquest" target="_blank" class="btn btn-secondary magnetic-btn">
-                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-                    GitHub
-                </a>
+            <div class="hero-visual">
+                <div class="phone-mockup">
+                    <div class="phone-notch"></div>
+                    <div class="phone-screen">
+                        <!-- Replace the src below with the actual filename of your uploaded image -->
+                        <img src="repquest-screenshot.png" alt="RepQuest App Screenshot" width="1040" height="2000">
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -627,12 +742,79 @@ magneticBtns.forEach(btn => {
 
 // Terminal Controls
 const terminal = document.getElementById('terminal');
+const terminalHeader = terminal.querySelector('.terminal-header');
 const terminalClose = document.getElementById('terminalClose');
 const terminalMinimize = document.getElementById('terminalMinimize');
 const terminalMaximize = document.getElementById('terminalMaximize');
 const terminalRestore = document.getElementById('terminalRestore');
 const terminalRestoreBtn = document.getElementById('terminalRestoreBtn');
 
+/* ---------- Dragging ---------- */
+let dragX = 0;
+let dragY = 0;
+let dragStartX = 0;
+let dragStartY = 0;
+let isDragging = false;
+let preMaximizeDrag = null;
+
+function setDrag(x, y) {
+    dragX = x;
+    dragY = y;
+    terminal.style.setProperty('--drag-x', x + 'px');
+    terminal.style.setProperty('--drag-y', y + 'px');
+}
+
+// Keep the window reachable: some of it must stay on screen horizontally,
+// and the title bar must stay on screen vertically.
+function clampDrag(x, y) {
+    const rect = terminal.getBoundingClientRect();
+    const baseLeft = rect.left - dragX;
+    const baseTop = rect.top - dragY;
+    const w = rect.width;
+    const headerH = terminalHeader.offsetHeight;
+
+    const keepX = Math.min(60, w);
+    x = Math.min(Math.max(x, -baseLeft - w + keepX), window.innerWidth - baseLeft - keepX);
+
+    const minY = -baseTop;
+    const maxY = window.innerHeight - headerH - baseTop;
+    y = Math.min(Math.max(y, minY), maxY);
+
+    return { x, y };
+}
+
+terminalHeader.addEventListener('pointerdown', (e) => {
+    if (e.target.closest('.terminal-btn')) return;
+    if (terminal.classList.contains('maximized')) return;
+    if (e.pointerType === 'mouse' && e.button !== 0) return;
+
+    isDragging = true;
+    dragStartX = e.clientX - dragX;
+    dragStartY = e.clientY - dragY;
+    terminal.classList.add('dragging');
+    terminalHeader.setPointerCapture(e.pointerId);
+    e.preventDefault();
+});
+
+terminalHeader.addEventListener('pointermove', (e) => {
+    if (!isDragging) return;
+    const next = clampDrag(e.clientX - dragStartX, e.clientY - dragStartY);
+    setDrag(next.x, next.y);
+});
+
+function stopDrag(e) {
+    if (!isDragging) return;
+    isDragging = false;
+    terminal.classList.remove('dragging');
+    if (terminalHeader.hasPointerCapture(e.pointerId)) {
+        terminalHeader.releasePointerCapture(e.pointerId);
+    }
+}
+
+terminalHeader.addEventListener('pointerup', stopDrag);
+terminalHeader.addEventListener('pointercancel', stopDrag);
+
+/* ---------- Window buttons ---------- */
 terminalClose.addEventListener('click', () => {
     terminal.classList.add('closed');
     terminalRestore.classList.add('show');
@@ -643,18 +825,31 @@ terminalMinimize.addEventListener('click', () => {
 });
 
 terminalMaximize.addEventListener('click', () => {
-    terminal.classList.toggle('maximized');
+    const maximized = terminal.classList.toggle('maximized');
+    if (maximized) {
+        preMaximizeDrag = { x: dragX, y: dragY };
+        setDrag(0, 0);
+    } else if (preMaximizeDrag) {
+        setDrag(preMaximizeDrag.x, preMaximizeDrag.y);
+        preMaximizeDrag = null;
+    }
 });
 
 terminalRestoreBtn.addEventListener('click', () => {
     terminal.classList.remove('closed', 'minimized', 'maximized');
     terminalRestore.classList.remove('show');
+    preMaximizeDrag = null;
+    setDrag(0, 0);
 });
 
 // Close maximized terminal with Escape key
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && terminal.classList.contains('maximized')) {
         terminal.classList.remove('maximized');
+        if (preMaximizeDrag) {
+            setDrag(preMaximizeDrag.x, preMaximizeDrag.y);
+            preMaximizeDrag = null;
+        }
     }
 });
 </script>
