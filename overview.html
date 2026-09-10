@@ -26,6 +26,12 @@
     --blue-600: #2563eb;
     --blue-700: #1d4ed8;
     --green-500: #22c55e;
+
+    /* Terminal navy — fixed so it stays dark blue in both themes */
+    --navy-frame: #111827;
+    --navy-frame-border: rgba(59, 130, 246, 0.28);
+    --navy-frame-shadow: rgba(17, 24, 39, 0.35);
+    --navy-frame-inset: rgba(255, 255, 255, 0.07);
 }
 
 body.dark-mode {
@@ -44,6 +50,11 @@ body.dark-mode {
     --blue-500: #3b82f6;
     --blue-600: #3b82f6;
     --blue-700: #60a5fa;
+
+    --navy-frame: #0f172a;
+    --navy-frame-border: rgba(96, 165, 250, 0.35);
+    --navy-frame-shadow: rgba(0, 0, 0, 0.6);
+    --navy-frame-inset: rgba(255, 255, 255, 0.05);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -377,17 +388,84 @@ footer {
     text-align: center;
 }
 
-.footer-text {
-    font-size: 13px;
-    color: var(--gray-400);
-    font-family: 'JetBrains Mono', monospace;
+/* CAC Logo — dark blue frame matching the terminal, with soft blue glow */
+.cac-credit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 28px;
 }
 
-.footer-text a {
-    color: var(--blue-600);
-    text-decoration: none;
+.cac-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gray-400);
 }
-.footer-text a:hover { text-decoration: underline; }
+
+.cac-logo-frame {
+    display: block;
+    background: var(--navy-frame);
+    padding: 14px;
+    border-radius: 16px;
+    border: 1px solid var(--navy-frame-border);
+    box-shadow:
+        0 1px 0 var(--navy-frame-inset) inset,
+        0 10px 30px var(--navy-frame-shadow),
+        0 0 0 1px rgba(0, 0, 0, 0.15);
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+}
+
+.cac-logo-frame:hover {
+    transform: translateY(-4px);
+    box-shadow:
+        0 1px 0 var(--navy-frame-inset) inset,
+        0 18px 42px var(--navy-frame-shadow),
+        0 0 26px rgba(59, 130, 246, 0.28);
+}
+
+.cac-logo-frame:focus-visible {
+    outline: 2px solid var(--blue-500);
+    outline-offset: 3px;
+}
+
+.cac-logo-frame img {
+    display: block;
+    width: 220px;
+    height: auto;
+    max-width: 100%;
+    /* Rounds the white PNG background so it reads as a deliberate tile */
+    border-radius: 8px;
+}
+
+.footer-meta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--gray-400);
+}
+
+.footer-meta a {
+    color: var(--gray-500);
+    text-decoration: none;
+    transition: color 0.15s;
+}
+
+.footer-meta a:hover {
+    color: var(--blue-600);
+    text-decoration: underline;
+}
+
+.footer-meta .dot {
+    color: var(--gray-300);
+}
 
 /* Responsive */
 @media (max-width: 600px) {
@@ -396,6 +474,8 @@ footer {
     .cta-group { flex-direction: column; }
     .btn { width: 100%; justify-content: center; }
     .terminal-body { font-size: 11px; padding: 16px; }
+    .cac-logo-frame { padding: 12px; border-radius: 14px; }
+    .cac-logo-frame img { width: 180px; }
 }
 </style>
 </head>
@@ -464,8 +544,22 @@ footer {
     </main>
 
     <footer>
-        <p class="footer-text">
-            Built for the <a href="https://www.congressionalappchallenge.us/" target="_blank">Congressional App Challenge</a>
+        <div class="cac-credit">
+            <span class="cac-label">Submitted to</span>
+            <a class="cac-logo-frame"
+               href="https://www.congressionalappchallenge.us/"
+               target="_blank"
+               rel="noopener noreferrer"
+               aria-label="2026 Congressional App Challenge">
+                <img src="https://www.congressionalappchallenge.us/wp-content/uploads/2026/06/tall2026logocac.png"
+                     alt="2026 Congressional App Challenge"
+                     width="800" height="540" loading="lazy" decoding="async">
+            </a>
+        </div>
+        <p class="footer-meta">
+            <span>Made by InbhaVenkat and Advait</span>
+            <span class="dot">|</span>
+            <span>MI-07</span>
         </p>
     </footer>
 </div>
