@@ -46,7 +46,7 @@ We believe your workout data belongs to you. RepQuest operates on a strict **On-
 ## 📈 Gamification & Ranks
 Track your fitness journey through our comprehensive XP and Rank system. Complete workouts, maintain streaks, and conquer daily challenges to climb through 11 prestigious ranks!
 
-Color swatches below match the `color` and `bg` values in the app's `RANKS` array.
+Color swatches below match the `color` and `bg` values in the code's `RANKS` array.
 
 | Rank | XP Required | Color | Badge BG | Status |
 | :--- | :--- | :--- | :--- | :--- |
