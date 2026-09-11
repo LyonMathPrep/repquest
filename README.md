@@ -46,19 +46,21 @@ We believe your workout data belongs to you. RepQuest operates on a strict **On-
 ## 📈 Gamification & Ranks
 Track your fitness journey through our comprehensive XP and Rank system. Complete workouts, maintain streaks, and conquer daily challenges to climb through 11 prestigious ranks!
 
-| Rank | XP Required | Status |
-| :--- | :--- | :--- |
-| **Rookie** | 0 XP |  *Just getting started!* |
-| **Cadet** | 100 XP |  *Building momentum.* |
-| **Athlete** | 300 XP |  *Finding your stride.* |
-| **Warrior** | 700 XP | ️ *Forged in sweat.* |
-| **Champion** | 1,500 XP |  *Rising to the top.* |
-| **Legend** | 3,000 XP |  *The stuff of legends.* |
-| **Mythic** | 6,000 XP |  *Beyond extraordinary.* |
-| **Titan** | 12,000 XP |  *Unstoppable force.* |
-| **Olympus** | 25,000 XP |  *Among the gods.* |
-| **Demigod** | 50,000 XP |  *Half divine, all power.* |
-| **Ascended** | 100,000 XP |  *Transcended limits.* |
+Color swatches below match the `color` and `bg` values in the app's `RANKS` array.
+
+| Rank | XP Required | Color | Badge BG | Status |
+| :--- | :--- | :--- | :--- | :--- |
+| **Rookie** | 0 XP | ![#6b7280](https://img.shields.io/badge/-%236b7280-6b7280?style=flat-square) `#6b7280` | ![#f3f4f6](https://img.shields.io/badge/-%23f3f4f6-f3f4f6?style=flat-square) `#f3f4f6` | *Just getting started!* |
+| **Cadet** | 100 XP | ![#3b82f6](https://img.shields.io/badge/-%233b82f6-3b82f6?style=flat-square) `#3b82f6` | ![#eff6ff](https://img.shields.io/badge/-%23eff6ff-eff6ff?style=flat-square) `#eff6ff` | *Building momentum.* |
+| **Athlete** | 300 XP | ![#22c55e](https://img.shields.io/badge/-%2322c55e-22c55e?style=flat-square) `#22c55e` | ![#f0fdf4](https://img.shields.io/badge/-%23f0fdf4-f0fdf4?style=flat-square) `#f0fdf4` | *Finding your stride.* |
+| **Warrior** | 700 XP | ![#f97316](https://img.shields.io/badge/-%23f97316-f97316?style=flat-square) `#f97316` | ![#fff7ed](https://img.shields.io/badge/-%23fff7ed-fff7ed?style=flat-square) `#fff7ed` | *Forged in sweat.* |
+| **Champion** | 1,500 XP | ![#ef4444](https://img.shields.io/badge/-%23ef4444-ef4444?style=flat-square) `#ef4444` | ![#fef2f2](https://img.shields.io/badge/-%23fef2f2-fef2f2?style=flat-square) `#fef2f2` | *Rising to the top.* |
+| **Legend** | 3,000 XP | ![#a855f7](https://img.shields.io/badge/-%23a855f7-a855f7?style=flat-square) `#a855f7` | ![#faf5ff](https://img.shields.io/badge/-%23faf5ff-faf5ff?style=flat-square) `#faf5ff` | *The stuff of legends.* |
+| **Mythic** | 6,000 XP | ![#eab308](https://img.shields.io/badge/-%23eab308-eab308?style=flat-square) `#eab308` | ![#fefce8](https://img.shields.io/badge/-%23fefce8-fefce8?style=flat-square) `#fefce8` | *Beyond extraordinary.* |
+| **Titan** | 12,000 XP | ![#06b6d4](https://img.shields.io/badge/-%2306b6d4-06b6d4?style=flat-square) `#06b6d4` | ![#ecfeff](https://img.shields.io/badge/-%23ecfeff-ecfeff?style=flat-square) `#ecfeff` | *Unstoppable force.* |
+| **Olympus** | 25,000 XP | ![#6366f1](https://img.shields.io/badge/-%236366f1-6366f1?style=flat-square) `#6366f1` | ![#eef2ff](https://img.shields.io/badge/-%23eef2ff-eef2ff?style=flat-square) `#eef2ff` | *Among the gods.* |
+| **Demigod** | 50,000 XP | ![#ec4899](https://img.shields.io/badge/-%23ec4899-ec4899?style=flat-square) `#ec4899` | ![#fdf2f8](https://img.shields.io/badge/-%23fdf2f8-fdf2f8?style=flat-square) `#fdf2f8` | *Half divine, all power.* |
+| **Ascended** | 100,000 XP | ![#10b981](https://img.shields.io/badge/-%2310b981-10b981?style=flat-square) `#10b981` | ![#ecfdf5](https://img.shields.io/badge/-%23ecfdf5-ecfdf5?style=flat-square) `#ecfdf5` | *Transcended limits.* |
 
 ---
 
