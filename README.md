@@ -106,7 +106,7 @@ This project was created for the Congressional App Challenge, but we welcome fee
 
 ## 📄 License
 
-Copyright 2026 RepQuest Team
+Copyright 2026 InbhaVenkat & Advait
 
 RepQuest is open source and is released under the Apache License 2.0.
 
