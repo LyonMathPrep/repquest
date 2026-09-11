@@ -84,7 +84,7 @@ Color swatches below match the `color` and `bg` values in the code's `RANKS` arr
    git clone https://github.com/LyonMathPrep/repquest.git
    cd repquest
    ```
-2. Start a local server (using Python, Node, or VS Code Live Server):
+2. Start a local server (using Python, Node, or **VS Code Live Server** <-- we used the live server extension in VS code primarily for development and testing):
    ```bash
    # Example using Python 3
    python -m http.server 8000
