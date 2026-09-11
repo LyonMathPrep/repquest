@@ -104,6 +104,20 @@ This project was created for the Congressional App Challenge, but we welcome fee
 
 ---
 
+## 📄 License
+
+Copyright 2026 RepQuest Team
+
+RepQuest is open source and is released under the Apache License 2.0.
+
+You may use, copy, modify, and distribute this project according to the terms of the license. See the [LICENSE](LICENSE) file for the complete license text.
+
+Licensed under the Apache License, Version 2.0. You may obtain a copy of the License at:
+
+https://www.apache.org/licenses/LICENSE-2.0
+
+---
+
 ## 🏅 Acknowledgements
 -  **Congressional App Challenge** - For inspiring us to build something that actually impacts our communities.
 -  **Google MediaPipe** - For providing the incredible and intuitive on-device machine learning models that make RepQuest possible.
