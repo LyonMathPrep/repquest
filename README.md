@@ -14,7 +14,7 @@
 ---
 
 ## 🌟 Overview
-**RepQuest** is a web-based fitness application that brings the gym to your living room, your office, your local park, almost anywhere! Built for the **Congressional App Challenge**, RepQuest uses your device's camera and on-device machine learning to track your workouts, count your reps, and gamify your fitness journey—all without ever sending your video data to a server.
+**RepQuest** is a web-based fitness application that brings the gym to your living room, your office, your local park, almost anywhere! Designed for the **Congressional App Challenge**, RepQuest uses your device's camera and on-device machine learning to track your workouts, count your reps, and gamify your fitness journey. All without ever sending your video data to a server.
 
 Whether you're warming up with Arm Circles or grinding through Squats, RepQuest keeps you accountable with daily challenges, XP tracking, and friend leaderboards.
 
@@ -26,20 +26,20 @@ Whether you're warming up with Arm Circles or grinding through Squats, RepQuest 
 -  **100% Privacy-First:** Your camera feed is processed locally. Frames are analyzed in memory and instantly discarded. **No backend video processing. No telemetry.**
 -  **Gamified Progression:** Earn XP for every rep (+10 XP/rep), maintain daily streaks 🔥, and rank up through 11 unique tiers from **Rookie** to **Ascended**.
 -  **Daily Challenges:** Complete daily goals (e.g., 30 reps) to earn bonus XP (+50 XP) and keep your streak alive.
--  **Social & Competitive:** Sync your cloud account to compete against friends on the Mini-Leaderboard.
--  **Guided Warm-Ups:** Built-in warm-up plans (like Forward Arm Circles) to prepare your body and prevent injury.
--  **Seamless Syncing:** Play as a Guest or create a Cloud Account. Easily sync your progress across devices using your exact username.
+-  **Social & Competitive:** Sync your cloud account to compete against friends on the Mini-Leaderboard and keep your XP between devices.
+-  **Guided Warm-Ups:** Built-in warm-up plans (like Forward Arm Circles) to ready your body and prevent injury.
+-  **Seamless Syncing:** Play as a Guest or create a Cloud Account. Easily sync your progress across devices using your username.
 
 ---
 
 ## 🛡️ Privacy by Design
 We believe your workout data belongs to you. RepQuest operates on a strict **On-Device Only** philosophy:
 
-> ✅ **Video processed locally** by MediaPipe Pose in your browser.  
+> ✅ **ALL video processed locally.** by MediaPipe Pose in your browser.  
 > ✅ **Nothing recorded.** Frames are analyzed in memory and immediately discarded.  
 > ✅ **Only numbers saved.** Rep counts and XP are stored locally in `localStorage`.  
 > ✅ **Full control.** Pause or stop the camera anytime.  
-> ❌ **No sending your data to the cloud.** No video telemetry. No cloud video storage. If users opt in - we only store their XP and username. 
+> ❌ **No sending your video or personal stuff to the cloud.** No video telemetry. No cloud video storage. If users opt in - we only store an XP and username. 
 
 ---
 
