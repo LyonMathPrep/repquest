@@ -67,7 +67,7 @@ Color swatches below match the `color` and `bg` values in the code's `RANKS` arr
 ## 🛠️ Tech Stack
 - **Frontend:** HTML5, CSS3, Vanilla JavaScript
 - **Machine Learning:** [MediaPipe Pose](https://developers.google.com/mediapipe) (Browser-based pose estimation)
-- **Storage:** LocalStorage (Guest data), Cloud API (Account syncing)
+- **Storage:** LocalStorage (Guest data), Cloud API (For account syncing - we have used a demo version as a proof of concept)
 - **Camera:** WebRTC / `getUserMedia` API
 
 ---
