@@ -1,3 +1,4 @@
+```html
 <div align="center">
   <img src="repquestlogo.png" alt="RepQuest Logo" width="1500" />
   <h1>RepQuest</h1>
@@ -72,6 +73,12 @@ Color swatches below match the `color` and `bg` values in the code's `RANKS` arr
 
 ---
 
+## 🤖 AI Disclosure
+
+Our team used AI language models (Z.ai and Qwen) as assistive tools to help us understand and implement new technologies like Google MediaPipe and the browser Camera API. Our team was fully responsible for the core application logic, UI/UX design, gamification mechanics, and engineering the specifics required to accurately count exercise repetitions. All testing (across multiple devices and environmental conditions) was conducted manually by our team and some volunteers.
+
+---
+
 ## 🚀 Getting Started
 
 ### Prerequisites
@@ -128,3 +135,4 @@ https://www.apache.org/licenses/LICENSE-2.0
 <div align="center">
   <sub>Built with ❤️ by the RepQuest Team (Inbha & Advait)</sub>
 </div>
+```
