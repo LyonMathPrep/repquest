@@ -1,4 +1,3 @@
-```html
 <div align="center">
   <img src="repquestlogo.png" alt="RepQuest Logo" width="1500" />
   <h1>RepQuest</h1>
