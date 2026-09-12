@@ -2,4 +2,25 @@ RepQuest
 Copyright 2026 InbhaVenkat & Advait
 
 This product includes software developed by InbhaVenkat & Advait.
-Licensed under the Apache License, Version 2.0 (see LICENSE).b
+
+Third-party components
+──────────────────────
+
+Google MediaPipe
+  - @mediapipe/pose (Pose Landmark Detection)
+  - @mediapipe/drawing_utils
+  License: Apache License 2.0
+  https://developers.google.com/mediapipe
+  Loaded via: https://cdn.jsdelivr.net/npm/@mediapipe/pose/pose.js
+              https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js
+
+Google Fonts
+  - Inter (SIL Open Font License 1.1)
+  - JetBrains Mono (SIL Open Font License 1.1)
+  https://fonts.google.com/specimen/Inter
+  https://fonts.google.com/specimen/JetBrains+Mono
+  Loaded via: https://fonts.googleapis.com/css2
+
+jsDelivr
+  Content delivery network used to serve MediaPipe assets.
+  https://www.jsdelivr.com/
