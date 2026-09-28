@@ -128,6 +128,7 @@ https://www.apache.org/licenses/LICENSE-2.0
 -  **Congressional App Challenge** - For inspiring us to build something that actually positively helps us and our communities.
 -  **Google MediaPipe** - For providing the incredible and intuitive on-device machine learning models that make RepQuest possible.
 -  **Icons & UI/UX** - Designed with a focus on accessibility, dark-mode aesthetics, and user experience regardless of mobile or desktop.
+-  **Mediapipe Documentation** - For being simple and easy to understand/implement on our app. ---> https://developers.google.com/edge/mediapipe/solutions/guide
 
 ---
 
