@@ -5,10 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <title>RepQuest</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose/pose.js" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-2CBn2LJjKpVr6E9YkV4g2FVh9o6J7pZl1Kz1e6n8Q8s=" crossorigin=""></script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -18,36 +16,8 @@
 --green-50:#f0fdf4;--green-500:#22c55e;--green-600:#16a34a;--red-500:#ef4444;--orange-500:#f97316;--yellow-500:#eab308;
 --safe-bottom:env(safe-area-inset-bottom,0px);
 }
-
-/* AMOLED Dark Mode Variables */
-body.dark-mode {
-    --white:#0a0a0a;
-    --gray-50:#000000;
-    --gray-100:#121212;
-    --gray-200:#1f1f1f;
-    --gray-300:#333333;
-    --gray-400:#666666;
-    --gray-500:#999999;
-    --gray-600:#cccccc;
-    --gray-700:#e0e0e0;
-    --gray-800:#f0f0f0;
-    --gray-900:#ffffff;
-    --blue-50:#0a1f35;
-    --blue-500:#3b82f6;
-    --blue-600:#3b82f6;
-    --blue-700:#60a5fa;
-    --green-50:#0a2e1a;
-    --green-500:#22c55e;
-    --green-600:#4ade80;
-    --red-500:#f87171;
-    --orange-500:#fb923c;
-    --yellow-500:#facc15;
-}
-
-body, .topbar, .btn, .modal-box, .workout-card, .account-card, .video-card, .daily-challenge-card, .select-rank-card, .streak-card, .mini-stat, .rank-card-sm, .warmup-progress, .warmup-steps {
-    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
-}
-
+body.dark-mode{--white:#0a0a0a;--gray-50:#000000;--gray-100:#121212;--gray-200:#1f1f1f;--gray-300:#333333;--gray-400:#666666;--gray-500:#999999;--gray-600:#cccccc;--gray-700:#e0e0e0;--gray-800:#f0f0f0;--gray-900:#ffffff;--blue-50:#0a1f35;--blue-500:#3b82f6;--blue-600:#3b82f6;--blue-700:#60a5fa;--green-50:#0a2e1a;--green-500:#22c55e;--green-600:#4ade80;--red-500:#f87171;--orange-500:#fb923c;--yellow-500:#facc15}
+body,.topbar,.btn,.modal-box,.workout-card,.account-card,.video-card,.daily-challenge-card,.select-rank-card,.streak-card,.mini-stat,.rank-card-sm,.warmup-progress,.warmup-steps{transition:background-color .3s ease,border-color .3s ease,color .3s ease}
 html,body{background:var(--gray-50);color:var(--gray-900);font-family:'Inter',-apple-system,sans-serif;min-height:100vh;min-height:100dvh;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent;overscroll-behavior:none;touch-action:manipulation}
 .app{min-height:100vh;min-height:100dvh;display:flex;flex-direction:column}
 .topbar{background:var(--white);border-bottom:1px solid var(--gray-200);padding:0 20px;height:56px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50;gap:12px}
@@ -79,12 +49,10 @@ body.dark-mode .btn-danger-ghost:hover{background:rgba(248,113,113,0.1)}
 .page-sub{font-size:13px;color:var(--gray-400);margin-bottom:20px;line-height:1.5}
 .divider{display:flex;align-items:center;gap:12px;margin:24px 0;color:var(--gray-400);font-size:11px;font-weight:700;font-family:'JetBrains Mono',monospace;letter-spacing:1px}
 .divider::before,.divider::after{content:'';flex:1;height:1px;background:var(--gray-200)}
-.embed-form-wrap{max-height:0;overflow:hidden;transition:max-height .4s ease, margin .3s ease, opacity .3s ease;opacity:0;margin-bottom:0 !important;border:none !important;background:transparent}
-.embed-form-wrap.open{max-height:600px;opacity:1;margin-bottom:20px !important;border:1px solid var(--gray-200) !important;background:var(--white) !important;border-radius:12px}
+.embed-form-wrap{max-height:0;overflow:hidden;transition:max-height .4s ease,margin .3s ease,opacity .3s ease;opacity:0;margin-bottom:0!important;border:none!important;background:transparent}
+.embed-form-wrap.open{max-height:600px;opacity:1;margin-bottom:20px!important;border:1px solid var(--gray-200)!important;background:var(--white)!important;border-radius:12px}
 .embed-form-wrap iframe{width:100%;height:550px;border:0;display:block}
-body.dark-mode .embed-form-wrap iframe {
-    filter: invert(1) hue-rotate(180deg) brightness(0.9) contrast(0.9);
-}
+body.dark-mode .embed-form-wrap iframe{filter:invert(1) hue-rotate(180deg) brightness(.9) contrast(.9)}
 .post-form-text{font-size:12px;color:var(--gray-500);margin-bottom:8px;text-align:center}
 .chev{transition:transform .3s ease}
 .chev.open{transform:rotate(180deg)}
@@ -110,7 +78,7 @@ body.dark-mode .account-x:hover{background:rgba(248,113,113,0.1)}
 .streak-icon{font-size:32px;line-height:1;margin-bottom:4px}
 .streak-num{font-weight:800;font-size:24px;color:var(--orange-500);font-family:'JetBrains Mono',monospace;line-height:1.2}
 .streak-label{font-size:10px;letter-spacing:1px;color:var(--gray-400);font-family:'JetBrains Mono',monospace;margin-top:2px}
-.daily-challenge-card{background:linear-gradient(135deg, var(--white) 0%, var(--blue-50) 100%);border:1.5px solid var(--blue-500);border-radius:14px;padding:18px 20px;margin-bottom:20px;position:relative;overflow:hidden}
+.daily-challenge-card{background:linear-gradient(135deg,var(--white) 0%,var(--blue-50) 100%);border:1.5px solid var(--blue-500);border-radius:14px;padding:18px 20px;margin-bottom:20px;position:relative;overflow:hidden}
 .daily-challenge-card::before{content:'';position:absolute;top:-30px;right:-30px;width:120px;height:120px;background:radial-gradient(circle,rgba(59,130,246,.08) 0%,transparent 70%);pointer-events:none}
 .dc-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
 .dc-title{display:flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1px;color:var(--blue-600);font-weight:700;text-transform:uppercase}
@@ -139,6 +107,79 @@ body.dark-mode .account-x:hover{background:rgba(248,113,113,0.1)}
 .wc-name{font-weight:600;font-size:15px}.wc-desc{font-size:12px;color:var(--gray-400)}
 .wc-footer{display:flex;justify-content:space-between;align-items:center;padding-top:10px;border-top:1px solid var(--gray-100);font-family:'JetBrains Mono',monospace;font-size:11px;margin-top:12px}
 .wc-xp{color:var(--blue-600);font-weight:600}.wc-total{color:var(--gray-400)}
+
+/* Outdoor Workout Styles */
+.outdoor-section{margin-top:24px}
+.outdoor-card{background:linear-gradient(135deg,var(--white) 0%,var(--green-50) 100%);border:1.5px solid var(--green-500);border-radius:14px;padding:18px;cursor:pointer;transition:all .15s;color:var(--gray-900);font-family:inherit}
+.outdoor-card:hover{box-shadow:0 0 0 2px var(--green-500)}
+.outdoor-card:active{transform:scale(.98)}
+.outdoor-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px}
+.oc-top{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+.oc-icon{width:44px;height:44px;background:rgba(34,197,94,.15);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--green-600);flex-shrink:0;font-size:22px}
+.oc-name{font-weight:700;font-size:16px;margin-bottom:2px}
+.oc-desc{font-size:11px;color:var(--gray-400)}
+.oc-footer{display:flex;justify-content:space-between;align-items:center;padding-top:10px;border-top:1px solid var(--gray-100);font-family:'JetBrains Mono',monospace;font-size:11px}
+.oc-xp{color:var(--green-600);font-weight:600}
+.oc-badge{font-size:9px;padding:2px 6px;border-radius:4px;background:var(--green-50);color:var(--green-600);font-weight:700;letter-spacing:.5px}
+
+/* Goal Selector */
+.goal-selector{background:var(--white);border:1px solid var(--gray-200);border-radius:14px;padding:20px;margin-top:12px}
+.goal-title{font-weight:700;font-size:15px;margin-bottom:4px}
+.goal-sub{font-size:12px;color:var(--gray-400);margin-bottom:14px}
+.goal-options{display:flex;gap:8px;flex-wrap:wrap}
+.goal-option{flex:1;min-width:80px;padding:14px 10px;border:2px solid var(--gray-200);border-radius:10px;text-align:center;cursor:pointer;transition:all .15s;background:var(--white)}
+.goal-option:hover{border-color:var(--green-500)}
+.goal-option.selected{border-color:var(--green-500);background:var(--green-50)}
+.goal-dist{font-family:'JetBrains Mono',monospace;font-weight:800;font-size:18px;color:var(--gray-900)}
+.goal-xp{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--green-600);font-weight:600;margin-top:2px}
+.goal-multi{font-size:9px;color:var(--gray-400);margin-top:1px}
+.goal-start-row{display:flex;gap:8px;margin-top:14px}
+
+/* Outdoor Active Screen */
+.outdoor-active{display:flex;flex-direction:column;gap:12px}
+.oa-map-wrap{background:var(--white);border:1px solid var(--gray-200);border-radius:14px;overflow:hidden;position:relative}
+.oa-map{width:100%;height:260px;background:var(--gray-100);display:block}
+.oa-map-overlay{position:absolute;top:10px;left:10px;display:flex;gap:6px;flex-wrap:wrap}
+.oa-map-badge{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;padding:4px 8px;border-radius:6px;background:rgba(0,0,0,.7);color:#fff;letter-spacing:.5px}
+.oa-map-badge.gps-good{background:rgba(34,197,94,.85)}
+.oa-map-badge.gps-warn{background:rgba(249,115,22,.85)}
+.oa-map-badge.gps-bad{background:rgba(239,68,68,.85)}
+.oa-stats-row{display:flex;gap:8px;flex-wrap:wrap}
+.oa-stat{flex:1;min-width:100px;background:var(--white);border:1px solid var(--gray-200);border-radius:12px;padding:14px;text-align:center}
+.oa-stat-label{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--gray-400);letter-spacing:.8px;margin-bottom:2px}
+.oa-stat-val{font-family:'JetBrains Mono',monospace;font-weight:800;font-size:28px;line-height:1.2;color:var(--gray-900)}
+.oa-stat-unit{font-size:10px;color:var(--gray-400);font-weight:500}
+.oa-progress-wrap{background:var(--white);border:1px solid var(--gray-200);border-radius:12px;padding:14px 16px}
+.oa-progress-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.oa-progress-label{font-size:11px;font-weight:700;color:var(--gray-500);font-family:'JetBrains Mono',monospace;letter-spacing:.5px}
+.oa-progress-dist{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;color:var(--green-600)}
+.oa-progress-bar{height:10px;background:var(--gray-200);border-radius:5px;overflow:hidden}
+.oa-progress-fill{height:100%;background:linear-gradient(90deg,var(--green-500),var(--blue-500));border-radius:5px;transition:width .5s ease}
+.oa-cheat-wrap{background:var(--white);border:1px solid var(--gray-200);border-radius:12px;padding:14px 16px}
+.oa-cheat-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.oa-cheat-label{font-size:11px;font-weight:700;color:var(--gray-500);font-family:'JetBrains Mono',monospace;letter-spacing:.5px}
+.oa-cheat-status{font-size:11px;font-weight:700;font-family:'JetBrains Mono',monospace;padding:3px 8px;border-radius:4px}
+.oa-cheat-status.valid{color:var(--green-600);background:var(--green-50)}
+.oa-cheat-status.suspect{color:var(--orange-500);background:#fff7ed}
+.oa-cheat-status.cheating{color:var(--red-500);background:#fef2f2}
+body.dark-mode .oa-cheat-status.suspect{background:rgba(249,115,22,.15)}
+body.dark-mode .oa-cheat-status.cheating{background:rgba(239,68,68,.15)}
+.oa-cheat-bar{height:6px;background:var(--gray-200);border-radius:3px;overflow:hidden}
+.oa-cheat-fill{height:100%;border-radius:3px;transition:width .5s ease,background .3s}
+.oa-cheat-fill.valid{background:var(--green-500)}
+.oa-cheat-fill.suspect{background:var(--orange-500)}
+.oa-cheat-fill.cheating{background:var(--red-500)}
+.oa-cheat-msg{font-size:11px;color:var(--gray-500);margin-top:6px}
+.oa-controls{display:flex;gap:8px;position:sticky;bottom:calc(8px + var(--safe-bottom));z-index:10}
+.oa-controls .btn{flex:1;min-height:52px;font-size:15px;font-weight:700;border-radius:14px;box-shadow:0 -2px 16px rgba(0,0,0,.06)}
+.oa-gps-indicator{display:flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700}
+.oa-gps-dot{width:8px;height:8px;border-radius:50%;animation:blink 1.2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.oa-gps-dot.good{background:var(--green-500)}
+.oa-gps-dot.warn{background:var(--orange-500)}
+.oa-gps-dot.bad{background:var(--red-500)}
+.oa-gps-dot.off{background:var(--gray-400);animation:none}
+
 .video-card{background:var(--white);border:1px solid var(--gray-200);border-radius:12px;overflow:hidden}
 .video-wrap{position:relative;width:100%;aspect-ratio:4/3;background:#000;overflow:hidden}
 .video-wrap video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0}
@@ -155,7 +196,6 @@ body.dark-mode .account-x:hover{background:rgba(248,113,113,0.1)}
 .cam-label{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--red-500)}
 .cam-group{display:flex;align-items:center;gap:5px}.cam-group.paused .cam-dot{background:var(--orange-500);animation:none}.cam-group.paused .cam-label{color:var(--orange-500)}
 .cam-group.warmup-cam .cam-dot{background:var(--green-500)}.cam-group.warmup-cam .cam-label{color:var(--green-500)}.cam-group.warmup-cam.paused .cam-dot{background:var(--orange-500)}.cam-group.warmup-cam.paused .cam-label{color:var(--orange-500)}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
 .warmup-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;gap:8px}
 .warmup-desktop{display:grid;grid-template-columns:1fr 320px;gap:16px}
 .warmup-side{display:flex;flex-direction:column;gap:12px}
@@ -250,6 +290,10 @@ body.dark-mode .wp-status.paused{background:rgba(249,115,22,0.15)}
 .cc-rankup{border-radius:12px;padding:18px;margin-bottom:24px;animation:rankglow .5s ease}@keyframes rankglow{0%{transform:scale(.95);opacity:0}100%{transform:scale(1);opacity:1}}
 .cc-rankup-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.5px;margin-bottom:4px}.cc-rankup-name{font-weight:800;font-size:22px}
 .cc-actions{display:flex;flex-direction:column;gap:8px}
+.cc-stats-row{display:flex;gap:8px;margin-bottom:20px}
+.cc-stat{flex:1;background:var(--gray-50);border:1px solid var(--gray-200);border-radius:10px;padding:12px 8px;text-align:center}
+.cc-stat-val{font-family:'JetBrains Mono',monospace;font-weight:800;font-size:18px;color:var(--gray-900)}
+.cc-stat-label{font-size:9px;color:var(--gray-400);letter-spacing:.5px;font-family:'JetBrains Mono',monospace;margin-top:2px}
 .modal{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:100;display:flex;align-items:center;justify-content:center;padding:20px;animation:fadeIn .2s ease}
 .modal-box{background:var(--white);border-radius:16px;padding:28px 24px;max-width:480px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.15);max-height:90vh;overflow-y:auto}
 .modal-logo{display:flex;justify-content:center;margin-bottom:14px}
@@ -259,57 +303,8 @@ body.dark-mode .wp-status.paused{background:rgba(249,115,22,0.15)}
 .plist{list-style:none;display:flex;flex-direction:column;gap:6px;margin:10px 0}.plist li{padding:10px 12px;background:var(--gray-50);border:1px solid var(--gray-200);border-radius:8px;font-size:12px;color:var(--gray-600);line-height:1.5}.plist li strong{color:var(--gray-800)}.modal-foot{font-size:11px!important;color:var(--gray-400)}
 .modal-actions{display:flex;gap:8px;justify-content:flex-end}
 .toast{position:fixed;bottom:calc(20px + var(--safe-bottom));left:16px;right:16px;max-width:360px;margin:0 auto;background:#1f2937;border-radius:10px;padding:12px 18px;font-size:13px;font-weight:500;color:#fff;z-index:200;opacity:0;transform:translateY(12px);transition:all .25s ease;pointer-events:none;box-shadow:0 8px 24px rgba(0,0,0,.2);text-align:center}.toast.show{opacity:1;transform:translateY(0)}.toast.error{background:var(--red-500)}.toast.success{background:var(--green-600)}
-body.dark-mode .toast { background: #1a1a1a; border: 1px solid var(--gray-200); }
+body.dark-mode .toast{background:#1a1a1a;border:1px solid var(--gray-200)}
 [hidden]{display:none!important}
-
-/* ===== LOCATION WORKOUT STYLES ===== */
-.loc-screen{display:flex;flex-direction:column;gap:16px;height:100%;min-height:calc(100vh - 130px);min-height:calc(100dvh - 130px)}
-.loc-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:4px}
-.loc-top-center{text-align:center;flex:1;min-width:0}
-.loc-name{font-weight:700;font-size:16px}
-.loc-sub{font-size:11px;color:var(--gray-400);margin-top:1px}
-.loc-map-wrap{position:relative;flex:1;min-height:320px;background:var(--gray-100);border-radius:14px;overflow:hidden;border:1px solid var(--gray-200)}
-.loc-map{width:100%;height:100%;z-index:1}
-.loc-map.leaflet-container{background:var(--gray-100);font-family:'Inter',sans-serif}
-.loc-stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}
-.loc-stat{background:var(--white);border:1px solid var(--gray-200);border-radius:10px;padding:10px 12px;text-align:center}
-.loc-stat-label{font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--gray-400);letter-spacing:.8px;margin-bottom:2px;text-transform:uppercase}
-.loc-stat-val{font-family:'JetBrains Mono',monospace;font-weight:800;font-size:20px;color:var(--gray-900);line-height:1.2}
-.loc-stat-val.sub{font-size:11px;color:var(--gray-500);font-weight:600;margin-top:2px}
-.loc-progress-wrap{background:var(--white);border:1px solid var(--gray-200);border-radius:10px;padding:10px 14px}
-.loc-progress-row{display:flex;align-items:center;gap:12px;margin-bottom:6px}
-.loc-progress-text{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;color:var(--gray-900);white-space:nowrap}
-.loc-progress-pct{margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--gray-500);font-weight:600}
-.loc-bar{flex:1;height:6px;background:var(--gray-200);border-radius:3px;overflow:hidden}
-.loc-bar-fill{height:100%;background:var(--blue-500);border-radius:3px;transition:width .4s ease}
-.loc-bar-fill.complete{background:var(--green-500)}
-.loc-controls{display:flex;gap:8px}
-.loc-controls .btn{flex:1;min-height:52px;font-size:15px;font-weight:700;border-radius:12px}
-.loc-accuracy-badge{position:absolute;top:10px;left:10px;z-index:500;background:rgba(0,0,0,0.75);color:#fff;padding:4px 10px;border-radius:6px;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;display:flex;align-items:center;gap:5px}
-.loc-accuracy-dot{width:6px;height:6px;border-radius:50%;background:var(--green-500);animation:blink 1.2s infinite}
-.loc-accuracy-dot.poor{background:var(--orange-500)}
-.loc-accuracy-dot.bad{background:var(--red-500);animation:none}
-.loc-verified-badge{display:inline-flex;align-items:center;gap:4px;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;padding:3px 8px;border-radius:5px;letter-spacing:.5px}
-.loc-verified-badge.verified{color:var(--green-600);background:var(--green-50)}
-.loc-verified-badge.suspect{color:var(--orange-500);background:#fff7ed}
-body.dark-mode .loc-verified-badge.verified{background:rgba(34,197,94,0.15)}
-body.dark-mode .loc-verified-badge.suspect{background:rgba(249,115,22,0.15)}
-.loc-cheat-warning{position:absolute;top:10px;right:10px;left:auto;z-index:500;background:var(--orange-500);color:#fff;padding:6px 12px;border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;display:flex;align-items:center;gap:6px;animation:warnPulse 1.5s infinite}
-@keyframes warnPulse{0%,100%{box-shadow:0 0 0 0 rgba(249,115,22,0.5)}50%{box-shadow:0 0 0 8px rgba(249,115,22,0)}}
-.loc-countdown{position:absolute;inset:0;background:rgba(0,0,0,0.85);z-index:1000;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff}
-.loc-countdown-num{font-family:'JetBrains Mono',monospace;font-weight:800;font-size:120px;line-height:1;animation:countPulse 1s ease-out}
-@keyframes countPulse{0%{transform:scale(0.5);opacity:0}50%{transform:scale(1.1);opacity:1}100%{transform:scale(1);opacity:0.8}}
-.loc-countdown-text{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:2px;color:rgba(255,255,255,0.6);margin-top:10px}
-.distance-picker{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
-.distance-card{background:var(--white);border:2px solid var(--gray-200);border-radius:12px;padding:16px;text-align:center;cursor:pointer;transition:all .15s;min-height:88px;display:flex;flex-direction:column;align-items:center;justify-content:center}
-.distance-card:hover{border-color:var(--blue-500);background:var(--blue-50)}
-body.dark-mode .distance-card:hover{background:var(--blue-50)}
-.distance-card.selected{border-color:var(--blue-500);background:var(--blue-50);box-shadow:0 0 0 3px rgba(59,130,246,0.2)}
-.distance-card .dist-val{font-family:'JetBrains Mono',monospace;font-weight:800;font-size:22px;color:var(--gray-900)}
-.distance-card .dist-unit{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--gray-500);margin-top:2px}
-.distance-card .dist-xp{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--blue-600);font-weight:600;margin-top:6px}
-body.dark-mode .leaflet-tile-pane{filter:brightness(0.85) invert(1) contrast(0.85) hue-rotate(180deg) saturate(0.5)}
-
 @media(min-width:601px){.topbar-context.active{display:flex}.topbar-rank-area{display:none!important}.modal-handle{display:none!important}.mobile-stats-bar{display:none!important}.warmup-mobile{display:none!important}.warmup-desktop{display:grid}}
 @media(max-width:800px){.active-body{grid-template-columns:1fr}.warmup-desktop{grid-template-columns:1fr}}
 @media(max-width:600px){
@@ -329,6 +324,7 @@ body.dark-mode .leaflet-tile-pane{filter:brightness(0.85) invert(1) contrast(0.8
 .workout-grid{grid-template-columns:1fr;gap:8px}
 .workout-card{border-radius:14px;padding:16px;display:flex;align-items:center;gap:14px}
 .workout-card .wc-top{margin-bottom:0;flex:0 0 auto}.workout-card .wc-body{flex:1;min-width:0}.workout-card .wc-footer{margin-top:6px;padding-top:6px}.workout-card .wc-chevron{flex-shrink:0;color:var(--gray-300)}
+.outdoor-grid{grid-template-columns:1fr}
 .warmup-desktop{display:none!important}.warmup-mobile{display:block!important}.warmup-header{display:none!important}
 .active-top{display:none!important}
 .video-wrap{aspect-ratio:1/1!important}.video-card{border-radius:12px}
@@ -341,18 +337,9 @@ body.dark-mode .leaflet-tile-pane{filter:brightness(0.85) invert(1) contrast(0.8
 .cc-actions .btn{min-height:52px;font-size:15px;border-radius:14px}
 .modal{align-items:flex-end;padding:0}.modal-box{border-radius:20px 20px 0 0;padding:24px 20px;padding-bottom:calc(24px + var(--safe-bottom));max-height:90vh;animation:slideUp .3s ease}
 .modal-handle{display:block!important}.modal-actions{flex-direction:column}.modal-actions .btn{width:100%;min-height:52px;font-size:15px;border-radius:14px}
-.loc-screen{min-height:calc(100dvh - 80px)}
-.loc-stats-row{grid-template-columns:repeat(3,1fr);gap:6px}
-.loc-stat{padding:8px 6px}.loc-stat-val{font-size:18px}.loc-stat-label{font-size:7px}
-.loc-controls .btn{min-height:56px;font-size:15px;border-radius:14px;box-shadow:0 -2px 16px rgba(0,0,0,.06)}
-.loc-map-wrap{min-height:280px;border-radius:12px}
-.distance-picker{grid-template-columns:repeat(3,1fr);gap:8px}
-.distance-card{padding:12px 8px;min-height:78px}
-.distance-card .dist-val{font-size:20px}
-.loc-countdown-num{font-size:100px}
 }
 @keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
-@media(max-width:380px){.main{padding:10px 8px 20px}.page-title{font-size:20px}.cc-num{font-size:48px}.wmt-time{font-size:24px}.wm-timer-box{width:80px}.msb-val.rep-val{font-size:28px}.msb-val.xp-val{font-size:18px}}
+@media(max-width:380px){.main{padding:10px 8px 20px}.page-title{font-size:20px}.cc-num{font-size:48px}.wmt-time{font-size:24px}.wm-timer-box{width:80px}.msb-val.rep-val{font-size:28px}.msb-val.xp-val{font-size:18px}.oa-stat-val{font-size:22px}}
 </style>
 </head>
 <body>
@@ -431,83 +418,19 @@ body.dark-mode .leaflet-tile-pane{filter:brightness(0.85) invert(1) contrast(0.8
             <span id="dcClaimTxt">Complete to claim</span>
         </button>
     </div>
-    <div class="section-label">INDOOR WORKOUTS</div>
+    <div class="section-label">WORKOUTS</div>
     <div class="workout-grid" id="workoutGrid"></div>
-    <div class="section-label" style="margin-top:20px">🏃 OUTDOOR ACTIVITIES</div>
-    <div class="workout-grid" id="locWorkoutGrid"></div>
-</section>
-
-<section class="screen" id="scrLocSelect" hidden>
-    <div class="account-wrap">
-        <button class="btn-ghost" id="locSelectBack" style="margin-bottom:12px;padding-left:0">
-            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
-            Back
-        </button>
-        <h1 class="page-title" id="locSelectTitle">Select Distance</h1>
-        <p class="page-sub" id="locSelectSub">Choose your goal distance</p>
-        <div class="distance-picker" id="distancePicker"></div>
-        <div style="padding:14px;background:var(--blue-50);border:1px solid var(--blue-500);border-radius:12px;margin-bottom:16px">
-            <div style="font-size:12px;color:var(--gray-700);line-height:1.5">
-                <strong style="color:var(--blue-600)">📍 Location Privacy:</strong> Your GPS data is processed on-device only. Only distance/duration stats are saved — no coordinates stored or sent to servers.
-            </div>
-        </div>
-        <button class="btn btn-primary btn-block btn-lg" id="startLocWorkoutBtn" disabled>Start Workout</button>
-        <p style="font-size:11px;color:var(--gray-400);text-align:center;margin-top:12px;font-family:'JetBrains Mono',monospace">Best used outdoors on mobile devices</p>
+    <div class="outdoor-section">
+        <div class="section-label" style="margin-top:20px">🌍 OUTDOOR ACTIVITIES</div>
+        <div class="outdoor-grid" id="outdoorGrid"></div>
     </div>
-</section>
-
-<section class="screen" id="scrLocation" hidden>
-    <div class="loc-screen">
-        <div class="loc-top">
-            <div style="width:60px"></div>
-            <div class="loc-top-center">
-                <div class="loc-name" id="locName">RUNNING</div>
-                <div class="loc-sub" id="locSub">2.0 mile goal</div>
-            </div>
-            <span class="loc-verified-badge verified" id="locVerified">✓ VERIFIED</span>
-        </div>
-        <div class="loc-map-wrap">
-            <div class="loc-map" id="locMap"></div>
-            <div class="loc-accuracy-badge" id="locAccuracyBadge"><span class="loc-accuracy-dot" id="locAccuracyDot"></span><span id="locAccuracyText">GPS...</span></div>
-            <div class="loc-cheat-warning" id="locCheatWarning" hidden>⚠️ SUSPICIOUS SPEED</div>
-            <div class="loc-countdown" id="locCountdown" hidden>
-                <div class="loc-countdown-num" id="locCountdownNum">3</div>
-                <div class="loc-countdown-text">GET READY TO MOVE</div>
-            </div>
-        </div>
-        <div class="loc-stats-row">
-            <div class="loc-stat">
-                <div class="loc-stat-label">DISTANCE</div>
-                <div class="loc-stat-val" id="locDistance">0.00</div>
-                <div class="loc-stat-val sub">mi</div>
-            </div>
-            <div class="loc-stat">
-                <div class="loc-stat-label" id="locSpeedLabel">PACE</div>
-                <div class="loc-stat-val" id="locSpeed">--</div>
-                <div class="loc-stat-val sub" id="locSpeedUnit">min/mi</div>
-            </div>
-            <div class="loc-stat">
-                <div class="loc-stat-label">TIME</div>
-                <div class="loc-stat-val" id="locTime">0:00</div>
-                <div class="loc-stat-val sub" id="locTimeSub">elapsed</div>
-            </div>
-        </div>
-        <div class="loc-progress-wrap">
-            <div class="loc-progress-row">
-                <span class="loc-progress-text" id="locProgressText">0.00 / 2.00 mi</span>
-                <span class="loc-progress-pct" id="locProgressPct">0%</span>
-            </div>
-            <div class="loc-bar"><div class="loc-bar-fill" id="locBarFill" style="width:0%"></div></div>
-        </div>
-        <div class="loc-controls">
-            <button class="btn btn-secondary" id="locPauseBtn">
-                <svg class="icon" id="locPauseIco" viewBox="0 0 24 24" fill="currentColor" stroke="none"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>
-                <span id="locPauseTxt">Pause</span>
-            </button>
-            <button class="btn btn-danger-ghost" id="locStopBtn">
-                <svg class="icon" viewBox="0 0 24 24" fill="currentColor" stroke="none"><rect x="6" y="6" width="12" height="12" rx="2"/></svg>
-                End
-            </button>
+    <div class="goal-selector" id="goalSelector" hidden>
+        <div class="goal-title" id="goalTitle">Select Distance</div>
+        <div class="goal-sub" id="goalSub">Choose your distance goal</div>
+        <div class="goal-options" id="goalOptions"></div>
+        <div class="goal-start-row">
+            <button class="btn btn-secondary" id="goalCancel" style="flex:0 0 auto">Cancel</button>
+            <button class="btn btn-primary" id="goalStart" disabled>Start Activity</button>
         </div>
     </div>
 </section>
@@ -550,10 +473,71 @@ body.dark-mode .leaflet-tile-pane{filter:brightness(0.85) invert(1) contrast(0.8
 <div class="active-controls"><button class="btn btn-secondary btn-lg" id="pauseBtn"><svg class="icon" id="pauseIco" viewBox="0 0 24 24" fill="currentColor" stroke="none"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg><span id="pauseTxt">Pause</span></button><button class="btn btn-danger-ghost btn-lg" id="stopBtn"><svg class="icon" viewBox="0 0 24 24" fill="currentColor" stroke="none"><rect x="6" y="6" width="12" height="12" rx="2"/></svg><span id="stopTxt">End</span></button></div></div></div>
 </section>
 
-<section class="screen" id="scrComplete" hidden><div class="complete-center"><div class="complete-card"><div class="cc-label">SESSION COMPLETE</div><div class="cc-reps"><div class="cc-num" id="ccReps">0</div><div class="cc-unit" id="ccUnit">REPS</div></div><div class="cc-xp"><span id="ccXp">0</span> XP earned</div><div class="cc-rankup" id="ccRankup" hidden><div class="cc-rankup-label" id="ccRankupLabel">RANK UP</div><div class="cc-rankup-name" id="ccRankupName"></div></div><div id="ccVerification" style="margin-bottom:20px;display:none"><div class="loc-verified-badge verified" id="ccVerifiedBadge" style="padding:8px 14px;font-size:13px">✓ VERIFIED WORKOUT</div></div><div class="cc-actions"><button class="btn btn-primary btn-block" id="ccAgain"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg> Train again</button><button class="btn btn-secondary btn-block" id="ccBack"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg> Back to menu</button></div></div></div></section>
+<!-- OUTDOOR ACTIVITY SCREEN -->
+<section class="screen" id="scrOutdoor" hidden>
+<div class="active-top">
+    <div class="oa-gps-indicator" id="oaGpsIndicator"><span class="oa-gps-dot off" id="oaGpsDot"></span><span id="oaGpsLabel" style="color:var(--gray-400)">GPS OFF</span></div>
+    <div class="active-top-center"><div class="active-name" id="oaName">RUNNING</div><div class="active-tip" id="oaTip">1 mile goal</div></div>
+    <div style="width:60px"></div>
+</div>
+<div class="outdoor-active">
+    <div class="oa-map-wrap">
+        <canvas class="oa-map" id="oaMap"></canvas>
+        <div class="oa-map-overlay">
+            <div class="oa-map-badge" id="oaSpeedBadge">0.0 mph</div>
+            <div class="oa-map-badge gps-good" id="oaAccuracyBadge">±0m</div>
+        </div>
+    </div>
+    <div class="oa-stats-row">
+        <div class="oa-stat">
+            <div class="oa-stat-label">DISTANCE</div>
+            <div class="oa-stat-val" id="oaDistance">0.00</div>
+            <div class="oa-stat-unit">miles</div>
+        </div>
+        <div class="oa-stat">
+            <div class="oa-stat-label">PACE</div>
+            <div class="oa-stat-val" id="oaPace">--:--</div>
+            <div class="oa-stat-unit">min/mi</div>
+        </div>
+        <div class="oa-stat">
+            <div class="oa-stat-label">TIME</div>
+            <div class="oa-stat-val" id="oaTime">0:00</div>
+            <div class="oa-stat-unit">elapsed</div>
+        </div>
+        <div class="oa-stat">
+            <div class="oa-stat-label">XP</div>
+            <div class="oa-stat-val" id="oaXp" style="color:var(--green-600)">0</div>
+            <div class="oa-stat-unit">earned</div>
+        </div>
+    </div>
+    <div class="oa-progress-wrap">
+        <div class="oa-progress-header">
+            <span class="oa-progress-label" id="oaProgressLabel">GOAL: 1.0 MILE</span>
+            <span class="oa-progress-dist" id="oaProgressDist">0.00 / 1.00</span>
+        </div>
+        <div class="oa-progress-bar"><div class="oa-progress-fill" id="oaProgressFill" style="width:0%"></div></div>
+    </div>
+    <div class="oa-cheat-wrap">
+        <div class="oa-cheat-header">
+            <span class="oa-cheat-label">ACTIVITY VERIFICATION</span>
+            <span class="oa-cheat-status valid" id="oaCheatStatus">✓ VALID</span>
+        </div>
+        <div class="oa-cheat-bar"><div class="oa-cheat-fill valid" id="oaCheatFill" style="width:0%"></div></div>
+        <div class="oa-cheat-msg" id="oaCheatMsg">Speed within expected range for running.</div>
+    </div>
+    <div class="oa-controls">
+        <button class="btn btn-secondary btn-lg" id="oaPauseBtn"><svg class="icon" id="oaPauseIco" viewBox="0 0 24 24" fill="currentColor" stroke="none"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg><span id="oaPauseTxt">Pause</span></button>
+        <button class="btn btn-danger-ghost btn-lg" id="oaStopBtn"><svg class="icon" viewBox="0 0 24 24" fill="currentColor" stroke="none"><rect x="6" y="6" width="12" height="12" rx="2"/></svg><span>End</span></button>
+    </div>
+</div>
+</section>
+
+<section class="screen" id="scrComplete" hidden><div class="complete-center"><div class="complete-card"><div class="cc-label" id="ccLabel">SESSION COMPLETE</div><div class="cc-reps"><div class="cc-num" id="ccReps">0</div><div class="cc-unit" id="ccUnit">REPS</div></div><div class="cc-stats-row" id="ccStatsRow" hidden><div class="cc-stat"><div class="cc-stat-val" id="ccStat1Val">--</div><div class="cc-stat-label" id="ccStat1Label">--</div></div><div class="cc-stat"><div class="cc-stat-val" id="ccStat2Val">--</div><div class="cc-stat-label" id="ccStat2Label">--</div></div><div class="cc-stat"><div class="cc-stat-val" id="ccStat3Val">--</div><div class="cc-stat-label" id="ccStat3Label">--</div></div></div><div class="cc-xp"><span id="ccXp">0</span> XP earned</div><div class="cc-rankup" id="ccRankup" hidden><div class="cc-rankup-label" id="ccRankupLabel">RANK UP</div><div class="cc-rankup-name" id="ccRankupName"></div></div><div class="cc-actions"><button class="btn btn-primary btn-block" id="ccAgain"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg> Train again</button><button class="btn btn-secondary btn-block" id="ccBack"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg> Back to menu</button></div></div></div></section>
 </main>
 
 <div class="modal" id="privModal" hidden><div class="modal-box"><div class="modal-handle" style="width:36px;height:4px;background:var(--gray-300);border-radius:2px;margin:0 auto 14px;display:none"></div><div class="modal-logo"><img src="transparentlogo.svg" alt="RepQuest Logo"></div><div class="modal-title" id="privTitle">Camera & Privacy</div><div class="modal-body"><p>RepQuest needs camera access to count your reps.</p><ul class="plist"><li><strong>On-device only.</strong> Video processed by MediaPipe Pose in your browser.</li><li><strong>Nothing recorded.</strong> Frames analyzed in memory and discarded.</li><li><strong>Only numbers saved.</strong> Rep counts and XP in localStorage.</li><li><strong>Full control.</strong> Pause or stop anytime.</li></ul><p class="modal-foot">No backend. No telemetry.</p></div><div class="modal-actions"><button class="btn btn-secondary" id="privCancel">Cancel</button><button class="btn btn-primary" id="privAccept">Allow camera</button><button class="btn btn-primary" id="privClose" hidden>Got it</button></div></div></div>
+
+<div class="modal" id="gpsModal" hidden><div class="modal-box"><div class="modal-handle" style="width:36px;height:4px;background:var(--gray-300);border-radius:2px;margin:0 auto 14px;display:none"></div><div class="modal-logo"><img src="transparentlogo.svg" alt="RepQuest Logo"></div><div class="modal-title">GPS & Location</div><div class="modal-body"><p>RepQuest needs your location to track outdoor activities.</p><ul class="plist"><li><strong>GPS tracking only.</strong> Your location stays in your browser — never uploaded.</li><li><strong>Speed verification.</strong> We check that your speed matches the selected activity (walk/run/bike).</li><li><strong>No route saved.</strong> Only total distance is stored.</li><li><strong>Full control.</strong> Pause or stop anytime.</li></ul><p class="modal-foot">Location data processed locally. No backend. No telemetry.</p></div><div class="modal-actions"><button class="btn btn-secondary" id="gpsCancel">Cancel</button><button class="btn btn-primary" id="gpsAccept">Allow location</button><button class="btn btn-primary" id="gpsClose" hidden>Got it</button></div></div></div>
 
 <div class="modal" id="friendsModal" hidden>
     <div class="modal-box">
@@ -576,37 +560,30 @@ body.dark-mode .leaflet-tile-pane{filter:brightness(0.85) invert(1) contrast(0.8
 </div>
 <script>
 const S={currentUser:null,currentWorkout:null,reps:0,xp:0,cameraOn:false,paused:false,startXp:0,startRank:0,shownRank:0,lastFrame:0,fps:0,firstResult:true,mode:null,activeChallenge:null};
+// Outdoor state
+const O={active:null,goalMiles:0,xpPerMile:0,watchId:null,paused:false,startTime:0,elapsed:0,pauseStart:0,totalPaused:0,
+    positions:[],distMiles:0,xp:0,speedMph:0,smoothSpeed:0,cheatScore:0,lastCheatUpdate:0,
+    mapPoints:[],startLat:null,startLng:null};
+
 let pose=null,stream=null,raf=null,det=null,lastRep=0,audioCtx=null,pendingDel=null,delTimer=null;
 const AC={history:[],maxHist:15,yDirChangesL:0,yDirChangesR:0,prevDirL:0,prevDirR:0,prevLY:null,prevRY:null,smoothMovement:0};
 const WU={phases:[],idx:0,elapsed:0,lastTick:0,pausedByForm:false,noForm:0,goodForm:0,done:false,prevKneeY:{l:null,r:null},movement:0};
 
-/* ===== LOCATION WORKOUTS STATE ===== */
-const GPS = {
-    workout: null,
-    goalMiles: 0,
-    distanceMeters: 0,
-    distanceMiles: 0,
-    elapsed: 0,
-    started: false,
-    paused: false,
-    watchId: null,
-    wakeLock: null,
-    path: [],           // array of {lat, lng, t}
-    lastPoint: null,
-    speed: 0,           // m/s
-    suspicion: 0,       // cheat score
-    suspicionEvents: [],
-    map: null,
-    polyline: null,
-    marker: null,
-    startTime: 0,
-    pauseAccum: 0,      // accumulated paused time
-    pauseStart: 0,
-    verified: true,
-    earnedXp: 0,
-    intervalId: null,
-    accuracyHistory: []
+// Outdoor activity speed ranges (mph) for cheat detection
+const OUTDOOR_TYPES={
+    walk:{name:'Walk',emoji:'🚶',xpPerMile:15,minSpeed:1.5,maxSpeed:4.5,icon:`<svg viewBox="0 0 24 24"><circle cx="12" cy="4" r="2"/><path d="M14 8l-2 4-2-4"/><path d="M8 20l2-8"/><path d="M16 20l-2-8"/></svg>`},
+    run:{name:'Run',emoji:'🏃',xpPerMile:25,minSpeed:4.5,maxSpeed:13,icon:`<svg viewBox="0 0 24 24"><circle cx="12" cy="4" r="2"/><path d="M10 8l4 4-4 4"/><path d="M7 20l3-8"/><path d="M17 20l-3-8"/></svg>`},
+    bike:{name:'Bike',emoji:'🚴',xpPerMile:10,minSpeed:8,maxSpeed:28,icon:`<svg viewBox="0 0 24 24"><circle cx="6" cy="17" r="3"/><circle cx="18" cy="17" r="3"/><path d="M6 17l4-8h4l4 8"/><circle cx="12" cy="7" r="2"/></svg>`}
 };
+
+const GOAL_OPTIONS=[
+    {miles:0.25,multi:0.5,label:'¼ mi'},
+    {miles:0.5,multi:1,label:'½ mi'},
+    {miles:1,multi:2,label:'1 mi'},
+    {miles:2,multi:3,label:'2 mi'},
+    {miles:3,multi:4.5,label:'3 mi'},
+    {miles:5,multi:7,label:'5 mi'}
+];
 
 const RANKS=[
     {name:'Rookie',min:0,color:'#6b7280',bg:'#f3f4f6'},
@@ -648,55 +625,6 @@ const WK=[
     {id:'legraises',name:'Side Leg Raises',desc:'Outer Thighs',xp:7,tip:'Stand side-on, lift leg out',icon:`<svg viewBox="0 0 24 24"><circle cx="12" cy="4" r="2"/><path d="M12 6v8"/><path d="M8 14h8"/><path d="M12 14l5 3"/></svg>`}
 ];
 
-/* ===== LOCATION WORKOUT DEFINITIONS ===== */
-const LOC_WORKOUTS = [
-    {
-        id: 'run',
-        name: 'Running',
-        desc: 'Outdoor distance run',
-        xpPerMile: 500,
-        maxSpeedMph: 15,       // above this = suspicious (likely biking/driving)
-        cheatSpeedMph: 20,     // extreme speeds
-        minSpeedMph: 3,        // below this = too slow for running (but allow)
-        speedLabel: 'PACE',
-        speedUnit: 'min/mi',
-        icon: `<svg viewBox="0 0 24 24"><circle cx="14" cy="4" r="2"/><path d="M18 22l-4-8-4 2-3-3"/><path d="M10 12l-2-2 3-4 4 2 3 3-2 5"/></svg>`,
-        color: '#ef4444'
-    },
-    {
-        id: 'walk',
-        name: 'Walking',
-        desc: 'Leisurely outdoor walk',
-        xpPerMile: 200,
-        maxSpeedMph: 6,        // above this = suspicious (likely running/driving)
-        cheatSpeedMph: 10,
-        minSpeedMph: 1,
-        speedLabel: 'PACE',
-        speedUnit: 'min/mi',
-        icon: `<svg viewBox="0 0 24 24"><circle cx="13" cy="4" r="2"/><path d="M11 22l-1-7-3-1 1-6 3-2 4 1 2 4-1 4-3 1"/></svg>`,
-        color: '#22c55e'
-    },
-    {
-        id: 'bike',
-        name: 'Biking',
-        desc: 'Cycling adventure',
-        xpPerMile: 300,
-        maxSpeedMph: 35,       // above this = suspicious (likely driving)
-        cheatSpeedMph: 50,
-        minSpeedMph: 5,
-        speedLabel: 'SPEED',
-        speedUnit: 'mph',
-        icon: `<svg viewBox="0 0 24 24"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" fill="currentColor"/><path d="M12 17.5V14l-3-3 4-3 2 3h2"/><path d="M5.5 17.5L9 9l3 5h6.5"/></svg>`,
-        color: '#3b82f6'
-    }
-];
-
-const DISTANCES = [
-    { label: '1 Mile', miles: 1, xpBonus: 1.0 },
-    { label: '2 Miles', miles: 2, xpBonus: 1.0 },
-    { label: '3 Miles', miles: 3, xpBonus: 1.15 }  // 15% bonus for longer distance
-];
-
 const CHALLENGES=[
     {day:0,name:'Sunday Sweat',desc:'Complete 100 reps total today',xp:1500,type:'totalReps',goal:100,launch:'jacks'},
     {day:1,name:'Monday Motivation',desc:'Do 100 squats today',xp:1500,type:'workoutReps',workout:'squats',goal:100,launch:'squats'},
@@ -709,25 +637,32 @@ const CHALLENGES=[
 
 const CLOUD_URL='https://my-python-worker.lyonmathprep.workers.dev/';
 
-function todayStr(){
-    const d=new Date();
-    return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+function todayStr(){const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
+function yesterdayStr(){const d=new Date();d.setDate(d.getDate()-1);return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
+
+// Haversine formula - distance between two GPS coordinates in miles
+function haversine(lat1,lng1,lat2,lng2){
+    const R=3958.8; // Earth radius in miles
+    const dLat=(lat2-lat1)*Math.PI/180;
+    const dLng=(lng2-lng1)*Math.PI/180;
+    const a=Math.sin(dLat/2)*Math.sin(dLat/2)+Math.cos(lat1*Math.PI/180)*Math.cos(lat2*Math.PI/180)*Math.sin(dLng/2)*Math.sin(dLng/2);
+    return R*2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a));
 }
 
-function yesterdayStr(){
-    const d=new Date();
-    d.setDate(d.getDate()-1);
-    return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+// Calculate speed between two GPS positions (mph)
+function calcSpeed(p1,p2){
+    const dist=haversine(p1.lat,p1.lng,p2.lat,p2.lng);
+    const timeHrs=(p2.time-p1.time)/3600000;
+    if(timeHrs<=0)return 0;
+    return dist/timeHrs;
 }
 
 function getDaily(user){
     const today=todayStr();
     if(!user.daily||user.daily.date!==today){
-        user.daily={date:today,repsByWorkout:{},totalReps:0,totalXp:0,workoutsCompleted:[],claimed:false,distanceMiles:0,locWorkoutsCompleted:[]};
+        user.daily={date:today,repsByWorkout:{},totalReps:0,totalXp:0,workoutsCompleted:[],outdoorMiles:0,claimed:false};
         if(!user.guest)DB.upd(user);
     }
-    if(!user.daily.distanceMiles) user.daily.distanceMiles = 0;
-    if(!user.daily.locWorkoutsCompleted) user.daily.locWorkoutsCompleted = [];
     return user.daily;
 }
 
@@ -747,71 +682,44 @@ function getChallengeProgress(user){
 }
 
 function claimDaily(){
-    const u=S.currentUser;
-    if(!u)return;
+    const u=S.currentUser;if(!u)return;
     if(u.guest){toast('Create an account to claim daily rewards!','error');return;}
     const info=getChallengeProgress(u);
     if(!info||!info.completed||info.claimed)return;
-    u.daily.claimed=true;
-    u.xp+=info.challenge.xp;
+    u.daily.claimed=true;u.xp+=info.challenge.xp;
     DB.upd(u);
     fetch(CLOUD_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({username:u.name,totalXP:u.xp})}).catch(()=>{});
-    rTopRank(u.xp);
-    rSelect();
-    toast('Daily challenge complete! +'+info.challenge.xp+' XP!','success');
+    rTopRank(u.xp);rSelect();toast('Daily challenge complete! +'+info.challenge.xp+' XP!','success');
 }
 
 function startDailyChallenge(){
     const info=getChallengeProgress(S.currentUser);
     if(!info||info.completed)return;
-    const ch=info.challenge;
-    if(!ch.launch)return;
+    const ch=info.challenge;if(!ch.launch)return;
     const w=WK.find(x=>x.id===ch.launch);
     if(w){S.currentWorkout=w;S.activeChallenge=ch;showP('ask');}
 }
 
 function rDaily(){
-    const u=S.currentUser;
-    if(!u){$('dailyChallengeCard').hidden=true;return;}
+    const u=S.currentUser;if(!u){$('dailyChallengeCard').hidden=true;return;}
     if(u.guest){
-        $('dailyChallengeCard').hidden=false;
-        $('dcName').textContent='Daily Challenge';
+        $('dailyChallengeCard').hidden=false;$('dcName').textContent='Daily Challenge';
         $('dcDesc').textContent='Create an account to access daily challenges and earn bonus XP!';
-        $('dcXpBadge').textContent='+XP';
-        $('dcBarFill').style.width='0%';
-        $('dcBarFill').classList.remove('complete');
-        $('dcProgressText').textContent='0 / ?';
-        $('dcStartBtn').hidden=true;
-        const btn=$('dcClaimBtn');
-        btn.disabled=true;btn.classList.remove('claimed');
-        $('dcClaimTxt').textContent='Sign in to earn daily rewards';
-        return;
+        $('dcXpBadge').textContent='+XP';$('dcBarFill').style.width='0%';$('dcBarFill').classList.remove('complete');
+        $('dcProgressText').textContent='0 / ?';$('dcStartBtn').hidden=true;
+        const btn=$('dcClaimBtn');btn.disabled=true;btn.classList.remove('claimed');
+        $('dcClaimTxt').textContent='Sign in to earn daily rewards';return;
     }
-    const info=getChallengeProgress(u);
-    if(!info){$('dailyChallengeCard').hidden=true;return;}
-    $('dailyChallengeCard').hidden=false;
-    const ch=info.challenge;
-    $('dcName').textContent=ch.name;
-    $('dcDesc').textContent=ch.desc;
-    $('dcXpBadge').textContent='+'+ch.xp+' XP';
+    const info=getChallengeProgress(u);if(!info){$('dailyChallengeCard').hidden=true;return;}
+    $('dailyChallengeCard').hidden=false;const ch=info.challenge;
+    $('dcName').textContent=ch.name;$('dcDesc').textContent=ch.desc;$('dcXpBadge').textContent='+'+ch.xp+' XP';
     $('dcProgressText').textContent=Math.min(info.progress,ch.goal)+' / '+ch.goal;
     const pct=Math.min(100,(info.progress/ch.goal)*100);
-    const fill=$('dcBarFill');
-    fill.style.width=pct+'%';
-    fill.classList.toggle('complete',info.completed);
+    const fill=$('dcBarFill');fill.style.width=pct+'%';fill.classList.toggle('complete',info.completed);
     const btn=$('dcClaimBtn'),txt=$('dcClaimTxt'),startBtn=$('dcStartBtn');
-    if(info.claimed){
-        startBtn.hidden=true;btn.disabled=true;btn.classList.add('claimed');
-        txt.textContent='✓ Claimed — Come back tomorrow!';
-    }else if(info.completed){
-        startBtn.hidden=true;btn.disabled=false;btn.classList.remove('claimed');
-        txt.textContent='Claim '+ch.xp+' XP Bonus!';
-    }else{
-        btn.disabled=true;btn.classList.remove('claimed');
-        txt.textContent='Complete challenge to claim';
-        if(ch.launch){startBtn.hidden=false;startBtn.textContent='Start Challenge';}
-        else{startBtn.hidden=true;}
-    }
+    if(info.claimed){startBtn.hidden=true;btn.disabled=true;btn.classList.add('claimed');txt.textContent='✓ Claimed — Come back tomorrow!';}
+    else if(info.completed){startBtn.hidden=true;btn.disabled=false;btn.classList.remove('claimed');txt.textContent='Claim '+ch.xp+' XP Bonus!';}
+    else{btn.disabled=true;btn.classList.remove('claimed');txt.textContent='Complete challenge to claim';if(ch.launch){startBtn.hidden=false;startBtn.textContent='Start Challenge';}else{startBtn.hidden=true;}}
 }
 
 const WARMUP_PLANS={
@@ -837,11 +745,12 @@ function mb(){return window.innerWidth<=600}
 function ri(x){let i=0;RANKS.forEach((r,j)=>{if(x>=r.min)i=j});return i}
 function rp(x){const i=ri(x),c=RANKS[i],n=RANKS[i+1];if(!n)return{i,name:c.name,color:c.color,bg:c.bg,xp:x,min:c.min,max:c.min,pct:1,next:null};const range=n.min-c.min,into=x-c.min;return{i,name:c.name,color:c.color,bg:c.bg,xp:x,min:c.min,max:n.min,pct:Math.max(0,Math.min(1,into/range)),next:n.name}}
 const $=id=>document.getElementById(id);
-function show(n){['Account','Select','Warmup','Active','Complete','LocSelect','Location'].forEach(s=>{$('scr'+s).hidden=s.toLowerCase()!==n})}
+function show(n){['Account','Select','Warmup','Active','Outdoor','Complete'].forEach(s=>{$('scr'+s).hidden=s.toLowerCase()!==n})}
 function toast(msg,t='info'){const e=$('toast');e.textContent=msg;e.className='toast show'+(t==='error'?' error':t==='success'?' success':'');e.hidden=false;clearTimeout(e._t);e._t=setTimeout(()=>{e.classList.remove('show');setTimeout(()=>{e.hidden=true},300)},2800)}
 function esc(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function ang(a,b,c){const r=Math.atan2(c.y-b.y,c.x-b.x)-Math.atan2(a.y-b.y,a.x-b.x);let d=Math.abs(r*180/Math.PI);if(d>180)d=360-d;return d}
 function fmtTime(s){return Math.floor(s/60)+':'+(Math.floor(s%60)<10?'0':'')+Math.floor(s%60)}
+function fmtPace(mph){if(mph<=0)return'--:--';const minPerMi=60/mph;const m=Math.floor(minPerMi);const s=Math.round((minPerMi-m)*60);return m+':'+(s<10?'0':'')+s}
 function playTone(f){try{if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)();if(audioCtx.state==='suspended')audioCtx.resume();const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.frequency.value=f;o.type='sine';g.gain.setValueAtTime(0,audioCtx.currentTime);g.gain.linearRampToValueAtTime(.06,audioCtx.currentTime+.01);g.gain.exponentialRampToValueAtTime(.001,audioCtx.currentTime+.12);o.connect(g);g.connect(audioCtx.destination);o.start();o.stop(audioCtx.currentTime+.15)}catch(e){}}
 function resetAC(){AC.history=[];AC.yDirChangesL=0;AC.yDirChangesR=0;AC.prevDirL=0;AC.prevDirR=0;AC.prevLY=null;AC.prevRY=null;AC.smoothMovement=0}
 function detectArmCircles(lm){const lw=lm[15],rw=lm[16],ls=lm[11],rs=lm[12],le=lm[13],re=lm[14];const lV=(ls.visibility||0)>.5&&(lw.visibility||0)>.5&&(le.visibility||0)>.5;const rV=(rs.visibility||0)>.5&&(rw.visibility||0)>.5&&(re.visibility||0)>.5;if(!lV&&!rV)return{ok:false,msg:'STEP INTO FRAME'};let st=false;if(lV&&ang(ls,le,lw)>140)st=true;if(rV&&ang(rs,re,rw)>140)st=true;if(!st)return{ok:false,msg:'STRAIGHTEN ARMS'};let ext=false;if(lV&&Math.hypot(lw.x-ls.x,lw.y-ls.y)>.13)ext=true;if(rV&&Math.hypot(rw.x-rs.x,rw.y-rs.y)>.13)ext=true;if(!ext)return{ok:false,msg:'EXTEND ARMS OUT'};const ly=lV?lw.y:null,ry=rV?rw.y:null;if(ly!==null&&AC.prevLY!==null){const d=ly-AC.prevLY;if(Math.abs(d)>.003){const dir=d>0?1:-1;if(AC.prevDirL&&dir!==AC.prevDirL)AC.yDirChangesL++;AC.prevDirL=dir}}if(ry!==null&&AC.prevRY!==null){const d=ry-AC.prevRY;if(Math.abs(d)>.003){const dir=d>0?1:-1;if(AC.prevDirR&&dir!==AC.prevDirR)AC.yDirChangesR++;AC.prevDirR=dir}}AC.prevLY=ly;AC.prevRY=ry;AC.history.push({ly,ry});if(AC.history.length>AC.maxHist)AC.history.shift();if(AC.history.length>=AC.maxHist){let lY=[],rY=[];AC.history.forEach(h=>{if(h.ly!==null)lY.push(h.ly);if(h.ry!==null)rY.push(h.ry)});let lR=lY.length>3?Math.max(...lY)-Math.min(...lY):0,rR=rY.length>3?Math.max(...rY)-Math.min(...rY):0;AC.smoothMovement=AC.smoothMovement*.6+Math.max(lR,rR)*.4}const dc=Math.max(AC.yDirChangesL,AC.yDirChangesR),amp=AC.smoothMovement;if(dc<2)return{ok:false,msg:'START CIRCLING'};if(amp<.06)return{ok:false,msg:'BIGGER CIRCLES'};if(Math.random()<.03){if(AC.yDirChangesL>0)AC.yDirChangesL--;if(AC.yDirChangesR>0)AC.yDirChangesR--}if(amp<.10)return{ok:true,msg:'GOOD - BIGGER'};return{ok:true,msg:'GREAT - KEEP GOING'}}
@@ -868,22 +777,448 @@ async function camStart(){try{stream=await navigator.mediaDevices.getUserMedia({
 async function loop(){if(!S.cameraOn)return;const v=gV();if(!S.paused&&v.readyState>=2&&pose){try{await pose.send({image:v});const now=performance.now();if(S.lastFrame){const d=now-S.lastFrame;if(d>0){const f=1000/d;S.fps=S.fps>0?S.fps*.85+f*.15:f;if(S.mode==='active')$('vFps').textContent=Math.round(S.fps)}}S.lastFrame=now}catch(e){}}raf=requestAnimationFrame(loop)}
 function camStop(){S.cameraOn=false;S.paused=false;if(raf){cancelAnimationFrame(raf);raf=null}if(stream){stream.getTracks().forEach(t=>t.stop());stream=null}['video','wuVideo','wuVideoM'].forEach(id=>{const v=$(id);if(v)v.srcObject=null});['canvas','wuCanvas','wuCanvasM'].forEach(id=>{const c=$(id);if(c)c.getContext('2d').clearRect(0,0,c.width,c.height)})}
 
+// ===== OUTDOOR GPS FUNCTIONS =====
+
+let outdoorRAF=null;
+
+function resetOutdoor(){
+    O.positions=[];O.distMiles=0;O.xp=0;O.speedMph=0;O.smoothSpeed=0;O.cheatScore=0;O.lastCheatUpdate=0;
+    O.mapPoints=[];O.startLat=null;O.startLng=null;O.paused=false;O.elapsed=0;O.totalPaused=0;O.pauseStart=0;
+    O.startTime=0;O.active=null;O.goalMiles=0;O.xpPerMile=0;
+}
+
+function startOutdoorGPS(){
+    if(!navigator.geolocation){toast('GPS not supported on this device.','error');return;}
+    O.startTime=Date.now();O.elapsed=0;O.totalPaused=0;
+    $('oaGpsDot').className='oa-gps-dot warn';$('oaGpsLabel').textContent='ACQUIRING GPS...';$('oaGpsLabel').style.color='var(--orange-500)';
+    O.watchId=navigator.geolocation.watchPosition(gpsUpdate,gpsError,{enableHighAccuracy:true,maximumAge:2000,timeout:15000});
+    outdoorLoop();
+}
+
+function stopOutdoorGPS(){
+    if(O.watchId!==null){navigator.geolocation.clearWatch(O.watchId);O.watchId=null;}
+    if(outdoorRAF){cancelAnimationFrame(outdoorRAF);outdoorRAF=null;}
+    $('oaGpsDot').className='oa-gps-dot off';$('oaGpsLabel').textContent='GPS OFF';$('oaGpsLabel').style.color='var(--gray-400)';
+}
+
+function gpsUpdate(pos){
+    const lat=pos.coords.latitude,lng=pos.coords.longitude,acc=pos.coords.accuracy||999;
+    const speed=pos.coords.speed; // m/s from GPS (may be null)
+    const now=Date.now();
+    
+    // Show accuracy
+    $('oaAccuracyBadge').textContent='±'+Math.round(acc)+'m';
+    if(acc<30){$('oaAccuracyBadge').className='oa-map-badge gps-good';}
+    else if(acc<80){$('oaAccuracyBadge').className='oa-map-badge gps-warn';}
+    else{$('oaAccuracyBadge').className='oa-map-badge gps-bad';}
+    
+    // Update GPS status
+    if(O.positions.length===0){
+        $('oaGpsDot').className='oa-gps-dot good';$('oaGpsLabel').textContent='GPS LOCKED';$('oaGpsLabel').style.color='var(--green-600)';
+        O.startLat=lat;O.startLng=lng;
+    }
+    
+    const point={lat,lng,time:now,acc};
+    
+    // Calculate distance from last valid point
+    if(O.positions.length>0&&!O.paused){
+        const last=O.positions[O.positions.length-1];
+        const timeDiff=now-last.time;
+        
+        // Skip if too close in time (< 2 seconds) to reduce noise
+        if(timeDiff>2000){
+            const dist=haversine(last.lat,last.lng,lat,lng);
+            
+            // Filter out GPS jitter: if distance seems unrealistic for time elapsed, skip
+            const maxPossibleDist=(timeDiff/3600000)*50; // 50mph max
+            if(dist<maxPossibleDist&&dist>0.0005){ // min 2.6 feet to count
+                O.distMiles+=dist;
+                
+                // Add to map path
+                O.mapPoints.push({lat,lng});
+                
+                // Calculate speed
+                let calcSpeedMph=calcSpeed(last,point);
+                
+                // Use GPS-reported speed if available and reasonable
+                if(speed!==null&&speed>=0){
+                    const gpsSpeedMph=speed*2.23694; // m/s to mph
+                    calcSpeedMph=gpsSpeedMph;
+                }
+                
+                // Smooth speed (avoid sudden jumps)
+                O.speedMph=calcSpeedMph;
+                O.smoothSpeed=O.smoothSpeed*0.7+calcSpeedMph*0.3;
+                
+                // Award XP only for valid speed
+                checkCheatDetection(O.smoothSpeed,now);
+            }
+        }
+    }
+    
+    O.positions.push(point);
+    if(O.positions.length>500)O.positions.shift();
+    if(O.mapPoints.length>1000)O.mapPoints.shift();
+    
+    updateOutdoorUI();
+    drawMap();
+}
+
+function gpsError(err){
+    let msg='GPS error.';
+    if(err.code===1)msg='Location denied. Enable GPS in settings.';
+    else if(err.code===2)msg='GPS unavailable.';
+    else if(err.code===3)msg='GPS timeout. Move to open area.';
+    toast(msg,'error');
+    $('oaGpsDot').className='oa-gps-dot bad';$('oaGpsLabel').textContent='GPS ERROR';$('oaGpsLabel').style.color='var(--red-500)';
+}
+
+function checkCheatDetection(speedMph,now){
+    if(!O.active)return;
+    const type=OUTDOOR_TYPES[O.active];
+    const min=type.minSpeed,max=type.maxSpeed;
+    
+    // Calculate how far outside the expected range we are
+    let violation=0;
+    if(speedMph<min){
+        violation=Math.min(1,(min-speedMph)/(min*0.5+0.5)); // too slow
+    }else if(speedMph>max){
+        violation=Math.min(1,(speedMph-max)/(max*0.3+1)); // too fast
+    }
+    
+    // Update cheat score with decay
+    if(now-O.lastCheatUpdate>1000){
+        O.cheatScore=O.cheatScore*0.85+violation*0.15;
+        O.lastCheatUpdate=now;
+    }
+    
+    // Award XP only when speed is valid (cheat score < 0.4)
+    const isValid=O.cheatScore<0.4;
+    if(isValid&&speedMph>=min*0.5){ // at least somewhat moving
+        const milesSinceLastXp=0.01; // award every 0.01 miles
+        const xpPerPoint=O.xpPerMile*milesSinceLastXp;
+        // Check if we've moved enough since last XP
+        const totalXpShould=Math.floor(O.distMiles*O.xpPerMile);
+        if(totalXpShould>O.xp){
+            const gained=totalXpShould-O.xp;
+            O.xp=totalXpShould;
+            if(gained>0){playTone(660+Math.random()*200);}
+        }
+    }
+    
+    updateCheatUI();
+}
+
+function updateCheatUI(){
+    const score=O.cheatScore;
+    const statusEl=$('oaCheatStatus'),fillEl=$('oaCheatFill'),msgEl=$('oaCheatMsg');
+    const pct=Math.min(100,score*100*2); // 0.5 = 100% bar
+    fillEl.style.width=pct+'%';
+    
+    if(score<0.25){
+        statusEl.textContent='✓ VALID';statusEl.className='oa-cheat-status valid';
+        fillEl.className='oa-cheat-fill valid';
+        msgEl.textContent=`Speed within expected range for ${OUTDOOR_TYPES[O.active].name.toLowerCase()}.`;
+    }else if(score<0.5){
+        statusEl.textContent='⚠ SUSPECT';statusEl.className='oa-cheat-status suspect';
+        fillEl.className='oa-cheat-fill suspect';
+        const speed=O.smoothSpeed;
+        const type=OUTDOOR_TYPES[O.active];
+        if(speed<type.minSpeed)msgEl.textContent=`Moving slow (${speed.toFixed(1)} mph). Expected ${type.minSpeed}-${type.maxSpeed} mph for ${type.name.toLowerCase()}.`;
+        else msgEl.textContent=`Speed unusual (${speed.toFixed(1)} mph). Keep ${type.name.toLowerCase()} pace to earn XP.`;
+    }else{
+        statusEl.textContent='✗ CHEATING';statusEl.className='oa-cheat-status cheating';
+        fillEl.className='oa-cheat-fill cheating';
+        const speed=O.smoothSpeed;
+        const type=OUTDOOR_TYPES[O.active];
+        if(speed>type.maxSpeed)msgEl.textContent=`Too fast! Are you driving? (${speed.toFixed(1)} mph). Slow down to earn XP.`;
+        else msgEl.textContent=`Speed doesn't match ${type.name.toLowerCase()}. No XP awarded.`;
+    }
+}
+
+function outdoorLoop(){
+    if(!O.active)return;
+    if(!O.paused){
+        const now=Date.now();
+        O.elapsed=now-O.startTime-O.totalPaused;
+    }
+    updateOutdoorUI();
+    outdoorRAF=requestAnimationFrame(outdoorLoop);
+}
+
+function updateOutdoorUI(){
+    $('oaDistance').textContent=O.distMiles.toFixed(2);
+    $('oaSpeedBadge').textContent=O.smoothSpeed.toFixed(1)+' mph';
+    
+    const activeSeconds=O.elapsed/1000;
+    $('oaTime').textContent=fmtTime(activeSeconds);
+    $('oaPace').textContent=fmtPace(O.smoothSpeed);
+    $('oaXp').textContent=O.xp;
+    
+    // Progress bar
+    const pct=Math.min(100,(O.distMiles/O.goalMiles)*100);
+    $('oaProgressFill').style.width=pct+'%';
+    $('oaProgressDist').textContent=O.distMiles.toFixed(2)+' / '+O.goalMiles.toFixed(2);
+    
+    // Check if goal reached
+    if(O.distMiles>=O.goalMiles&&!O._goalReached){
+        O._goalReached=true;
+        toast('🎉 Distance goal reached! Keep going or end to collect XP.','success');
+        playTone(880);
+    }
+}
+
+function drawMap(){
+    const canvas=$('oaMap');if(!canvas)return;
+    const ctx=canvas.getContext('2d');
+    const w=canvas.width=canvas.offsetWidth*2;
+    const h=canvas.height=canvas.offsetHeight*2;
+    ctx.scale(2,2);
+    const dw=canvas.offsetWidth,dh=canvas.offsetHeight;
+    
+    const dk=document.body.classList.contains('dark-mode');
+    ctx.fillStyle=dk?'#0a0a0a':'#f0f4f0';
+    ctx.fillRect(0,0,dw,dh);
+    
+    // Draw grid
+    ctx.strokeStyle=dk?'#1a1a1a':'#e0e8e0';
+    ctx.lineWidth=0.5;
+    for(let x=0;x<dw;x+=30){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,dh);ctx.stroke();}
+    for(let y=0;y<dh;y+=30){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(dw,y);ctx.stroke();}
+    
+    if(O.mapPoints.length<2){
+        ctx.fillStyle=dk?'#666':'#999';
+        ctx.font='12px "JetBrains Mono"';
+        ctx.textAlign='center';
+        ctx.fillText('Waiting for GPS data...',dw/2,dh/2);
+        return;
+    }
+    
+    // Find bounds
+    let minLat=Infinity,maxLat=-Infinity,minLng=Infinity,maxLng=-Infinity;
+    O.mapPoints.forEach(p=>{
+        if(p.lat<minLat)minLat=p.lat;if(p.lat>maxLat)maxLat=p.lat;
+        if(p.lng<minLng)minLng=p.lng;if(p.lng>maxLng)maxLng=p.lng;
+    });
+    
+    // Add padding
+    const latPad=(maxLat-minLat)*0.2+0.0001;
+    const lngPad=(maxLng-minLng)*0.2+0.0001;
+    minLat-=latPad;maxLat+=latPad;minLng-=lngPad;maxLng+=lngPad;
+    
+    const latRange=maxLat-minLat||0.001;
+    const lngRange=maxLng-minLng||0.001;
+    
+    const pad=20;
+    const mapW=dw-pad*2,mapH=dh-pad*2;
+    
+    function toXY(lat,lng){
+        const x=pad+((lng-minLng)/lngRange)*mapW;
+        const y=pad+((maxLat-lat)/latRange)*mapH; // flip Y
+        return{x,y};
+    }
+    
+    // Draw path
+    ctx.beginPath();
+    ctx.strokeStyle=dk?'#4ade80':'#22c55e';
+    ctx.lineWidth=3;ctx.lineCap='round';ctx.lineJoin='round';
+    ctx.shadowColor=dk?'rgba(74,222,128,0.4)':'rgba(34,197,94,0.3)';
+    ctx.shadowBlur=8;
+    
+    O.mapPoints.forEach((p,i)=>{
+        const{x,y}=toXY(p.lat,p.lng);
+        if(i===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);
+    });
+    ctx.stroke();
+    ctx.shadowBlur=0;
+    
+    // Draw start point
+    const start=toXY(O.mapPoints[0].lat,O.mapPoints[0].lng);
+    ctx.beginPath();ctx.fillStyle='#3b82f6';ctx.arc(start.x,start.y,5,0,Math.PI*2);ctx.fill();
+    ctx.strokeStyle='#fff';ctx.lineWidth=2;ctx.stroke();
+    
+    // Draw current position
+    const last=toXY(O.mapPoints[O.mapPoints.length-1].lat,O.mapPoints[O.mapPoints.length-1].lng);
+    ctx.beginPath();ctx.fillStyle=dk?'#4ade80':'#22c55e';ctx.arc(last.x,last.y,6,0,Math.PI*2);ctx.fill();
+    ctx.strokeStyle='#fff';ctx.lineWidth=2;ctx.stroke();
+    
+    // Pulse effect on current position
+    const pulse=Math.sin(Date.now()/400)*0.5+0.5;
+    ctx.beginPath();ctx.strokeStyle=`rgba(34,197,94,${0.3+pulse*0.4})`;ctx.lineWidth=2;
+    ctx.arc(last.x,last.y,6+pulse*8,0,Math.PI*2);ctx.stroke();
+    
+    // Distance label
+    ctx.fillStyle=dk?'#fff':'#111';
+    ctx.font='bold 10px "JetBrains Mono"';ctx.textAlign='right';
+    ctx.fillText(O.distMiles.toFixed(2)+' mi',dw-10,dh-10);
+}
+
+function toggleOutdoorPause(){
+    O.paused=!O.paused;
+    if(O.paused){
+        O.pauseStart=Date.now();
+        $('oaPauseIco').innerHTML='<polygon points="5 3 19 12 5 21 5 3"/>';
+        $('oaPauseTxt').textContent='Resume';
+        $('oaGpsLabel').textContent='PAUSED';$('oaGpsLabel').style.color='var(--orange-500)';
+        $('oaGpsDot').className='oa-gps-dot warn';
+    }else{
+        O.totalPaused+=Date.now()-O.pauseStart;
+        $('oaPauseIco').innerHTML='<rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/>';
+        $('oaPauseTxt').textContent='Pause';
+        $('oaGpsLabel').textContent='GPS LOCKED';$('oaGpsLabel').style.color='var(--green-600)';
+        $('oaGpsDot').className='oa-gps-dot good';
+    }
+}
+
+function endOutdoor(){
+    stopOutdoorGPS();
+    const u=S.currentUser;
+    const type=OUTDOOR_TYPES[O.active];
+    
+    // Final XP with cheat penalty
+    const cheatPenalty=Math.min(1,O.cheatScore*2); // up to 100% penalty
+    const finalXp=Math.floor(O.xp*(1-cheatPenalty));
+    
+    // Bonus for reaching goal
+    let goalBonus=0;
+    if(O.distMiles>=O.goalMiles){
+        goalBonus=Math.floor(O.xpPerMile*O.goalMiles*0.5); // 50% bonus
+    }
+    
+    const totalXp=finalXp+goalBonus;
+    
+    if(u&&totalXp>0){
+        u.xp+=totalXp;
+        if(!u.stats)u.stats={};
+        const stKey='outdoor_'+O.active;
+        const st=u.stats[stKey]||{miles:0,sessions:0};
+        st.miles+=O.distMiles;st.sessions++;
+        u.stats[stKey]=st;
+        
+        const daily=getDaily(u);
+        daily.outdoorMiles=(daily.outdoorMiles||0)+O.distMiles;
+        daily.totalXp+=totalXp;
+        
+        DB.upd(u);
+        if(!u.guest){
+            fetch(CLOUD_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({username:u.name,totalXP:u.xp})}).catch(()=>{});
+        }
+        rTopRank(u.xp);
+    }
+    
+    // Show complete screen with outdoor stats
+    const ei=u?ri(u.xp):0,er=RANKS[ei];
+    $('ccLabel').textContent=type.name.toUpperCase()+' COMPLETE';
+    $('ccReps').textContent=O.distMiles.toFixed(2);
+    $('ccUnit').textContent='MILES';
+    $('ccXp').textContent=totalXp;$('ccXp').style.color=er.color;
+    
+    // Show outdoor stats
+    $('ccStatsRow').hidden=false;
+    $('ccStat1Val').textContent=fmtTime(O.elapsed/1000);$('ccStat1Label').textContent='TIME';
+    $('ccStat2Val').textContent=fmtPace(O.distMiles>0?O.distMiles/(O.elapsed/3600000):0);$('ccStat2Label').textContent='AVG PACE';
+    $('ccStat3Val').textContent=goalBonus>0?'+'+goalBonus:'—';$('ccStat3Label').textContent='GOAL BONUS';
+    
+    if(u&&ei>S.startRank){
+        $('ccRankup').hidden=false;$('ccRankup').style.cssText=`background:${er.bg};border:1px solid ${er.bg}`;
+        $('ccRankupLabel').style.color=er.color;$('ccRankupName').textContent=er.name.toUpperCase();$('ccRankupName').style.color=er.color;
+    }else{$('ccRankup').hidden=true}
+    
+    resetOutdoor();
+    show('complete');
+}
+
+function openOutdoorGoal(typeId){
+    const type=OUTDOOR_TYPES[typeId];
+    if(!type)return;
+    O.active=typeId;O.xpPerMile=type.xpPerMile;O.goalMiles=0;
+    $('goalTitle').textContent=type.emoji+' '+type.name+' Distance';
+    $('goalSub').textContent=`Earn ${type.xpPerMile} XP per mile. Choose your goal:`;
+    
+    const optionsEl=$('goalOptions');optionsEl.innerHTML='';
+    GOAL_OPTIONS.forEach(g=>{
+        const xp=Math.floor(type.xpPerMile*g.miles*g.multi);
+        const el=document.createElement('div');el.className='goal-option';
+        el.innerHTML=`<div class="goal-dist">${g.label}</div><div class="goal-xp">+${xp} XP</div><div class="goal-multi">${g.multi}x bonus</div>`;
+        el.addEventListener('click',()=>{
+            optionsEl.querySelectorAll('.goal-option').forEach(o=>o.classList.remove('selected'));
+            el.classList.add('selected');
+            O.goalMiles=g.miles;
+            $('goalStart').disabled=false;
+        });
+        optionsEl.appendChild(el);
+    });
+    
+    $('goalSelector').hidden=false;
+    $('goalStart').disabled=true;
+    $('outdoorGrid').style.opacity='0.5';
+}
+
+function cancelOutdoorGoal(){
+    $('goalSelector').hidden=true;O.active=null;O.goalMiles=0;
+    $('outdoorGrid').style.opacity='1';
+}
+
+async function startOutdoorActivity(){
+    if(!O.active||O.goalMiles<=0)return;
+    const type=OUTDOOR_TYPES[O.active];
+    
+    $('goalSelector').hidden=true;
+    $('outdoorGrid').style.opacity='1';
+    
+    // Set up outdoor screen
+    $('oaName').textContent=type.emoji+' '+type.name.toUpperCase();
+    $('oaTip').textContent=O.goalMiles+' mile goal · '+type.xpPerMile+' XP/mi';
+    $('oaProgressLabel').textContent='GOAL: '+O.goalMiles+' MILE'+(O.goalMiles!==1?'S':'');
+    O._goalReached=false;
+    
+    S.startXp=S.currentUser.xp;S.startRank=ri(S.currentUser.xp);S.shownRank=S.startRank;
+    
+    show('outdoor');
+    setCtx({name:type.name,sub:O.goalMiles+' mile goal'});
+    
+    // Request GPS
+    try{
+        await requestGPSPermission();
+        startOutdoorGPS();
+    }catch(e){
+        show('select');setCtx(null);
+    }
+}
+
+let gpsPermissionGranted=false;
+function requestGPSPermission(){
+    return new Promise((resolve,reject)=>{
+        if(gpsPermissionGranted||localStorage.getItem('repquest_gps')==='granted'){
+            gpsPermissionGranted=true;resolve();return;
+        }
+        $('gpsModal').hidden=false;
+        const acceptHandler=()=>{$('gpsModal').hidden=true;gpsPermissionGranted=true;localStorage.setItem('repquest_gps','granted');$('gpsAcceptBtn').removeEventListener('click',acceptHandler);resolve();};
+        const cancelHandler=()=>{$('gpsModal').hidden=true;$('gpsCancelBtn').removeEventListener('click',cancelHandler);reject(new Error('denied'));};
+        $('gpsAccept').addEventListener('click',acceptHandler);
+        $('gpsCancel').addEventListener('click',cancelHandler);
+        $('gpsClose').addEventListener('click',()=>{$('gpsModal').hidden=true;gpsPermissionGranted=true;localStorage.setItem('repquest_gps','granted');resolve();});
+    });
+}
+
+// ===== END OUTDOOR GPS FUNCTIONS =====
+
 function drawKnight(ctx,lm,w,h){
     if(!lm)return;
-    const dk = document.body.classList.contains('dark-mode');
-    const c1 = dk ? 'rgba(0,0,0,0.7)' : 'rgba(0,0,0,0.45)';
-    const c2 = dk ? 'rgba(71,85,105,0.85)' : 'rgba(40,40,50,0.85)';
-    const c3 = dk ? '#94a3b8' : '#374151';
-    const c4 = dk ? '#cbd5e1' : '#9ca3af';
-    const c5 = dk ? '#e2e8f0' : '#d1d5db';
-    const c6 = dk ? '#1e293b' : '#1f2937';
-    const c7 = dk ? '#f87171' : '#dc2626';
-    const c8 = dk ? '#475569' : '#4b5563';
+    const dk=document.body.classList.contains('dark-mode');
+    const c1=dk?'rgba(0,0,0,0.7)':'rgba(0,0,0,0.45)';
+    const c2=dk?'rgba(71,85,105,0.85)':'rgba(40,40,50,0.85)';
+    const c3=dk?'#94a3b8':'#374151';
+    const c4=dk?'#cbd5e1':'#9ca3af';
+    const c5=dk?'#e2e8f0':'#d1d5db';
+    const c6=dk?'#1e293b':'#1f2937';
+    const c7=dk?'#f87171':'#dc2626';
+    const c8=dk?'#475569':'#4b5563';
 
     const P=i=>lm[i]?{x:lm[i].x*w,y:lm[i].y*h,v:lm[i].visibility}:null;
     const n=P(0),l=P(7),h2=P(8),s=P(11),o=P(12),c=P(13),u=P(14),d=P(15),p=P(16),g=P(23),m=P(24),f=P(25),b=P(26),x2=P(27),y2=P(28);
     ctx.fillStyle=c1;ctx.fillRect(0,0,w,h);
-    if(s&&o&&g&&m&&s.v>.3&&o.v>.3&&g.v>.3&&m.v>.3){ctx.fillStyle=c2;ctx.beginPath();ctx.moveTo(s.x,s.y);for(let pt of [o,m,g])ctx.lineTo(pt.x,pt.y);ctx.closePath();ctx.fill()}
+    if(s&&o&&g&&m&&s.v>.3&&o.v>.3&&g.v>.3&&m.v>.3){ctx.fillStyle=c2;ctx.beginPath();ctx.moveTo(s.x,s.y);for(let pt of[o,m,g])ctx.lineTo(pt.x,pt.y);ctx.closePath();ctx.fill()}
     const drawSegment=(p1,p2,w1,w2)=>{if(!p1||!p2||p1.v<0.3||p2.v<0.3)return;const dx=p2.x-p1.x,dy=p2.y-p1.y,len=Math.max(1,Math.hypot(dx,dy)),nx=-dy/len,ny=dx/len;ctx.fillStyle=c3;ctx.strokeStyle=c4;ctx.lineWidth=2;ctx.lineJoin='round';ctx.beginPath();ctx.moveTo(p1.x+nx*w1,p1.y+ny*w1);ctx.lineTo(p2.x+nx*w2,p2.y+ny*w2);ctx.lineTo(p2.x-nx*w2,p2.y-ny*w2);ctx.lineTo(p1.x-nx*w1,p1.y-ny*w1);ctx.closePath();ctx.fill();ctx.stroke();ctx.strokeStyle=c5;ctx.lineWidth=Math.min(w1,w2)*0.4;ctx.beginPath();ctx.moveTo(p1.x+nx*w1*0.3,p1.y+ny*w1*0.3);ctx.lineTo(p2.x+nx*w2*0.3,p2.y+ny*w2*0.3);ctx.stroke()};
     const J=(t,r)=>{if(t&&t.v>.3){ctx.fillStyle=c6;ctx.strokeStyle=c4;ctx.lineWidth=3;ctx.beginPath();ctx.arc(t.x,t.y,r,0,Math.PI*2);ctx.fill();ctx.stroke();ctx.fillStyle=c5;ctx.beginPath();ctx.arc(t.x,t.y,r*0.4,0,Math.PI*2);ctx.fill()}};
     drawSegment(g,f,18,14);drawSegment(m,b,18,14);drawSegment(f,x2,14,10);drawSegment(b,y2,14,10);
@@ -951,10 +1286,10 @@ function rAccounts(){
     el.innerHTML='';
     if(!users.length){el.innerHTML='<div class="account-empty">No local accounts yet. Create one above!</div>';return}
     users.forEach(u=>{
-        const p=rp(u.xp),r=RANKS[p.i],tr=Object.values(u.stats||{}).reduce((s,v)=>s+(v.reps||0),0);
+        const p=rp(u.xp),r=RANKS[p.i],tr=Object.values(u.stats||{}).reduce((s,v)=>s+(v.reps||0)+(v.miles||0)*10,0);
         const d=document.createElement('div');
         d.className='account-card';d.setAttribute('role','button');d.tabIndex=0;
-        d.innerHTML=`<div class="account-avatar" style="background:${r.bg};color:${r.color}">${esc(u.name[0].toUpperCase())}</div><div class="account-info"><div class="account-name">${esc(u.name)}${u.guest?' <span style="color:var(--gray-400);font-size:11px;font-weight:500">(Guest)</span>':''}</div><div class="account-meta">${tr} reps · ${u.xp} XP · ${p.name} · 🔥 ${u.streak||0} day streak</div></div><div class="rank-pill" style="color:${r.color};background:${r.bg};font-size:10px;padding:3px 8px">${p.name.toUpperCase()}</div><button class="account-x" data-id="${u.id}"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg></button>`;
+        d.innerHTML=`<div class="account-avatar" style="background:${r.bg};color:${r.color}">${esc(u.name[0].toUpperCase())}</div><div class="account-info"><div class="account-name">${esc(u.name)}${u.guest?' <span style="color:var(--gray-400);font-size:11px;font-weight:500">(Guest)</span>':''}</div><div class="account-meta">${tr} total · ${u.xp} XP · ${p.name} · 🔥 ${u.streak||0} day streak</div></div><div class="rank-pill" style="color:${r.color};background:${r.bg};font-size:10px;padding:3px 8px">${p.name.toUpperCase()}</div><button class="account-x" data-id="${u.id}"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg></button>`;
         d.addEventListener('click',e=>{if(e.target.closest('.account-x')){e.stopPropagation();delU(u);return}pickU(u)});
         d.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();pickU(u)}});
         el.appendChild(d);
@@ -965,27 +1300,17 @@ function delU(u){if(pendingDel===u.id){DB.del(u.id);rAccounts();pendingDel=null;
 
 async function pickU(u){
     if(!u.friends)u.friends=[];
-    if(!u.streak) u.streak = 0;
-    if(u.lastWorkoutDate && u.lastWorkoutDate !== todayStr() && u.lastWorkoutDate !== yesterdayStr()){
-        u.streak = 0;
-        u.lastWorkoutDate = null;
-        DB.upd(u);
+    if(!u.streak)u.streak=0;
+    if(u.lastWorkoutDate&&u.lastWorkoutDate!==todayStr()&&u.lastWorkoutDate!==yesterdayStr()){
+        u.streak=0;u.lastWorkoutDate=null;DB.upd(u);
     }
-    S.currentUser=u;
-    rTopRank(u.xp);
-    rSelect();
-    show('select');
+    S.currentUser=u;rTopRank(u.xp);rSelect();show('select');
     if(u.guest)return;
     try{
         const res=await fetch(`${CLOUD_URL}?username=${encodeURIComponent(u.name)}`);
         const data=await res.json();
         if(data.found&&typeof data.xp==='number'&&data.xp>u.xp){
-            u.xp=data.xp;
-            DB.upd(u);
-            S.currentUser=u;
-            rTopRank(u.xp);
-            rSelect();
-            toast('XP synced from cloud!','success');
+            u.xp=data.xp;DB.upd(u);S.currentUser=u;rTopRank(u.xp);rSelect();toast('XP synced from cloud!','success');
         }
     }catch(e){}
 }
@@ -999,11 +1324,9 @@ function rSelect(){
     $('selectRankName').style.color=r.color;
     $('selectRankBarFill').style.cssText=`width:${p.pct*100}%;background:${r.color}`;
     $('selectRankXp').textContent=p.next?`${u.xp} / ${p.max} XP`:`${u.xp} XP · MAX`;
-
-    $('streakNum').textContent = u.streak || 0;
-    $('streakCard').hidden = false;
-
+    $('streakNum').textContent=u.streak||0;$('streakCard').hidden=false;
     setCtx(null);
+    
     const g=$('workoutGrid');g.innerHTML='';
     const isMb=mb();
     WK.forEach(w=>{
@@ -1014,27 +1337,17 @@ function rSelect(){
         c.addEventListener('click',()=>{S.currentWorkout=w;S.activeChallenge=null;showP('ask')});
         g.appendChild(c);
     });
-
-    // Render location workouts
-    const lg = $('locWorkoutGrid');
-    lg.innerHTML = '';
-    LOC_WORKOUTS.forEach(w => {
-        const st = (u.stats || {})[w.id] || {reps: 0, miles: 0};
-        const c = document.createElement('button');
-        c.className = 'workout-card';
-        const totalMi = (st.miles || 0).toFixed(1);
-        if(isMb){
-            c.innerHTML = `<div class="wc-top"><div class="wc-icon" style="background:${w.color}15;color:${w.color}">${w.icon}</div></div><div class="wc-body"><div class="wc-name">${w.name}</div><div class="wc-desc">${w.desc}</div><div class="wc-footer"><div class="wc-xp" style="color:${w.color}">+${w.xpPerMile} XP/mi</div><div class="wc-total">${totalMi} mi</div></div></div><div class="wc-chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg></div>`;
-        } else {
-            c.innerHTML = `<div class="wc-top"><div class="wc-icon" style="background:${w.color}15;color:${w.color}">${w.icon}</div><div><div class="wc-name">${w.name}</div><div class="wc-desc">${w.desc}</div></div></div><div class="wc-footer"><div class="wc-xp" style="color:${w.color}">+${w.xpPerMile} XP/mi</div><div class="wc-total">${totalMi} mi</div></div>`;
-        }
-        c.addEventListener('click', () => {
-            GPS.workout = w;
-            openLocSelect();
-        });
-        lg.appendChild(c);
+    
+    // Render outdoor activities
+    const og=$('outdoorGrid');og.innerHTML='';
+    Object.entries(OUTDOOR_TYPES).forEach(([id,type])=>{
+        const st=(u.stats||{})['outdoor_'+id]||{miles:0,sessions:0};
+        const c=document.createElement('button');c.className='outdoor-card';
+        c.innerHTML=`<div class="oc-top"><div class="oc-icon">${type.emoji}</div><div><div class="oc-name">${type.name}</div><div class="oc-desc">${st.miles.toFixed(1)} mi total · ${st.sessions} sessions</div></div></div><div class="oc-footer"><div class="oc-xp">${type.xpPerMile} XP/mi</div><div class="oc-badge">GPS</div></div>`;
+        c.addEventListener('click',()=>openOutdoorGoal(id));
+        og.appendChild(c);
     });
-
+    
     rDaily();
 }
 
@@ -1057,7 +1370,7 @@ async function startWU(w){
 }
 
 function rWuPh(){const p=WU.phases[WU.idx];const lbl=`PHASE ${WU.idx+1} OF ${WU.phases.length}`;const t=fmtTime(p.duration);$('wpLabel').textContent=lbl;$('wpName').textContent=p.name;$('wpDetail').textContent=p.detail;$('wpTimer').textContent=t;$('wpBar').style.width='0%';$('wpStatus').textContent='WAITING...';$('wpStatus').className='wp-status waiting';$('wmPhaseName').textContent=p.name;$('wmPhaseDetail').textContent=p.detail;$('wmtTime').textContent=t;updateTimerFill(0);$('wmtStatus').textContent='WAITING';$('wmtStatus').className='wmt-status waiting';rWuSt()}
-function rWuSt(){['wsList','wsListM'].forEach(listId=>{const list=$(listId);if(!list)return;list.innerHTML='';WU.phases.forEach((p,i)=>{const cls=i<WU.idx?'ws-item done':i===WU.idx?'ws-item current':'ws-item';const el=document.createElement('div');el.className=cls;el.innerHTML=`<div class="ws-check"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><div><div class="ws-name">${p.name}</div><div class="ws-dur">${p.duration}s</div></div>`;list.appendChild(el)})})}
+function rWuSt(){['wsList','wsListM'].forEach(listId=>{const list=$(listId);if(!list)return;list.innerHTML='';WU.phases.forEach((p,i)=>{const cls=i<WU.idx?'ws-item done':i===WU.idx?'ws-item current':'ws-item';const el=document.createElement('div');el.className=cls;el.innerHTML=`<div class="ws-check"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><div><div class="ws-name">${p.name}</div><div class="ws-dur">${p.duration}s</div></div></div>`;list.appendChild(el)})})}
 function wuDone(){camStop();toast('Warm-up done! Starting workout...','success');setTimeout(()=>startMain(S.currentWorkout),800)}
 
 async function startMain(w){
@@ -1098,37 +1411,33 @@ function uAct(){
 function endSession(){
     camStop();setCtx(null);S.mode=null;
     if(S.reps>0&&S.currentWorkout){
-        const u=S.currentUser;
-        u.xp+=S.xp;
+        const u=S.currentUser;u.xp+=S.xp;
         if(!u.stats)u.stats={};
         const st=u.stats[S.currentWorkout.id]||{reps:0,best:0};
         st.reps+=S.reps;if(S.reps>st.best)st.best=S.reps;
         u.stats[S.currentWorkout.id]=st;
-
-        const today = todayStr();
-        if(u.lastWorkoutDate !== today){
-            if(u.lastWorkoutDate === yesterdayStr()){
-                u.streak = (u.streak || 0) + 1;
-            } else {
-                u.streak = 1;
-            }
-            u.lastWorkoutDate = today;
+        
+        const today=todayStr();
+        if(u.lastWorkoutDate!==today){
+            if(u.lastWorkoutDate===yesterdayStr())u.streak=(u.streak||0)+1;
+            else u.streak=1;
+            u.lastWorkoutDate=today;
         }
-
+        
         const daily=getDaily(u);
         daily.repsByWorkout[S.currentWorkout.id]=(daily.repsByWorkout[S.currentWorkout.id]||0)+S.reps;
         daily.totalReps+=S.reps;daily.totalXp+=S.xp;
         if(S.reps>0&&!daily.workoutsCompleted.includes(S.currentWorkout.id))daily.workoutsCompleted.push(S.currentWorkout.id);
-
+        
         DB.upd(u);
-
-        if(!u.guest){
-            fetch(CLOUD_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({username:u.name,totalXP:u.xp})}).catch(()=>{});
-        }
+        if(!u.guest)fetch(CLOUD_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({username:u.name,totalXP:u.xp})}).catch(()=>{});
+        
         const ei=ri(u.xp),er=RANKS[ei];
-        $('ccReps').textContent=S.reps;$('ccXp').textContent=S.xp;$('ccXp').style.color=er.color;
-        $('ccUnit').textContent='REPS';
-        $('ccVerification').style.display='none';
+        $('ccLabel').textContent='SESSION COMPLETE';
+        $('ccReps').textContent=S.reps;$('ccUnit').textContent='REPS';
+        $('ccXp').textContent=S.xp;$('ccXp').style.color=er.color;
+        $('ccStatsRow').hidden=true;
+        
         if(ei>S.startRank){
             $('ccRankup').hidden=false;$('ccRankup').style.cssText=`background:${er.bg};border:1px solid ${er.bg}`;
             $('ccRankupLabel').style.color=er.color;$('ccRankupName').textContent=er.name.toUpperCase();$('ccRankupName').style.color=er.color;
@@ -1182,652 +1491,38 @@ async function fetchAllFriendStats(){
     });
 }
 
-function applyTheme(isDark) {
-    if (isDark) {
-        document.body.classList.add('dark-mode');
-        $('themeBtn').textContent = '☀️';
-    } else {
-        document.body.classList.remove('dark-mode');
-        $('themeBtn').textContent = '🌙';
-    }
-    // Refresh map tiles if map is active
-    if (GPS.map && GPS.map._loaded) {
-        updateMapTiles();
-    }
+function applyTheme(isDark){
+    if(isDark){document.body.classList.add('dark-mode');$('themeBtn').textContent='☀️'}
+    else{document.body.classList.remove('dark-mode');$('themeBtn').textContent='🌙'}
 }
 
-const savedTheme = localStorage.getItem('repquest_theme');
-if (savedTheme) {
-    applyTheme(savedTheme === 'dark');
-} else {
-    applyTheme(window.matchMedia('(prefers-color-scheme: dark)').matches);
-}
+const savedTheme=localStorage.getItem('repquest_theme');
+if(savedTheme)applyTheme(savedTheme==='dark');
+else applyTheme(window.matchMedia('(prefers-color-scheme: dark)').matches);
 
-window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-    if (!localStorage.getItem('repquest_theme')) {
-        applyTheme(e.matches);
-    }
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change',e=>{if(!localStorage.getItem('repquest_theme'))applyTheme(e.matches)});
+
+$('themeBtn').addEventListener('click',()=>{
+    const isDark=!document.body.classList.contains('dark-mode');
+    applyTheme(isDark);localStorage.setItem('repquest_theme',isDark?'dark':'light');
 });
 
- $('themeBtn').addEventListener('click', () => {
-    const isDark = !document.body.classList.contains('dark-mode');
-    applyTheme(isDark);
-    localStorage.setItem('repquest_theme', isDark ? 'dark' : 'light');
-});
-
-/* ===== LOCATION WORKOUT LOGIC ===== */
-
-// Haversine formula for distance between two GPS coordinates (meters)
-function haversine(lat1, lon1, lat2, lon2) {
-    const R = 6371000; // Earth radius in meters
-    const toRad = x => x * Math.PI / 180;
-    const dLat = toRad(lat2 - lat1);
-    const dLon = toRad(lon2 - lon1);
-    const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
-              Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) *
-              Math.sin(dLon/2) * Math.sin(dLon/2);
-    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-    return R * c;
-}
-
-function metersToMiles(m) { return m / 1609.34; }
-function metersPerSecToMph(mps) { return mps * 2.23694; }
-
-function openLocSelect() {
-    $('locSelectTitle').textContent = GPS.workout.name + ' Distance';
-    $('locSelectSub').textContent = `Earn ${GPS.workout.xpPerMile} XP per mile`;
-    const picker = $('distancePicker');
-    picker.innerHTML = '';
-    DISTANCES.forEach((d, i) => {
-        const card = document.createElement('div');
-        card.className = 'distance-card';
-        if (i === 0) card.classList.add('selected');
-        const xp = Math.round(GPS.workout.xpPerMile * d.miles * d.xpBonus);
-        card.innerHTML = `
-            <div class="dist-val">${d.miles}</div>
-            <div class="dist-unit">${d.miles === 1 ? 'mile' : 'miles'}</div>
-            <div class="dist-xp">+${xp} XP${d.xpBonus > 1 ? ' ⭐' : ''}</div>
-        `;
-        card.addEventListener('click', () => {
-            picker.querySelectorAll('.distance-card').forEach(c => c.classList.remove('selected'));
-            card.classList.add('selected');
-            GPS.goalMiles = d.miles;
-            GPS.xpBonus = d.xpBonus;
-            $('startLocWorkoutBtn').disabled = false;
-        });
-        picker.appendChild(card);
-    });
-    GPS.goalMiles = DISTANCES[0].miles;
-    GPS.xpBonus = DISTANCES[0].xpBonus;
-    $('startLocWorkoutBtn').disabled = false;
-    show('locselect');
-}
-
-async function requestWakeLock() {
-    try {
-        if ('wakeLock' in navigator) {
-            GPS.wakeLock = await navigator.wakeLock.request('screen');
-            GPS.wakeLock.addEventListener('release', () => {});
-        }
-    } catch (e) { /* ignore */ }
-}
-
-function releaseWakeLock() {
-    if (GPS.wakeLock) {
-        GPS.wakeLock.release().catch(() => {});
-        GPS.wakeLock = null;
-    }
-}
-
-function initLocMap() {
-    const mapEl = $('locMap');
-    // Destroy existing map
-    if (GPS.map) {
-        GPS.map.remove();
-        GPS.map = null;
-    }
-    GPS.map = L.map(mapEl, {
-        zoomControl: !mb(),
-        attributionControl: false
-    }).setView([37.7749, -122.4194], 15); // Default to SF, will update on first fix
-
-    updateMapTiles();
-
-    GPS.polyline = L.polyline([], {
-        color: GPS.workout ? GPS.workout.color : '#3b82f6',
-        weight: 5,
-        opacity: 0.8,
-        lineCap: 'round',
-        lineJoin: 'round'
-    }).addTo(GPS.map);
-
-    // User marker - custom pulsing dot
-    const icon = L.divIcon({
-        className: 'loc-user-marker',
-        html: `<div style="
-            width:18px;height:18px;border-radius:50%;
-            background:${GPS.workout ? GPS.workout.color : '#3b82f6'};
-            border:3px solid #fff;
-            box-shadow:0 0 0 3px ${GPS.workout ? GPS.workout.color : '#3b82f6'}33, 0 2px 8px rgba(0,0,0,0.3);
-            animation: locMarkerPulse 2s infinite;
-        "></div>
-        <style>
-        @keyframes locMarkerPulse {
-            0%, 100% { box-shadow: 0 0 0 3px ${GPS.workout ? GPS.workout.color : '#3b82f6'}33, 0 2px 8px rgba(0,0,0,0.3); }
-            50% { box-shadow: 0 0 0 8px ${GPS.workout ? GPS.workout.color : '#3b82f6'}22, 0 2px 8px rgba(0,0,0,0.3); }
-        }
-        </style>`,
-        iconSize: [18, 18],
-        iconAnchor: [9, 9]
-    });
-    GPS.marker = L.marker([0, 0], { icon }).addTo(GPS.map);
-}
-
-function updateMapTiles() {
-    if (!GPS.map) return;
-    const isDark = document.body.classList.contains('dark-mode');
-    const tileUrl = isDark
-        ? 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
-        : 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png';
-    // Remove existing tile layers
-    GPS.map.eachLayer(layer => {
-        if (layer._url) GPS.map.removeLayer(layer);
-    });
-    L.tileLayer(tileUrl, {
-        attribution: '© CartoDB © OpenStreetMap',
-        subdomains: 'abcd',
-        maxZoom: 19
-    }).addTo(GPS.map);
-}
-
-async function startLocationWorkout() {
-    if (!('geolocation' in navigator)) {
-        toast('Geolocation not supported in your browser.', 'error');
-        return;
-    }
-
-    S.mode = 'location';
-    S.startXp = S.currentUser.xp;
-    S.startRank = ri(S.currentUser.xp);
-    S.shownRank = S.startRank;
-
-    // Reset GPS state
-    GPS.distanceMeters = 0;
-    GPS.distanceMiles = 0;
-    GPS.elapsed = 0;
-    GPS.started = false;
-    GPS.paused = false;
-    GPS.path = [];
-    GPS.lastPoint = null;
-    GPS.speed = 0;
-    GPS.suspicion = 0;
-    GPS.suspicionEvents = [];
-    GPS.startTime = 0;
-    GPS.pauseAccum = 0;
-    GPS.pauseStart = 0;
-    GPS.verified = true;
-    GPS.earnedXp = 0;
-    GPS.accuracyHistory = [];
-
-    // Set UI
-    $('locName').textContent = GPS.workout.name.toUpperCase();
-    $('locSub').textContent = `${GPS.goalMiles.toFixed(1)} mile goal`;
-    $('locDistance').textContent = '0.00';
-    $('locSpeed').textContent = '--';
-    $('locSpeedLabel').textContent = GPS.workout.speedLabel;
-    $('locSpeedUnit').textContent = GPS.workout.speedUnit;
-    $('locTime').textContent = '0:00';
-    $('locProgressText').textContent = `0.00 / ${GPS.goalMiles.toFixed(2)} mi`;
-    $('locProgressPct').textContent = '0%';
-    $('locBarFill').style.width = '0%';
-    $('locBarFill').classList.remove('complete');
-    $('locPauseIco').innerHTML = '<rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/>';
-    $('locPauseTxt').textContent = 'Pause';
-    $('locVerified').textContent = '✓ VERIFIED';
-    $('locVerified').className = 'loc-verified-badge verified';
-    $('locCheatWarning').hidden = true;
-    $('locAccuracyText').textContent = 'GPS...';
-    $('locAccuracyDot').className = 'loc-accuracy-dot';
-
-    setCtx({ name: GPS.workout.name, sub: `${GPS.goalMiles.toFixed(1)} mile goal` });
-    show('location');
-
-    // Init map after DOM visible
-    setTimeout(() => {
-        initLocMap();
-        GPS.map.invalidateSize();
-    }, 50);
-
-    // Request wake lock to keep screen on
-    await requestWakeLock();
-
-    // Show countdown
-    await runLocCountdown();
-
-    // Start GPS tracking
-    startGpsWatch();
-}
-
-async function runLocCountdown() {
-    const cdEl = $('locCountdown');
-    const numEl = $('locCountdownNum');
-    cdEl.hidden = false;
-    for (let i = 3; i >= 1; i--) {
-        numEl.textContent = i;
-        numEl.style.animation = 'none';
-        void numEl.offsetWidth;
-        numEl.style.animation = 'countPulse 1s ease-out';
-        playTone(440 + (3 - i) * 220);
-        await new Promise(r => setTimeout(r, 1000));
-    }
-    numEl.textContent = 'GO!';
-    numEl.style.animation = 'none';
-    void numEl.offsetWidth;
-    numEl.style.animation = 'countPulse 1s ease-out';
-    playTone(880);
-    await new Promise(r => setTimeout(r, 600));
-    cdEl.hidden = true;
-    GPS.startTime = performance.now();
-}
-
-function startGpsWatch() {
-    if (GPS.watchId) {
-        navigator.geolocation.clearWatch(GPS.watchId);
-    }
-    GPS.watchId = navigator.geolocation.watchPosition(
-        onGpsUpdate,
-        onGpsError,
-        {
-            enableHighAccuracy: true,
-            maximumAge: 1000,
-            timeout: 15000
-        }
-    );
-
-    // Timer update interval (for elapsed time display)
-    GPS.intervalId = setInterval(updateLocTimer, 500);
-}
-
-function onGpsUpdate(pos) {
-    if (!GPS.started || GPS.paused) {
-        // Just update map to user's position even before start
-        if (GPS.map && pos.coords.latitude) {
-            GPS.marker.setLatLng([pos.coords.latitude, pos.coords.longitude]);
-            if (GPS.path.length === 0) {
-                GPS.map.setView([pos.coords.latitude, pos.coords.longitude], 16);
-            }
-        }
-        updateAccuracyBadge(pos.coords.accuracy);
-        return;
-    }
-
-    const { latitude: lat, longitude: lng, accuracy, speed } = pos.coords;
-    const t = performance.now();
-
-    // Filter out bad accuracy readings (poor GPS signal)
-    if (accuracy > 30) {
-        updateAccuracyBadge(accuracy);
-        return;
-    }
-
-    updateAccuracyBadge(accuracy);
-
-    const point = { lat, lng, t, accuracy };
-
-    if (GPS.lastPoint) {
-        // Calculate distance from last point
-        const distM = haversine(GPS.lastPoint.lat, GPS.lastPoint.lng, lat, lng);
-        const timeDelta = (t - GPS.lastPoint.t) / 1000; // seconds
-
-        // Reject GPS jumps (teleportation detection)
-        // If movement is > 3x accuracy, it's likely a GPS glitch
-        if (distM > Math.max(accuracy * 3, 20) && distM < 100 && timeDelta < 5) {
-            // Small suspicious jump - ignore it (likely GPS noise)
-            return;
-        }
-
-        // Extreme teleportation detection
-        if (distM > 200 && timeDelta < 10) {
-            GPS.suspicion += 2;
-            GPS.suspicionEvents.push({ type: 'jump', dist: distM, time: timeDelta });
-            return;
-        }
-
-        // Calculate speed
-        let currentSpeed = distM / timeDelta; // m/s
-        if (speed !== null && speed >= 0) {
-            // Use device-reported speed if available, weighted with calculated
-            currentSpeed = currentSpeed * 0.3 + speed * 0.7;
-        }
-
-        GPS.speed = GPS.speed * 0.6 + currentSpeed * 0.4; // smooth
-
-        const speedMph = metersPerSecToMph(GPS.speed);
-
-        // === CHEAT DETECTION ===
-        // Check if speed is unrealistic for the selected workout type
-        if (speedMph > GPS.workout.cheatSpeedMph) {
-            // Extreme speed - very likely driving
-            GPS.suspicion += 5;
-            GPS.suspicionEvents.push({ type: 'extreme_speed', mph: speedMph, time: timeDelta });
-        } else if (speedMph > GPS.workout.maxSpeedMph) {
-            // Suspicious but not extreme - accumulate suspicion
-            GPS.suspicion += 1;
-            if (GPS.suspicionEvents.length === 0 || GPS.suspicionEvents[GPS.suspicionEvents.length - 1].type !== 'speed') {
-                GPS.suspicionEvents.push({ type: 'speed', mph: speedMph, workout: GPS.workout.name, maxAllowed: GPS.workout.maxSpeedMph });
-            }
-        }
-
-        // If accuracy suddenly becomes poor while moving fast, that's suspicious
-        if (accuracy > 20 && speedMph > GPS.workout.maxSpeedMph * 0.5) {
-            GPS.suspicion += 0.5;
-        }
-
-        // Cap suspicion
-        GPS.suspicion = Math.min(GPS.suspicion, 100);
-
-        // Only add distance if we're actually moving (not GPS noise)
-        // Use a small threshold based on accuracy
-        if (distM > Math.max(accuracy * 0.3, 2)) {
-            GPS.distanceMeters += distM;
-            GPS.distanceMiles = metersToMiles(GPS.distanceMeters);
-        }
-
-        GPS.path.push(point);
-
-        // Update map path
-        GPS.polyline.addLatLng([lat, lng]);
-        GPS.marker.setLatLng([lat, lng]);
-
-        // Auto-fit map bounds
-        if (GPS.path.length >= 2) {
-            const bounds = L.latLngBounds(GPS.path.map(p => [p.lat, p.lng]));
-            GPS.map.fitBounds(bounds.pad(0.3));
-        }
-
-        // Check if goal reached
-        if (GPS.distanceMiles >= GPS.goalMiles && !GPS.goalReached) {
-            GPS.goalReached = true;
-            toast('🎉 Goal reached! End when ready.', 'success');
-            playTone(880);
-            setTimeout(() => playTone(1100), 150);
-        }
-
-        // Update verification badge
-        updateLocVerification();
-    } else {
-        // First point - just mark position
-        GPS.path.push(point);
-        GPS.marker.setLatLng([lat, lng]);
-        GPS.map.setView([lat, lng], 16);
-    }
-
-    GPS.lastPoint = point;
-    updateLocUI();
-}
-
-function onGpsError(err) {
-    const msgs = {
-        1: 'Location permission denied. Please allow location access.',
-        2: 'GPS unavailable. Check signal.',
-        3: 'GPS timeout. Trying again...'
-    };
-    if (err.code === 1) {
-        toast(msgs[1], 'error');
-        endLocWorkout(true);
-    } else {
-        toast(msgs[err.code] || 'GPS error', 'error');
-    }
-}
-
-function updateAccuracyBadge(acc) {
-    const dot = $('locAccuracyDot');
-    const txt = $('locAccuracyText');
-    if (acc <= 10) {
-        dot.className = 'loc-accuracy-dot';
-        txt.textContent = `GPS ±${Math.round(acc)}m`;
-    } else if (acc <= 25) {
-        dot.className = 'loc-accuracy-dot poor';
-        txt.textContent = `GPS ±${Math.round(acc)}m`;
-    } else {
-        dot.className = 'loc-accuracy-dot bad';
-        txt.textContent = `Weak ±${Math.round(acc)}m`;
-    }
-}
-
-function updateLocVerification() {
-    const badge = $('locVerified');
-    const warning = $('locCheatWarning');
-
-    if (GPS.suspicion > 15) {
-        // High suspicion
-        badge.textContent = '⚠ SUSPECT';
-        badge.className = 'loc-verified-badge suspect';
-        warning.hidden = false;
-        GPS.verified = false;
-    } else if (GPS.suspicion > 5) {
-        // Medium suspicion
-        badge.textContent = '⚠ CHECKING';
-        badge.className = 'loc-verified-badge suspect';
-        warning.hidden = true;
-    } else {
-        // Low suspicion - verified
-        badge.textContent = '✓ VERIFIED';
-        badge.className = 'loc-verified-badge verified';
-        warning.hidden = true;
-        GPS.verified = true;
-    }
-}
-
-function updateLocTimer() {
-    if (!GPS.started || GPS.paused) return;
-    const now = performance.now();
-    GPS.elapsed = (now - GPS.startTime - GPS.pauseAccum) / 1000;
-    updateLocUI();
-}
-
-function updateLocUI() {
-    $('locDistance').textContent = GPS.distanceMiles.toFixed(2);
-
-    const elapsedSec = GPS.elapsed;
-    $('locTime').textContent = fmtTime(elapsedSec);
-
-    // Speed/Pace display
-    const speedMph = metersPerSecToMph(GPS.speed);
-    if (GPS.workout.speedLabel === 'PACE' && speedMph > 1) {
-        // Show pace in min/mile
-        const pace = 60 / speedMph; // min per mile
-        const paceMin = Math.floor(pace);
-        const paceSec = Math.round((pace - paceMin) * 60);
-        $('locSpeed').textContent = `${paceMin}:${paceSec < 10 ? '0' : ''}${paceSec}`;
-    } else if (speedMph > 0.5) {
-        $('locSpeed').textContent = speedMph.toFixed(1);
-    } else {
-        $('locSpeed').textContent = '--';
-    }
-
-    // Progress bar
-    const pct = Math.min(100, (GPS.distanceMiles / GPS.goalMiles) * 100);
-    $('locBarFill').style.width = pct + '%';
-    $('locBarFill').classList.toggle('complete', GPS.distanceMiles >= GPS.goalMiles);
-    $('locProgressText').textContent = `${GPS.distanceMiles.toFixed(2)} / ${GPS.goalMiles.toFixed(2)} mi`;
-    $('locProgressPct').textContent = Math.round(pct) + '%';
-}
-
-function toggleLocPause() {
-    GPS.paused = !GPS.paused;
-    if (GPS.paused) {
-        GPS.pauseStart = performance.now();
-        $('locPauseIco').innerHTML = '<polygon points="5 3 19 12 5 21 5 3"/>';
-        $('locPauseTxt').textContent = 'Resume';
-    } else {
-        if (GPS.pauseStart) {
-            GPS.pauseAccum += performance.now() - GPS.pauseStart;
-            GPS.pauseStart = 0;
-        }
-        $('locPauseIco').innerHTML = '<rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/>';
-        $('locPauseTxt').textContent = 'Pause';
-    }
-}
-
-function endLocWorkout(forced = false) {
-    // Stop GPS
-    if (GPS.watchId) {
-        navigator.geolocation.clearWatch(GPS.watchId);
-        GPS.watchId = null;
-    }
-    if (GPS.intervalId) {
-        clearInterval(GPS.intervalId);
-        GPS.intervalId = null;
-    }
-
-    // Final elapsed time calc
-    if (GPS.started && !GPS.paused && GPS.startTime) {
-        GPS.elapsed = (performance.now() - GPS.startTime - GPS.pauseAccum) / 1000;
-    }
-
-    releaseWakeLock();
-    setCtx(null);
-    S.mode = null;
-
-    // Calculate XP
-    const earnedBase = Math.round(GPS.distanceMiles * GPS.workout.xpPerMile);
-    let earnedXp = earnedBase;
-
-    // Apply penalties/rewards based on verification
-    if (!GPS.verified || GPS.suspicion > 15) {
-        // Cheating detected - reduce XP by 50-80%
-        const penalty = Math.min(0.8, GPS.suspicion / 30);
-        earnedXp = Math.round(earnedBase * (1 - penalty));
-    }
-
-    // Distance bonus for 3+ mile workouts
-    if (GPS.xpBonus && GPS.xpBonus > 1) {
-        earnedXp = Math.round(earnedXp * GPS.xpBonus);
-    }
-
-    // Goal completion bonus
-    if (GPS.distanceMiles >= GPS.goalMiles) {
-        earnedXp += 100;
-    }
-
-    GPS.earnedXp = earnedXp;
-
-    if (GPS.distanceMiles > 0.05 && GPS.workout) { // Minimum 0.05 miles to count
-        const u = S.currentUser;
-        u.xp += earnedXp;
-        if (!u.stats) u.stats = {};
-        const st = u.stats[GPS.workout.id] || { reps: 0, best: 0, miles: 0 };
-        st.reps += 1; // count as one "session"
-        st.miles = (st.miles || 0) + GPS.distanceMiles;
-        if (GPS.distanceMiles > (st.best || 0)) st.best = GPS.distanceMiles;
-        u.stats[GPS.workout.id] = st;
-
-        // Streak
-        const today = todayStr();
-        if (u.lastWorkoutDate !== today) {
-            if (u.lastWorkoutDate === yesterdayStr()) {
-                u.streak = (u.streak || 0) + 1;
-            } else {
-                u.streak = 1;
-            }
-            u.lastWorkoutDate = today;
-        }
-
-        // Daily tracking
-        const daily = getDaily(u);
-        daily.distanceMiles += GPS.distanceMiles;
-        daily.totalXp += earnedXp;
-        if (!daily.locWorkoutsCompleted.includes(GPS.workout.id)) {
-            daily.locWorkoutsCompleted.push(GPS.workout.id);
-        }
-
-        DB.upd(u);
-
-        if (!u.guest) {
-            fetch(CLOUD_URL, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ username: u.name, totalXP: u.xp })
-            }).catch(() => {});
-        }
-
-        // Show completion screen
-        const ei = ri(u.xp), er = RANKS[ei];
-        $('ccReps').textContent = GPS.distanceMiles.toFixed(2);
-        $('ccUnit').textContent = 'MILES';
-        $('ccXp').textContent = earnedXp;
-        $('ccXp').style.color = er.color;
-
-        // Verification badge on complete screen
-        if (GPS.verified && earnedXp >= earnedBase) {
-            $('ccVerification').style.display = 'block';
-            $('ccVerifiedBadge').textContent = '✓ VERIFIED WORKOUT';
-            $('ccVerifiedBadge').className = 'loc-verified-badge verified';
-        } else if (GPS.suspicion > 15) {
-            $('ccVerification').style.display = 'block';
-            $('ccVerifiedBadge').textContent = `⚠ SUSPECT — XP reduced (${earnedBase} → ${earnedXp})`;
-            $('ccVerifiedBadge').className = 'loc-verified-badge suspect';
-        } else {
-            $('ccVerification').style.display = 'none';
-        }
-
-        if (ei > S.startRank) {
-            $('ccRankup').hidden = false;
-            $('ccRankup').style.cssText = `background:${er.bg};border:1px solid ${er.bg}`;
-            $('ccRankupLabel').style.color = er.color;
-            $('ccRankupName').textContent = er.name.toUpperCase();
-            $('ccRankupName').style.color = er.color;
-        } else {
-            $('ccRankup').hidden = true;
-        }
-
-        rTopRank(u.xp);
-        show('complete');
-    } else {
-        toast('Workout too short to count.', 'error');
-        rSelect();
-        show('select');
-    }
-}
-
-function locAgain() {
-    if (GPS.workout) {
-        openLocSelect();
-    } else {
-        rSelect();
-        show('select');
-    }
-}
-
- $('guestBtn').addEventListener('click',()=>{
-    const users = DB.get();
-    let u = users.find(x => x.guest);
-    if(!u){
-        u = {id:'guest_'+Date.now().toString(36), name:'Guest', xp:0, created:Date.now(), stats:{}, friends:[], guest:true, streak:0, lastWorkoutDate:null};
-        DB.save([...users, u]);
-    }
-    if(!u.friends) u.friends=[];
-    if(!u.streak) u.streak = 0;
-    if(u.lastWorkoutDate && u.lastWorkoutDate !== todayStr() && u.lastWorkoutDate !== yesterdayStr()){
-        u.streak = 0;
-        u.lastWorkoutDate = null;
-        DB.upd(u);
-    }
-    S.currentUser = u;
-    rTopRank(u.xp);
-    rSelect();
-    show('select');
+$('guestBtn').addEventListener('click',()=>{
+    const users=DB.get();let u=users.find(x=>x.guest);
+    if(!u){u={id:'guest_'+Date.now().toString(36),name:'Guest',xp:0,created:Date.now(),stats:{},friends:[],guest:true,streak:0,lastWorkoutDate:null};DB.save([...users,u])}
+    if(!u.friends)u.friends=[];if(!u.streak)u.streak=0;
+    if(u.lastWorkoutDate&&u.lastWorkoutDate!==todayStr()&&u.lastWorkoutDate!==yesterdayStr()){u.streak=0;u.lastWorkoutDate=null;DB.upd(u)}
+    S.currentUser=u;rTopRank(u.xp);rSelect();show('select');
     toast('Playing as Guest. Create an account to sync progress to the cloud!');
 });
 
- $('toggleFormBtn').addEventListener('click',()=>{
+$('toggleFormBtn').addEventListener('click',()=>{
     const wrapper=$('formWrapper'),chev=$('formChev'),txt=$('toggleFormTxt');
     if(wrapper.classList.contains('open')){wrapper.classList.remove('open');chev.classList.remove('open');txt.textContent='Create New Cloud Account'}
     else{wrapper.classList.add('open');chev.classList.add('open');txt.textContent='Hide Registration Form'}
 });
 
- $('createBtn').addEventListener('click',async()=>{
+$('createBtn').addEventListener('click',async()=>{
     const inp=$('newName'),n=inp.value.trim();
     if(!n){toast('Enter a name.','error');inp.focus();return}
     if(n.length>16){toast('Too long.','error');return}
@@ -1835,74 +1530,47 @@ function locAgain() {
     const btn=$('createBtn');btn.textContent='Checking Cloud...';btn.disabled=true;
     try{
         const res=await fetch(`${CLOUD_URL}?username=${encodeURIComponent(n)}`);
-        const data=await res.json();
-        const u=DB.add(n);
+        const data=await res.json();const u=DB.add(n);
         if(data.found){u.xp=data.xp||0;DB.upd(u);toast(`Welcome back, ${u.name}! Cloud sync complete.`,'success')}
         else{toast(`New user created! Make sure to fill out the form above.`,'success')}
         inp.value='';rAccounts();pickU(u);
-    }catch(err){
-        toast('Network error. Created locally.','error');
-        const u=DB.add(n);inp.value='';rAccounts();pickU(u);
-    }finally{btn.textContent='Sync';btn.disabled=false}
+    }catch(err){toast('Network error. Created locally.','error');const u=DB.add(n);inp.value='';rAccounts();pickU(u)}
+    finally{btn.textContent='Sync';btn.disabled=false}
 });
 
- $('newName').addEventListener('keydown',e=>{if(e.key==='Enter')$('createBtn').click()});
- $('switchUser').addEventListener('click',()=>{setCtx(null);show('account');rAccounts()});
- $('friendsBtn').addEventListener('click',openFriendsModal);
- $('closeFriendsBtn').addEventListener('click',closeFriendsModal);
- $('addFriendBtn').addEventListener('click',addFriend);
- $('friendNameInput').addEventListener('keydown',e=>{if(e.key==='Enter')addFriend()});
- $('friendsModal').addEventListener('click',e=>{if(e.target===$('friendsModal'))closeFriendsModal()});
- $('dcClaimBtn').addEventListener('click',claimDaily);
- $('dcStartBtn').addEventListener('click',startDailyChallenge);
- $('stopBtn').addEventListener('click',endSession);
- $('pauseBtn').addEventListener('click',togglePause);
- $('ccBack').addEventListener('click',()=>{rSelect();show('select')});
- $('ccAgain').addEventListener('click',async()=>{
-    // If last workout was location-based, open loc select; else warmup
-    if (GPS.workout) {
-        openLocSelect();
-    } else if(S.currentWorkout) {
-        await startWU(S.currentWorkout);
-    } else {
-        rSelect();show('select');
-    }
- });
- $('privAccept').addEventListener('click',async()=>{$('privModal').hidden=true;await startWU(S.currentWorkout)});
- $('privCancel').addEventListener('click',()=>{$('privModal').hidden=true;S.currentWorkout=null;S.activeChallenge=null});
- $('privClose').addEventListener('click',()=>{$('privModal').hidden=true});
- $('privacyBtn').addEventListener('click',()=>showP('info'));
- $('topbarRankArea').addEventListener('click',()=>showP('info'));
- $('privModal').addEventListener('click',e=>{if(e.target===$('privModal')){$('privModal').hidden=true;S.currentWorkout=null;S.activeChallenge=null}});
- $('cancelWarmup').addEventListener('click',cancelWU);$('skipWarmup').addEventListener('click',skipWU);
- $('cancelWarmupM').addEventListener('click',cancelWU);$('skipWarmupM').addEventListener('click',skipWU);
+$('newName').addEventListener('keydown',e=>{if(e.key==='Enter')$('createBtn').click()});
+$('switchUser').addEventListener('click',()=>{setCtx(null);show('account');rAccounts()});
+$('friendsBtn').addEventListener('click',openFriendsModal);
+$('closeFriendsBtn').addEventListener('click',closeFriendsModal);
+$('addFriendBtn').addEventListener('click',addFriend);
+$('friendNameInput').addEventListener('keydown',e=>{if(e.key==='Enter')addFriend()});
+$('friendsModal').addEventListener('click',e=>{if(e.target===$('friendsModal'))closeFriendsModal()});
+$('dcClaimBtn').addEventListener('click',claimDaily);
+$('dcStartBtn').addEventListener('click',startDailyChallenge);
+$('stopBtn').addEventListener('click',endSession);
+$('pauseBtn').addEventListener('click',togglePause);
+$('ccBack').addEventListener('click',()=>{rSelect();show('select')});
+$('ccAgain').addEventListener('click',async()=>{if(S.currentWorkout)await startWU(S.currentWorkout);else{rSelect();show('select')}});
+$('privAccept').addEventListener('click',async()=>{$('privModal').hidden=true;await startWU(S.currentWorkout)});
+$('privCancel').addEventListener('click',()=>{$('privModal').hidden=true;S.currentWorkout=null;S.activeChallenge=null});
+$('privClose').addEventListener('click',()=>{$('privModal').hidden=true});
+$('privacyBtn').addEventListener('click',()=>showP('info'));
+$('topbarRankArea').addEventListener('click',()=>showP('info'));
+$('privModal').addEventListener('click',e=>{if(e.target===$('privModal')){$('privModal').hidden=true;S.currentWorkout=null;S.activeChallenge=null}});
+$('cancelWarmup').addEventListener('click',cancelWU);$('skipWarmup').addEventListener('click',skipWU);
+$('cancelWarmupM').addEventListener('click',cancelWU);$('skipWarmupM').addEventListener('click',skipWU);
 
- /* ===== LOCATION WORKOUT EVENT LISTENERS ===== */
- $('locSelectBack').addEventListener('click', () => { rSelect(); show('select'); });
- $('startLocWorkoutBtn').addEventListener('click', () => startLocationWorkout());
- $('locPauseBtn').addEventListener('click', toggleLocPause);
- $('locStopBtn').addEventListener('click', () => endLocWorkout(false));
+// Outdoor event listeners
+$('goalStart').addEventListener('click',startOutdoorActivity);
+$('goalCancel').addEventListener('click',cancelOutdoorGoal);
+$('oaPauseBtn').addEventListener('click',toggleOutdoorPause);
+$('oaStopBtn').addEventListener('click',endOutdoor);
+$('gpsClose').addEventListener('click',()=>{$('gpsModal').hidden=true});
 
-document.addEventListener('keydown',e=>{
-    if(e.key==='Escape'){
-        if(!$('privModal').hidden){$('privModal').hidden=true;S.currentWorkout=null;S.activeChallenge=null}
-        else if(!$('scrActive').hidden&&!S.paused)togglePause();
-        else if(!$('scrLocation').hidden&&!GPS.paused)toggleLocPause();
-    }
-});
-document.addEventListener('visibilitychange',()=>{
-    if(document.hidden&&S.cameraOn){if(S.mode==='active'&&!S.paused)togglePause();if(S.mode==='warmup')sWuP(true)}
-    // Re-acquire wake lock when tab becomes visible again
-    if (!document.hidden && GPS.started && !GPS.paused) {
-        requestWakeLock();
-    }
-});
-window.addEventListener('beforeunload',() => {
-    camStop();
-    if (GPS.watchId) navigator.geolocation.clearWatch(GPS.watchId);
-    releaseWakeLock();
-});
-let rz;window.addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(()=>{if(!$('scrSelect').hidden&&S.currentUser)rSelect();if(!$('scrLocation').hidden&&GPS.map)GPS.map.invalidateSize()},250)});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){if(!$('privModal').hidden){$('privModal').hidden=true;S.currentWorkout=null;S.activeChallenge=null}else if(!$('scrActive').hidden&&!S.paused)togglePause()else if(!$('scrOutdoor').hidden&&!O.paused)toggleOutdoorPause()}});
+document.addEventListener('visibilitychange',()=>{if(document.hidden&&S.cameraOn){if(S.mode==='active'&&!S.paused)togglePause();if(S.mode==='warmup')sWuP(true)}if(document.hidden&&O.active&&!O.paused)toggleOutdoorPause()});
+window.addEventListener('beforeunload',()=>{camStop();stopOutdoorGPS()});
+let rz;window.addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(()=>{if(!$('scrSelect').hidden&&S.currentUser)rSelect();if(!$('scrOutdoor').hidden&&O.mapPoints.length>1)drawMap()},250)});
 rAccounts();
 </script>
 </body>
