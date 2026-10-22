@@ -198,8 +198,6 @@ header {
 .btn-secondary:hover { background: var(--gray-100); }
 
 /* ---- Dark mode buttons — high contrast ---- */
-/* Primary: true white pill with a soft halo so it reads as the
-   brightest element on the page. */
 body.dark-mode .btn-primary {
     background: #ffffff;
     color: #0a0a0a;
@@ -215,8 +213,6 @@ body.dark-mode .btn-primary:hover {
         0 12px 32px rgba(255, 255, 255, 0.22);
 }
 
-/* Secondary: glassy fill + visible border so it's clearly a button,
-   not a hole in the page. */
 body.dark-mode .btn-secondary {
     background: rgba(255, 255, 255, 0.06);
     color: #f0f0f0;
@@ -263,13 +259,11 @@ body.dark-mode .btn-secondary:hover {
     justify-content: center;
     align-items: center;
     min-height: 460px;
-    /* -1 … 1 pointer + idle offsets written by JS */
     --px: 0;
     --py: 0;
     --bob: 0px;
 }
 
-/* --- ambient light behind the phone (parallaxes opposite the tilt) --- */
 .hero-glow {
     position: absolute;
     top: 50%;
@@ -300,17 +294,14 @@ body.dark-mode .btn-secondary:hover {
     to   { opacity: 1;    transform: scale(1.14); }
 }
 
-/* --- the phone --- */
 .phone-stage {
     position: relative;
-    width: min(340px, 78vw, 34vh);   /* 34vh ≈ 65vh tall at 1040×2000 */
+    width: min(340px, 78vw, 34vh);
     z-index: 1;
     perspective: 1300px;
     perspective-origin: 50% 42%;
 }
 
-/* soft silhouette shadow that slides OPPOSITE the tilt,
-   like a light source fixed to one side of the scene */
 .phone-shadow {
     position: absolute;
     inset: 0;
@@ -327,8 +318,6 @@ body.dark-mode .btn-secondary:hover {
     will-change: transform;
 }
 
-/* contact shadow on the "floor" — stretches toward the side the
-   phone leans AWAY from, mirroring the light direction */
 .phone-ground {
     position: absolute;
     left: 50%;
@@ -348,8 +337,6 @@ body.dark-mode .btn-secondary:hover {
     pointer-events: none;
 }
 
-/* the element that actually rotates + floats
-   — translate3d carries the idle bob, then the rotations pivot toward cursor */
 .phone-tilt {
     position: relative;
     transform:
@@ -357,7 +344,6 @@ body.dark-mode .btn-secondary:hover {
         rotateX(calc(var(--py) * -10deg))
         rotateY(calc(var(--px) * 16deg));
     will-change: transform;
-    /* deliberately NO css transition — JS lerps the values, which feels far better */
 }
 
 .hero-phone-img {
@@ -369,8 +355,6 @@ body.dark-mode .btn-secondary:hover {
     filter: drop-shadow(0 26px 36px rgba(2, 6, 23, 0.16));
 }
 
-/* moving specular highlight, masked to the phone silhouette
-   — always subtly alive, brightens when the cursor is active */
 .phone-sheen {
     position: absolute;
     inset: 0;
@@ -401,7 +385,6 @@ body.dark-mode .btn-secondary:hover {
 
 .hero-visual.is-tracking .phone-sheen { opacity: 0.55; }
 
-/* dark-mode: swap the dark shadow for a blue halo so it reads on black */
 body.dark-mode .phone-shadow {
     filter: blur(30px) brightness(0) invert(1) sepia(1) saturate(6) hue-rotate(190deg);
     opacity: 0.30;
@@ -439,7 +422,6 @@ body.dark-mode .phone-ground {
     font-weight: 700;
 }
 
-/* In-text footnote markers */
 .story-content sup {
     font-size: 10px;
     font-weight: 700;
@@ -738,7 +720,6 @@ footer {
     border-radius: 8px;
 }
 
-/* Sources block — now lives in the footer, below the CAC logo */
 .footer-sources {
     max-width: 720px;
     margin: 0 auto 30px;
@@ -821,7 +802,6 @@ footer {
     .footer-sources { font-size: 11px; }
 }
 
-/* Respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
     .hero-glow::after { animation: none; }
     .phone-tilt,
@@ -878,8 +858,6 @@ footer {
 
                 <div class="phone-stage" id="phoneStage">
                     <div class="phone-ground" aria-hidden="true"></div>
-
-                    <!-- blurred silhouette copy = shadow that tracks opposite the tilt -->
                     <img class="phone-shadow" src="repquest-screenshot.png" alt="" aria-hidden="true" draggable="false">
 
                     <div class="phone-tilt" id="phoneTilt">
@@ -930,10 +908,10 @@ footer {
             <div class="video-wrapper">
                 <h2>See RepQuest in Action</h2>
                 <div class="video-frame">
-                    <video controls preload="metadata" poster="repquest-screenshot.png">
+                    <video id="demoVideo" controls preload="auto" poster="repquest-screenshot.png" playsinline>
                         <source src="video.mp4v" type="video/mp4">
                         Your browser does not support the video tag. 
-                        <a href="video.mp4" style="color: var(--blue-600);">Download the video</a> instead.
+                        <a href="video.mp4v" style="color: var(--blue-600);">Download the video</a> instead.
                     </video>
                 </div>
             </div>
@@ -956,7 +934,6 @@ footer {
             </a>
         </div>
 
-        <!-- Sources moved here, directly below the CAC logo -->
         <div class="footer-sources">
             <p><sup>1</sup>Conger, S. A., Toth, L. P., Cretsinger, C., Raustorp, A., Mitáš, J., Inoue, S., &amp; Bassett, D. R. (2022). Time trends in physical activity using wearable devices: A systematic review and meta-analysis of studies from 1995 to 2017. <em>Medicine &amp; Science in Sports &amp; Exercise, 54</em>(2), 288–298. https://doi.org/10.1249/MSS.0000000000002782</p>
             <p><sup>2</sup>Google. (n.d.). <em>MediaPipe Solutions guide</em>. Retrieved August 26, 2026, from https://developers.google.com/edge/mediapipe/solutions/guide</p>
@@ -982,7 +959,7 @@ function applyTheme(isDark) {
         document.getElementById('themeBtn').textContent = '☀️';
     } else {
         document.body.classList.remove('dark-mode');
-        document.getElementById('themeBtn').textContent = '🌙';
+        document.getElementById('themeBtn').textContent = '';
     }
 }
 
@@ -1044,7 +1021,6 @@ const terminalMaximize = document.getElementById('terminalMaximize');
 const terminalRestore = document.getElementById('terminalRestore');
 const terminalRestoreBtn = document.getElementById('terminalRestoreBtn');
 
-/* ---------- Dragging ---------- */
 let dragX = 0;
 let dragY = 0;
 let dragStartX = 0;
@@ -1059,8 +1035,6 @@ function setDrag(x, y) {
     terminal.style.setProperty('--drag-y', y + 'px');
 }
 
-// Keep the window reachable: some of it must stay on screen horizontally,
-// and the title bar must stay on screen vertically.
 function clampDrag(x, y) {
     const rect = terminal.getBoundingClientRect();
     const baseLeft = rect.left - dragX;
@@ -1109,7 +1083,6 @@ function stopDrag(e) {
 terminalHeader.addEventListener('pointerup', stopDrag);
 terminalHeader.addEventListener('pointercancel', stopDrag);
 
-/* ---------- Window buttons ---------- */
 terminalClose.addEventListener('click', () => {
     terminal.classList.add('closed');
     terminalRestore.classList.add('show');
@@ -1137,7 +1110,6 @@ terminalRestoreBtn.addEventListener('click', () => {
     setDrag(0, 0);
 });
 
-// Close maximized terminal with Escape key
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && terminal.classList.contains('maximized')) {
         terminal.classList.remove('maximized');
@@ -1155,8 +1127,6 @@ document.addEventListener('keydown', (e) => {
     const visual = document.getElementById('heroVisual');
     if (!visual) return;
 
-    /* Feed the phone PNG into the sheen's mask (single source of truth).
-       If you swap the screenshot, nothing else needs updating. */
     const phoneImg  = visual.querySelector('.hero-phone-img');
     const shadowImg = visual.querySelector('.phone-shadow');
 
@@ -1168,34 +1138,27 @@ document.addEventListener('keydown', (e) => {
     if (phoneImg.complete && phoneImg.naturalWidth) syncImages();
     else phoneImg.addEventListener('load', syncImages, { once: true });
 
-    // No motion at all if the user prefers reduced motion.
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reduced) return;
 
     const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
     const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
 
-    /* -------- state -------- */
-    let cursorX = 0, cursorY = 0;   // raw pointer offset, -1 … 1
-    let curX = 0, curY = 0;         // eased value written to CSS
+    let cursorX = 0, cursorY = 0;
+    let curX = 0, curY = 0;
 
-    /* -------- idle motion tuning --------
-       Two sines per axis at incommensurate frequencies = drift that
-       never visually repeats. Amplitude is in the same -1…1 space. */
     const IDLE = {
-        ax1: 0.055, sx1: 0.00042,   // primary X sway
-        ax2: 0.026, sx2: 0.00093,   // secondary X sway (faster, smaller)
-        ay1: 0.045, sy1: 0.00035,   // primary Y sway
-        ay2: 0.020, sy2: 0.00078,   // secondary Y sway
-        bobAmp: 6,   bobSpeed: 0.00070,   // vertical float in px
+        ax1: 0.055, sx1: 0.00042,
+        ax2: 0.026, sx2: 0.00093,
+        ay1: 0.045, sy1: 0.00035,
+        ay2: 0.020, sy2: 0.00078,
+        bobAmp: 6,   bobSpeed: 0.00070,
         bobAmp2: 2.5, bobSpeed2: 0.00119
     };
 
-    /* -------- the always-running loop -------- */
     function loop(now) {
         const t = now || performance.now();
 
-        // Organic idle drift (deterministic, seeded by time)
         const idleX =
             Math.sin(t * IDLE.sx1) * IDLE.ax1 +
             Math.sin(t * IDLE.sx2 + 1.7) * IDLE.ax2;
@@ -1204,19 +1167,15 @@ document.addEventListener('keydown', (e) => {
             Math.cos(t * IDLE.sy1) * IDLE.ay1 +
             Math.sin(t * IDLE.sy2 + 0.6) * IDLE.ay2;
 
-        // Target = cursor position + idle drift
         const targetX = cursorX + idleX;
         const targetY = cursorY + idleY;
 
-        // Ease toward target. The idle is small enough that cursor
-        // tracking still feels crisp; the drift reads as breathing.
         curX += (targetX - curX) * 0.11;
         curY += (targetY - curY) * 0.11;
 
         visual.style.setProperty('--px', curX.toFixed(4));
         visual.style.setProperty('--py', curY.toFixed(4));
 
-        // Gentle vertical bob (float above the shadow)
         const bob =
             Math.sin(t * IDLE.bobSpeed) * IDLE.bobAmp +
             Math.sin(t * IDLE.bobSpeed2 + 2.1) * IDLE.bobAmp2;
@@ -1226,10 +1185,9 @@ document.addEventListener('keydown', (e) => {
     }
     requestAnimationFrame(loop);
 
-    /* -------- pointer tracking (whole viewport) -------- */
     function track(clientX, clientY) {
-        const nx = (clientX / window.innerWidth)  * 2 - 1;   // -1 left  … +1 right
-        const ny = (clientY / window.innerHeight) * 2 - 1;   // -1 top   … +1 bottom
+        const nx = (clientX / window.innerWidth)  * 2 - 1;
+        const ny = (clientY / window.innerHeight) * 2 - 1;
 
         cursorX = clamp(nx, -1, 1);
         cursorY = clamp(ny, -1, 1);
@@ -1242,7 +1200,6 @@ document.addEventListener('keydown', (e) => {
             track(e.clientX, e.clientY);
         }, { passive: true });
 
-        // Cursor left the window → let idle drift take over fully.
         document.addEventListener('mouseleave', () => {
             cursorX = 0;
             cursorY = 0;
@@ -1254,7 +1211,6 @@ document.addEventListener('keydown', (e) => {
             visual.classList.remove('is-tracking');
         });
     } else {
-        // Touch: follow the finger while dragging; idle drift always runs.
         window.addEventListener('touchmove', (e) => {
             if (e.touches.length) {
                 track(e.touches[0].clientX, e.touches[0].clientY);
@@ -1267,6 +1223,30 @@ document.addEventListener('keydown', (e) => {
             visual.classList.remove('is-tracking');
         }, { passive: true });
     }
+})();
+
+/* 
+   VIDEO BUFFERING FIX
+   Forces the video to reset to 0:00 if it tries to skip ahead 
+   while buffering, preventing the "audio plays before video" glitch.
+*/
+(function() {
+    const video = document.getElementById('demoVideo');
+    if (!video) return;
+
+    // Force reset to 0 when metadata loads
+    video.addEventListener('loadedmetadata', () => {
+        if (video.currentTime > 0.5) {
+            video.currentTime = 0;
+        }
+    });
+
+    // Ensure video seeks to 0 when user clicks play if it got desynced
+    video.addEventListener('play', () => {
+        if (video.currentTime > 1 && video.currentTime < 3) {
+            video.currentTime = 0;
+        }
+    });
 })();
 </script>
 <!-- Code injected by live-server -->
