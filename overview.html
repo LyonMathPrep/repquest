@@ -198,8 +198,6 @@ header {
 .btn-secondary:hover { background: var(--gray-100); }
 
 /* ---- Dark mode buttons — high contrast ---- */
-/* Primary: true white pill with a soft halo so it reads as the
-   brightest element on the page. */
 body.dark-mode .btn-primary {
     background: #ffffff;
     color: #0a0a0a;
@@ -215,8 +213,6 @@ body.dark-mode .btn-primary:hover {
         0 12px 32px rgba(255, 255, 255, 0.22);
 }
 
-/* Secondary: glassy fill + visible border so it's clearly a button,
-   not a hole in the page. */
 body.dark-mode .btn-secondary {
     background: rgba(255, 255, 255, 0.06);
     color: #f0f0f0;
@@ -263,13 +259,11 @@ body.dark-mode .btn-secondary:hover {
     justify-content: center;
     align-items: center;
     min-height: 460px;
-    /* -1 … 1 pointer + idle offsets written by JS */
     --px: 0;
     --py: 0;
     --bob: 0px;
 }
 
-/* --- ambient light behind the phone (parallaxes opposite the tilt) --- */
 .hero-glow {
     position: absolute;
     top: 50%;
@@ -300,17 +294,14 @@ body.dark-mode .btn-secondary:hover {
     to   { opacity: 1;    transform: scale(1.14); }
 }
 
-/* --- the phone --- */
 .phone-stage {
     position: relative;
-    width: min(340px, 78vw, 34vh);   /* 34vh ≈ 65vh tall at 1040×2000 */
+    width: min(340px, 78vw, 34vh);
     z-index: 1;
     perspective: 1300px;
     perspective-origin: 50% 42%;
 }
 
-/* soft silhouette shadow that slides OPPOSITE the tilt,
-   like a light source fixed to one side of the scene */
 .phone-shadow {
     position: absolute;
     inset: 0;
@@ -327,8 +318,6 @@ body.dark-mode .btn-secondary:hover {
     will-change: transform;
 }
 
-/* contact shadow on the "floor" — stretches toward the side the
-   phone leans AWAY from, mirroring the light direction */
 .phone-ground {
     position: absolute;
     left: 50%;
@@ -348,8 +337,6 @@ body.dark-mode .btn-secondary:hover {
     pointer-events: none;
 }
 
-/* the element that actually rotates + floats
-   — translate3d carries the idle bob, then the rotations pivot toward cursor */
 .phone-tilt {
     position: relative;
     transform:
@@ -357,7 +344,6 @@ body.dark-mode .btn-secondary:hover {
         rotateX(calc(var(--py) * -10deg))
         rotateY(calc(var(--px) * 16deg));
     will-change: transform;
-    /* deliberately NO css transition — JS lerps the values, which feels far better */
 }
 
 .hero-phone-img {
@@ -369,8 +355,6 @@ body.dark-mode .btn-secondary:hover {
     filter: drop-shadow(0 26px 36px rgba(2, 6, 23, 0.16));
 }
 
-/* moving specular highlight, masked to the phone silhouette
-   — always subtly alive, brightens when the cursor is active */
 .phone-sheen {
     position: absolute;
     inset: 0;
@@ -401,7 +385,6 @@ body.dark-mode .btn-secondary:hover {
 
 .hero-visual.is-tracking .phone-sheen { opacity: 0.55; }
 
-/* dark-mode: swap the dark shadow for a blue halo so it reads on black */
 body.dark-mode .phone-shadow {
     filter: blur(30px) brightness(0) invert(1) sepia(1) saturate(6) hue-rotate(190deg);
     opacity: 0.30;
@@ -452,7 +435,6 @@ body.dark-mode .phone-ground {
     margin: 0 auto;
 }
 
-/* soft ambient glow behind the player */
 .video-wrap::before {
     content: '';
     position: absolute;
@@ -557,7 +539,6 @@ body.dark-mode .video-wrap::before {
     font-weight: 700;
 }
 
-/* In-text footnote markers */
 .story-content sup {
     font-size: 10px;
     font-weight: 700;
@@ -799,7 +780,6 @@ footer {
     border-radius: 8px;
 }
 
-/* Sources block — now lives in the footer, below the CAC logo */
 .footer-sources {
     max-width: 720px;
     margin: 0 auto 30px;
@@ -880,8 +860,6 @@ footer {
     .cac-logo-frame { padding: 12px; border-radius: 14px; }
     .cac-logo-frame img { width: 180px; }
     .footer-sources { font-size: 11px; }
-
-    /* demo video on small screens */
     .demo { padding-bottom: 60px; }
     .demo-heading { margin-bottom: 24px; }
     .video-frame { border-radius: 12px; }
@@ -889,7 +867,6 @@ footer {
     .demo-note { font-size: 10px; }
 }
 
-/* Respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
     .hero-glow::after { animation: none; }
     .phone-tilt,
@@ -940,14 +917,11 @@ footer {
                 </p>
             </div>
 
-            <!-- ============ 3D PHONE ============ -->
             <div class="hero-visual" id="heroVisual">
                 <div class="hero-glow"></div>
 
                 <div class="phone-stage" id="phoneStage">
                     <div class="phone-ground" aria-hidden="true"></div>
-
-                    <!-- blurred silhouette copy = shadow that tracks opposite the tilt -->
                     <img class="phone-shadow" src="repquest-screenshot.png" alt="" aria-hidden="true" draggable="false">
 
                     <div class="phone-tilt" id="phoneTilt">
@@ -960,10 +934,8 @@ footer {
                     </div>
                 </div>
             </div>
-            <!-- ================================== -->
         </section>
 
-        <!-- ============ DEMO VIDEO (video.mp4 in repo root) ============ -->
         <section class="demo" id="demo" aria-labelledby="demo-title">
             <div class="demo-heading">
                 <div class="hero-badge">
@@ -997,7 +969,6 @@ footer {
                 <a href="video.mp4" target="_blank" rel="noopener noreferrer">open video in a new tab ↗</a>
             </p>
         </section>
-        <!-- ============================================================ -->
 
         <section class="story">
             <div class="story-content">
@@ -1044,7 +1015,6 @@ footer {
             </a>
         </div>
 
-        <!-- Sources moved here, directly below the CAC logo -->
         <div class="footer-sources">
             <p><sup>1</sup>Conger, S. A., Toth, L. P., Cretsinger, C., Raustorp, A., Mitáš, J., Inoue, S., &amp; Bassett, D. R. (2022). Time trends in physical activity using wearable devices: A systematic review and meta-analysis of studies from 1995 to 2017. <em>Medicine &amp; Science in Sports &amp; Exercise, 54</em>(2), 288–298. https://doi.org/10.1249/MSS.0000000000002782</p>
             <p><sup>2</sup>Google. (n.d.). <em>MediaPipe Solutions guide</em>. Retrieved August 26, 2026, from https://developers.google.com/edge/mediapipe/solutions/guide</p>
@@ -1132,7 +1102,6 @@ const terminalMaximize = document.getElementById('terminalMaximize');
 const terminalRestore = document.getElementById('terminalRestore');
 const terminalRestoreBtn = document.getElementById('terminalRestoreBtn');
 
-/* ---------- Dragging ---------- */
 let dragX = 0;
 let dragY = 0;
 let dragStartX = 0;
@@ -1147,8 +1116,6 @@ function setDrag(x, y) {
     terminal.style.setProperty('--drag-y', y + 'px');
 }
 
-// Keep the window reachable: some of it must stay on screen horizontally,
-// and the title bar must stay on screen vertically.
 function clampDrag(x, y) {
     const rect = terminal.getBoundingClientRect();
     const baseLeft = rect.left - dragX;
@@ -1197,7 +1164,6 @@ function stopDrag(e) {
 terminalHeader.addEventListener('pointerup', stopDrag);
 terminalHeader.addEventListener('pointercancel', stopDrag);
 
-/* ---------- Window buttons ---------- */
 terminalClose.addEventListener('click', () => {
     terminal.classList.add('closed');
     terminalRestore.classList.add('show');
@@ -1225,7 +1191,6 @@ terminalRestoreBtn.addEventListener('click', () => {
     setDrag(0, 0);
 });
 
-// Close maximized terminal with Escape key
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && terminal.classList.contains('maximized')) {
         terminal.classList.remove('maximized');
@@ -1236,15 +1201,11 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-/* 
-   HERO PHONE — cursor tracking + continuous idle drift
-*/
+/* HERO PHONE — cursor tracking + continuous idle drift */
 (function () {
     const visual = document.getElementById('heroVisual');
     if (!visual) return;
 
-    /* Feed the phone PNG into the sheen's mask (single source of truth).
-       If you swap the screenshot, nothing else needs updating. */
     const phoneImg  = visual.querySelector('.hero-phone-img');
     const shadowImg = visual.querySelector('.phone-shadow');
 
@@ -1256,55 +1217,42 @@ document.addEventListener('keydown', (e) => {
     if (phoneImg.complete && phoneImg.naturalWidth) syncImages();
     else phoneImg.addEventListener('load', syncImages, { once: true });
 
-    // No motion at all if the user prefers reduced motion.
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reduced) return;
 
     const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
     const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
 
-    /* -------- state -------- */
-    let cursorX = 0, cursorY = 0;   // raw pointer offset, -1 … 1
-    let curX = 0, curY = 0;         // eased value written to CSS
+    let cursorX = 0, cursorY = 0;
+    let curX = 0, curY = 0;
 
-    /* -------- idle motion tuning --------
-       Two sines per axis at incommensurate frequencies = drift that
-       never visually repeats. Amplitude is in the same -1…1 space. */
     const IDLE = {
-        ax1: 0.055, sx1: 0.00042,   // primary X sway
-        ax2: 0.026, sx2: 0.00093,   // secondary X sway (faster, smaller)
-        ay1: 0.045, sy1: 0.00035,   // primary Y sway
-        ay2: 0.020, sy2: 0.00078,   // secondary Y sway
-        bobAmp: 6,   bobSpeed: 0.00070,   // vertical float in px
+        ax1: 0.055, sx1: 0.00042,
+        ax2: 0.026, sx2: 0.00093,
+        ay1: 0.045, sy1: 0.00035,
+        ay2: 0.020, sy2: 0.00078,
+        bobAmp: 6,   bobSpeed: 0.00070,
         bobAmp2: 2.5, bobSpeed2: 0.00119
     };
 
-    /* -------- the always-running loop -------- */
     function loop(now) {
         const t = now || performance.now();
-
-        // Organic idle drift (deterministic, seeded by time)
         const idleX =
             Math.sin(t * IDLE.sx1) * IDLE.ax1 +
             Math.sin(t * IDLE.sx2 + 1.7) * IDLE.ax2;
-
         const idleY =
             Math.cos(t * IDLE.sy1) * IDLE.ay1 +
             Math.sin(t * IDLE.sy2 + 0.6) * IDLE.ay2;
 
-        // Target = cursor position + idle drift
         const targetX = cursorX + idleX;
         const targetY = cursorY + idleY;
 
-        // Ease toward target. The idle is small enough that cursor
-        // tracking still feels crisp; the drift reads as breathing.
         curX += (targetX - curX) * 0.11;
         curY += (targetY - curY) * 0.11;
 
         visual.style.setProperty('--px', curX.toFixed(4));
         visual.style.setProperty('--py', curY.toFixed(4));
 
-        // Gentle vertical bob (float above the shadow)
         const bob =
             Math.sin(t * IDLE.bobSpeed) * IDLE.bobAmp +
             Math.sin(t * IDLE.bobSpeed2 + 2.1) * IDLE.bobAmp2;
@@ -1314,14 +1262,11 @@ document.addEventListener('keydown', (e) => {
     }
     requestAnimationFrame(loop);
 
-    /* -------- pointer tracking (whole viewport) -------- */
     function track(clientX, clientY) {
-        const nx = (clientX / window.innerWidth)  * 2 - 1;   // -1 left  … +1 right
-        const ny = (clientY / window.innerHeight) * 2 - 1;   // -1 top   … +1 bottom
-
+        const nx = (clientX / window.innerWidth)  * 2 - 1;
+        const ny = (clientY / window.innerHeight) * 2 - 1;
         cursorX = clamp(nx, -1, 1);
         cursorY = clamp(ny, -1, 1);
-
         visual.classList.add('is-tracking');
     }
 
@@ -1330,19 +1275,15 @@ document.addEventListener('keydown', (e) => {
             track(e.clientX, e.clientY);
         }, { passive: true });
 
-        // Cursor left the window → let idle drift take over fully.
         document.addEventListener('mouseleave', () => {
-            cursorX = 0;
-            cursorY = 0;
+            cursorX = 0; cursorY = 0;
             visual.classList.remove('is-tracking');
         });
         window.addEventListener('blur', () => {
-            cursorX = 0;
-            cursorY = 0;
+            cursorX = 0; cursorY = 0;
             visual.classList.remove('is-tracking');
         });
     } else {
-        // Touch: follow the finger while dragging; idle drift always runs.
         window.addEventListener('touchmove', (e) => {
             if (e.touches.length) {
                 track(e.touches[0].clientX, e.touches[0].clientY);
@@ -1350,85 +1291,58 @@ document.addEventListener('keydown', (e) => {
         }, { passive: true });
 
         window.addEventListener('touchend', () => {
-            cursorX = 0;
-            cursorY = 0;
+            cursorX = 0; cursorY = 0;
             visual.classList.remove('is-tracking');
         }, { passive: true });
     }
 })();
 
 /* 
-   DEMO VIDEO — pause the hero/terminal noise when the clip plays,
-   and stop other media when the page is hidden.
+   DEMO VIDEO — robust error handling
 */
 (function () {
     const video = document.getElementById('demoVideo');
     if (!video) return;
 
-    // If the file is missing (e.g. opened from a path without video.mp4),
-    // say so instead of showing a dead black box.
-    video.addEventListener('error', () => {
-        const frame = video.closest('.video-frame');
-        if (!frame) return;
-        frame.innerHTML =
-            '<p style="margin:0;padding:48px 24px;text-align:center;' +
-            'font-family:\'JetBrains Mono\',monospace;font-size:12px;' +
-            'line-height:1.7;color:#9ca3af;">' +
-            'video.mp4 could not be loaded.<br>' +
-            'Make sure it sits next to index.html in the repo root.' +
-            '</p>';
-    }, true);
-
-    // Only one thing plays at a time.
     video.addEventListener('play', () => {
         document.querySelectorAll('video, audio').forEach(el => {
             if (el !== video && !el.paused) el.pause();
         });
     });
 
-    // Don't keep decoding in a background tab.
     document.addEventListener('visibilitychange', () => {
         if (document.hidden && !video.paused) video.pause();
     });
+
+    // Better error handling that doesn't delete the video element
+    video.addEventListener('error', function(e) {
+        const err = video.error;
+        let msg = "Unknown error";
+        if (err) {
+            switch(err.code) {
+                case 1: msg = "Video playback aborted."; break;
+                case 2: msg = "Network error while loading video."; break;
+                case 3: msg = "Video decoding failed (Codec not supported)."; break;
+                case 4: msg = "Video format not supported or file not found (404)."; break;
+            }
+        }
+        
+        console.warn("Video Error Code:", err ? err.code : 'N/A', "-", msg);
+        
+        const frame = video.closest('.video-frame');
+        if (frame && !frame.querySelector('.video-error-overlay')) {
+            const overlay = document.createElement('div');
+            overlay.className = 'video-error-overlay';
+            overlay.style.cssText = "position:absolute;inset:0;background:rgba(10,10,10,0.9);color:#fff;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:24px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.7;z-index:10;";
+            overlay.innerHTML = `
+                <p style="color:#ff5f56;font-weight:bold;margin-bottom:8px;">⚠️ ${msg}</p>
+                <p style="color:#9ca3af;max-width:400px;">If you just added the file, GitHub Pages may take a minute to deploy. If it still fails, ensure the video is encoded as <strong>H.264 MP4</strong> (not H.265/HEVC).</p>
+                <a href="video.mp4" target="_blank" style="margin-top:16px;color:#60a5fa;text-decoration:underline;">Open video directly ↗</a>
+            `;
+            frame.appendChild(overlay);
+        }
+    }, true);
 })();
-</script>
-<!-- Code injected by live-server -->
-<script>
-	// <![CDATA[  <-- For SVG support
-	if ('WebSocket' in window) {
-		(function () {
-			function refreshCSS() {
-				var sheets = [].slice.call(document.getElementsByTagName("link"));
-				var head = document.getElementsByTagName("head")[0];
-				for (var i = 0; i < sheets.length; ++i) {
-					var elem = sheets[i];
-					var parent = elem.parentElement || head;
-					parent.removeChild(elem);
-					var rel = elem.rel;
-					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
-						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
-						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
-					}
-					parent.appendChild(elem);
-				}
-			}
-			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
-			var address = protocol + window.location.host + window.location.pathname + '/ws';
-			var socket = new WebSocket(address);
-			socket.onmessage = function (msg) {
-				if (msg.data == 'reload') window.location.reload();
-				else if (msg.data == 'refreshcss') refreshCSS();
-			};
-			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
-				console.log('Live reload enabled.');
-				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
-			}
-		})();
-	}
-	else {
-		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
-	}
-	// ]]>
 </script>
 </body>
 </html>
